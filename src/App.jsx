@@ -12,6 +12,8 @@ Home
     <>
   <BrowserRouter>
     <Routes>
+    <Route path='/' element={<Navigate to={"landingPage"}/>}/>
+      
       <Route path='/' element={<Navigate to={"home"} />} />
       <Route path='/home' element={<Home/>} />
       <Route/>
