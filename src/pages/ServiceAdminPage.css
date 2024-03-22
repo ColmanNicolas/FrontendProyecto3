@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+nav{
+    width: 350px;
+    height: 900px;
+    padding-block: 0.3em;
+    padding-inline: 0.3em;
+    background-color: rgb(99, 97, 97);
+}
+nav h2{
+    color: aliceblue;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-left: 0.4em;
+    padding-block: 0.5em;
+}
+nav ul{
+    width: 100%;
+    padding-top: 0.7em;
+    padding-inline: 0.3em;
+}
+nav ul li{
+    width: 100%;
+    margin-block: 0.3em;
+    list-style: none;
+}
+nav ul li button{
+    display: block;
+    color: rgb(255, 255, 255);
+    background-color: #00000000;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-inline: 0.2em;
+
+}
+nav ul :hover{
+    background-color: brown;
+    padding-inline: 0.3em;
+    list-style: none;
+}
+.lineaDivisora{
+    border: 1px solid rgba(0, 0, 0, 0.507);
+}
+.contenedorTablas ul li{
+    background-color: aqua;
+    padding: 0px;
+}
