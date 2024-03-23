@@ -1,0 +1,7 @@
+.navBarLanding{
+    height: 50px;
+    background-color: #000f97;
+}
+.navBarLanding ul{
+    display: flex;
+}

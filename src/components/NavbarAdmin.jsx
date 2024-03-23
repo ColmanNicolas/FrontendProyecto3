@@ -1,7 +1,7 @@
 const NavbarAdmin = ({ devolverTabla }) => {
 
     return (
-        <nav>
+        <nav className="navbarServiceAdmin">
             <h2 className="">ADMINISTRACION</h2>
             <div className="lineaDivisora"></div>
             <ul>
