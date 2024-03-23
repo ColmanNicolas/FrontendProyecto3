@@ -3,31 +3,31 @@
     padding: 0px;
     border: 0px;
 }
-nav{
+.navbarServiceAdmin{
     width: 350px;
     height: 900px;
     padding-block: 0.3em;
     padding-inline: 0.3em;
-    background-color: rgb(99, 97, 97);
+    background-color: rgb(73, 73, 73);
 }
-nav h2{
+.navbarServiceAdmin h2{
     color: aliceblue;
     font-size: 1.5rem;
     font-weight: 700;
     padding-left: 0.4em;
     padding-block: 0.5em;
 }
-nav ul{
+.navbarServiceAdmin ul{
     width: 100%;
     padding-top: 0.7em;
     padding-inline: 0.3em;
 }
-nav ul li{
+.navbarServiceAdmin ul li{
     width: 100%;
     margin-block: 0.3em;
     list-style: none;
 }
-nav ul li button{
+.navbarServiceAdmin ul li button{
     display: block;
     color: rgb(255, 255, 255);
     background-color: #00000000;
@@ -39,7 +39,7 @@ nav ul li button{
     padding-inline: 0.2em;
 
 }
-nav ul :hover{
+.navbarServiceAdmin ul :hover{
     background-color: brown;
     padding-inline: 0.3em;
     list-style: none;
