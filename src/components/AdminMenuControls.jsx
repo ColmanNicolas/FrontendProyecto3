@@ -1,19 +1,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import useModal from "../hooks/useModal";
+import FormCrearMenu from "./FormCrearMenu";
+import ModalEstructuraBase from "./ModalEstructuraBase";
 
 const AdminMenuControls = () => {
     const [menus, setMenus] = useState([]);
+    const { isOpen, openModal, closeModal } = useModal();
 
     useEffect(() => {
-        try {
-            axios.get("http://localhost:4000/api/register")// Reemplaza "URL_DE_TU_API_AQUÍ" con la URL de tu API
-                .then(response => {
-                    setMenus(response.data);
-                });
-        } catch (error) {
-            console.error('Error al obtener datos:', error);
-        }
+        obtenerMenus();
     }, []);
+
+    const obtenerMenus = async () => {
+        try {
+            await axios.get("http://localhost:5000/api/menu").then((response)=>{
+                console.log(response.data);
+                setMenus(response.data);
+            })
+            } catch (error) {
+            console.error('Error al crear menú:', error);
+        }
+    }
 
     const crearMenu = async (menuData) => {
         try {
@@ -41,32 +49,49 @@ const AdminMenuControls = () => {
             console.error('Error al modificar menú:', error);
         }
     }
-
     return (
         <>
-            <section className="d-flex justify-content-start gap-3 py-3 bg-dark ps-3">
-                <button className="btn btn-light fw-bold" onClick={() => crearMenu({/* datos del menú */})}>CREAR MENU</button>
-                <button className="btn btn-light fw-bold">FILTRAR MENU</button>
+            <section className="sectionButtonNew">
+                <button onClick={() => openModal()}><i className="bi bi-cup-hot"></i><span>Crear Menu</span></button>
             </section>
-            <section className="mt-4">
-                <ul className="w-100 mx-auto row ps-0 fw-bold fs-5 py-2 bg-dark" style={{ listStyle: "none" }}>
+            <section className="sectionTablesFilters">
+                <form >
+                    <section>
+                        <button><i className="bi bi-funnel"></i><span>Filtrar </span></button>
+                        <button type="button" className="buttonReload" onClick={() => obtenerMenus()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                    </section>
+                    <section>
+                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
+                        <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                    </section>
+                </form>
+                <ul className="tableTitles row " >
                     <li className="col-3">Categoria</li>
                     <li className="col-3">Plato</li>
-                    <li className="col-3">Precio</li>
-                    <li className="text-center col-3">Acciones</li>
+                    <li className="col-2">Precio</li>
+                    <li className="col-4 text-center">Acciones</li>
                 </ul>
-                {menus.map((menu, index) => (
-                    <ul key={index} className="w-100 mx-auto row ps-0" style={{ listStyle: "none" }}>
-                        <li className="col-3">{menu.fullName}</li>
-                        <li className="col-3">{menu.password}</li>
-                        <li className="col-3">{menu.email}</li>
-                        <li className="text-center col-3">
-                            <button className="btn btn-sm btn-danger fw-semibold me-2" onClick={() => borrarMenu(menu.id)}>borrar</button>
-                            <button className="btn btn-sm btn-warning fw-semibold" onClick={() => modificarMenu(menu.id, {/* nuevos datos del menú */})}>modificar</button>
-                        </li>
-                    </ul>
-                ))}
+                <section className="containerRows">
+                    {menus.map((menu) => (
+                        <ul key={menu._id} className="row py-2" >
+                            <li className="col-3">{menu.category}</li>
+                            <li className="col-3">{menu.name}</li>
+                            <li className="col-2">{menu.price}</li>
+                            <li className="col-4 text-center containerButtonActions">
+                                <button title="Modificar Cliente" onClick={() => { modificarMenu() }}><i className="bi bi-gear"></i></button>
+                                <button title="Eliminar Cliente" onClick={() => { borrarMenu(menu._id) }}><i className="bi bi-x-lg"></i></button>
+                                <button title="Habilitar Cliente" onClick={() => { }}><i className="bi bi-check-lg "></i></button>
+                            </li>
+                        </ul>
+                    ))}
+                </section>
             </section>
+            {isOpen &&
+                <ModalEstructuraBase closeModal={closeModal} >
+                    <h3>Nuevo Menu</h3>
+                    <FormCrearUsuario closeModal={closeModal} />
+                </ModalEstructuraBase>
+            }
         </>
     )
 };

@@ -1,64 +1,66 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ModalEstructuraBase from "../components/ModalEstructuraBase";
+import useModal from '../hooks/useModal';
+import FormCrearUsuario from "../components/FormCrearUsuario";
+import useUsersState from "../hooks/useUsersState";
+
 
 const AdminUserControls = () => {
 
-    const [clientes, setClientes] = useState([]);
+    const { isOpen, openModal, closeModal } = useModal();
+    const { users, obtenerClientes,crearCliente , modificarCliente, borrarCliente } = useUsersState();
 
     useEffect(() => {
-        try {
-            axios.get("http://localhost:4000/api/register")
-                .then(response => {
-                    setClientes(response.data);
-                });
-        } catch (error) {
-            console.error('Error al obtener datos:', error);
-        }
+        obtenerClientes();
     }, []);
-
-    const crearCliente = async (user)=>{
-        await axios.post("                       ",user).then(response => {
-            console.log(response.data);
-        })
-    }
-    const borrarCliente = async ()=>{
-        await axios.delete("                       ").then(response => {
-            console.log(response.data);
-        })
-    }
-    const modificarCliente = async ()=>{
-        await axios.put("                       ").then(response => {
-            console.log(response.data);
-        })
-    }
 
     return (
         <>
-            <section className="d-flex justify-content-start gap-3 py-3 bg-dark ps-3">
-                <button className="btn btn-light fw-bold" onClick={()=>{crearCliente(" data de un usuario")}}>CREAR CLIENTES</button>
-                <button className="btn btn-light fw-bold">FILTRAR CLIENTES</button>
+            <section className="sectionButtonNew">
+                <button onClick={() => openModal()}><i className="bi bi-person-add"></i><span>Crear Cliente</span></button>
             </section>
-            <section className="mt-4 ">
-                <ul className=" w-100 row ps-0 fw-bold fs-5 mx-auto py-2 bg-dark" style={{ listStyle: "none" }}>
+            <section className="sectionTablesFilters">
+                <form >
+                    <section>
+                        <button><i className="bi bi-funnel"></i><span>Filtrar </span></button>
+                        <button type="button" className="buttonReload" onClick={() => obtenerClientes()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                    </section>
+                    <section>
+                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
+                        <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                    </section>
+                </form>
+                <ul className="tableTitles row " >
                     <li className="col-3">Nombre</li>
-                    <li className="col-3">Apellido</li>
                     <li className="col-3">Email</li>
-                    <li className="text-center col-3">Acciones</li>
+                    <li className="col-2">Estado</li>
+                    <li className="col-4 text-center">Acciones</li>
                 </ul>
-
-                {clientes.map((cliente) => (
-                    <ul key={cliente._id} className="w-100 row ps-0 mx-auto " style={{ listStyle: "none" }}>
-                        <li className="col-3">{cliente.fullName}</li>
-                        <li className="col-3">{cliente.password}</li>
-                        <li className="col-3">{cliente.email}</li>
-                        <li className="text-center col-3 ">
-                            <button className="btn btn-sm btn-danger fw-semibold me-2" onClick={()=>{borrarCliente}}>borrar</button>
-                            <button className="btn btn-sm btn-warning  fw-semibold" onClick={()=>{modificarCliente}}>modificar</button>
-                        </li>
-                    </ul>
-                ))}
-
+                <section className="containerRows">
+                    {users.map((cliente) => (
+                        <ul key={cliente._id} className="row py-2" >
+                            <li className="col-3">{cliente.name}</li>
+                            <li className="col-3">{cliente.email}</li>
+                            <li className="col-2">{
+                                (cliente.status && "Habilitado")
+                                || "No habilitado"
+                            }</li>
+                            <li className="col-4 text-center containerButtonActions">
+                                <button title="Modificar Cliente" onClick={() => { modificarCliente() }}><i className="bi bi-gear"></i></button>
+                                <button title="Eliminar Cliente" onClick={() => { borrarCliente(cliente._id) }}><i className="bi bi-x-lg"></i></button>
+                                <button title="Habilitar Cliente" onClick={() => { }}><i className="bi bi-check-lg "></i></button>
+                            </li>
+                        </ul>
+                    ))}
+                </section>
             </section>
+            {isOpen &&
+                <ModalEstructuraBase closeModal={closeModal} >
+                    <h3>Nuevo Cliente</h3>
+                    <FormCrearUsuario closeModal={closeModal} />
+                </ModalEstructuraBase>
+            }
         </>
     )
 };
