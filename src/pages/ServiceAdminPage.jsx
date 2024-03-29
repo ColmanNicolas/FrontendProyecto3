@@ -8,6 +8,7 @@ import Header from "../components/Header";
 import NavbarAdmin from "../components/NavbarAdmin";
 
 import '../pages/ServiceAdminPage.css';
+import '../components/ModalEstructura.css';
 
 const ServiceAdminPage = () => {
 
@@ -35,8 +36,8 @@ const ServiceAdminPage = () => {
             <Header />
             <section className="d-flex ">
                 <NavbarAdmin devolverTabla={mostrarTablasAdmin} />
-                <main className="container-fluid py-4 px-4">
-                    <article className="bg-secondary text-white p-3 d-block">
+                <main className="mainServiceAdmin ">
+                    <article >
                         {!opcionSeleccionada && <h3 className="text-center">ADMINISTRADOR</h3>}
                         {opcionSeleccionada && (
                             <SwitchComponenteAdmin opcion={opcionSeleccionada} />
