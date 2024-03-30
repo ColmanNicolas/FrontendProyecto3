@@ -4,7 +4,7 @@ import { useState } from "react";
 const useUsersState = () => {
     const [users, setUsers] = useState([])
 
-    const obtenerClientes = async () => {
+    const obtenerUsuarios = async () => {
         try {
             await axios.get("http://localhost:5000/api/users")
                 .then(response => {
@@ -15,7 +15,7 @@ const useUsersState = () => {
             console.error('Error al obtener datos:', error);
         }
     };
-    const crearCliente = async (data) => {
+    const crearUsuario = async (data) => {
         try {
             await axios.post("http://localhost:5000/api/users", data)
                 .then(response => {
@@ -26,7 +26,7 @@ const useUsersState = () => {
         }
     };
     
-    const modificarCliente = async (id) => {
+    const modificarUsuario = async (id) => {
         try {
             await axios.put(`http://localhost:5000/api/users/${id}`)
                 .then(response => {
@@ -36,14 +36,14 @@ const useUsersState = () => {
             console.error('Error al obtener datos:', error);
         }
     };
-    const borrarCliente = async (id) => {
+    const borrarUsuario = async (id) => {
         try {
             await axios.delete(`http://localhost:5000/api/users/${id}`)
                 .then(response => {
                     console.log(response);
                 }).then(()=>{
                     console.log("entro en actualizar");
-                    obtenerClientes();
+                    obtenerUsuarios();
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -51,10 +51,10 @@ const useUsersState = () => {
     };
     return {
         users,
-        obtenerClientes,
-        crearCliente,
-        modificarCliente,
-        borrarCliente,
+        obtenerUsuarios,
+        crearUsuario,
+        modificarUsuario,
+        borrarUsuario,
     }
 };
 export default useUsersState;

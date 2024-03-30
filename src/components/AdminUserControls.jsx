@@ -1,42 +1,60 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ModalEstructuraBase from "../components/ModalEstructuraBase";
+import ModalEstructuraBase from "./ModalEstructuraBase";
 import useModal from '../hooks/useModal';
-import FormCrearUsuario from "../components/FormCrearUsuario";
+import FormCrearUsuario from "./FormCrearUsuario";
 import useUsersState from "../hooks/useUsersState";
 
 
-const AdminUserControls = () => {
+const AdminUserControls = ({ userList }) => {
 
     const { isOpen, openModal, closeModal } = useModal();
-    const { users, obtenerClientes,crearCliente , modificarCliente, borrarCliente } = useUsersState();
+    const { users, obtenerUsuarios, crearUsuario, modificarUsuario, borrarUsuario } = useUsersState();
 
     useEffect(() => {
-        obtenerClientes();
+        obtenerUsuarios();
     }, []);
-
     return (
         <>
             <section className="sectionButtonNew">
-                <button onClick={() => openModal()}><i className="bi bi-person-add"></i><span>Crear Cliente</span></button>
+                <button onClick={() => openModal()}>
+                    {userList === "EMPLEADOS" ? (
+                        <>
+                            <i className="bi bi-person-add"></i>
+                            <span>Empleado</span>
+                        </>
+                    ) : (
+                        <>
+                            <i className="bi bi-people"></i>
+                            <span>Nuevo Cliente</span>
+                        </>
+                    )}
+                </button>
+
             </section>
             <section className="sectionTablesFilters">
                 <form >
                     <section>
                         <button><i className="bi bi-funnel"></i><span>Filtrar </span></button>
-                        <button type="button" className="buttonReload" onClick={() => obtenerClientes()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                        <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                     </section>
                     <section>
                         <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
                         <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
                     </section>
                 </form>
-                <ul className="tableTitles row " >
+                {userList==="EMPLEADOS" && <ul className="tableTitles row " >
+                    <li className="col-3">Nombre</li>
+                    <li className="col-3">Email</li>
+                    <li className="col-2">Rol</li>
+                    <li className="col-4 text-center">Acciones</li>
+                </ul>}
+                {userList==="CLIENTES" &&  <ul  className="tableTitles row " >
                     <li className="col-3">Nombre</li>
                     <li className="col-3">Email</li>
                     <li className="col-2">Estado</li>
                     <li className="col-4 text-center">Acciones</li>
-                </ul>
+                </ul>}
                 <section className="containerRows">
                     {users.map((cliente) => (
                         <ul key={cliente._id} className="row py-2" >
@@ -47,17 +65,18 @@ const AdminUserControls = () => {
                                 || "No habilitado"
                             }</li>
                             <li className="col-4 text-center containerButtonActions">
-                                <button title="Modificar Cliente" onClick={() => { modificarCliente() }}><i className="bi bi-gear"></i></button>
-                                <button title="Eliminar Cliente" onClick={() => { borrarCliente(cliente._id) }}><i className="bi bi-x-lg"></i></button>
-                                <button title="Habilitar Cliente" onClick={() => { }}><i className="bi bi-check-lg "></i></button>
+                                <button className="infoButton" title="Mas Información" onClick={() => { "masInfo"}}><i className="bi bi-info-lg"></i></button>
+                                <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(cliente._id) }}><i className="bi bi-x-lg"></i></button>
+                                <button className="checkButton" title="Habilitar " onClick={() => { }}><i className="bi bi-check-lg "></i></button>
                             </li>
+                            
                         </ul>
                     ))}
                 </section>
             </section>
             {isOpen &&
                 <ModalEstructuraBase closeModal={closeModal} >
-                    <h3>Nuevo Cliente</h3>
+                    <h3>{userList==="EMPLEADOS"? "Nuevo Empleado":"Nuevo Cliente"}</h3>
                     <FormCrearUsuario closeModal={closeModal} />
                 </ModalEstructuraBase>
             }

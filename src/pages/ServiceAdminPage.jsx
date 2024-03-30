@@ -20,8 +20,10 @@ const ServiceAdminPage = () => {
 
     function SwitchComponenteAdmin({ opcion }) {
         switch (opcion) {
-            case "USUARIOS":
-                return <AdminUserControls />;
+            case "CLIENTES":
+                return <AdminUserControls userList={opcion} />;
+            case "EMPLEADOS":
+                return <AdminUserControls userList={opcion}/>;
             case "MENU":
                 return <AdminMenuControls />;
             case "PEDIDOS":

@@ -1,5 +1,5 @@
-import FormPrincipalLogin from "../components/FormPrincipalLogin";
-import FormPrincipalRegister from "../components/FormPrincipalRegister";
+import FormPrincipalLogin from "../components/superAdminComponents/FormPrincipalLogin";
+import FormPrincipalRegister from "../components/superAdminComponents/FormPrincipalRegister";
 
 const PrincipalAuth = () => {
     return (

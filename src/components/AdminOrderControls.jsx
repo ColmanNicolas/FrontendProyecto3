@@ -1,67 +1,148 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import usePedidosState from "../hooks/usePedidosState";
 
 const AdminOrderControls = () => {
-    const [pedidos, setPedidos] = useState([]);
+    const { pedidos, obtenerPedidos, modificarPedido } = usePedidosState();
 
     useEffect(() => {
-        
-        try {
-            axios.get("http://localhost:4000/api/register") // Obtener la lista de pedidos cuando el componente se monta
-                .then(response => {
-                    setPedidos(response.data);
-                });
-        } catch (error) {
-            console.error('Error al obtener datos:', error);
-        }
+        obtenerPedidos();
     }, []);
-
-
-    const crearPedido = async (user) => {
-        await axios.post("URL_PARA_CREAR_PEDIDO", user).then(response => {
-            console.log(response.data);
-        })
-    }
-    const borrarPedido = async () => {
-
-        await axios.delete("URL_PARA_BORRAR_PEDIDO").then(response => {
-            console.log(response.data);
-        })
-    }
-    const modificarPedido = async () => {
-        
-        await axios.put("URL_PARA_MODIFICAR_PEDIDO").then(response => {
-            console.log(response.data);
-        })
-    }
 
     return (
         <>
-            <section className="d-flex justify-content-start gap-3 py-3 bg-dark ps-3">
-                <button className="btn btn-light fw-bold" onClick={() => { crearPedido(" data de un usuario") }}>CREAR PEDIDO</button>
-                <button className="btn btn-light fw-bold">FILTRAR PEDIDOS</button>
+            <section className="sectionButtonNew">
+                <button ><i class="bi bi-list-check"></i><span>Realizar un Pedido</span></button>
             </section>
-            <section className="mt-4">
-                <ul className="w-100 row mx-auto ps-0 fw-bold fs-5 py-2 bg-dark" style={{ listStyle: "none" }}>
-                    <li className="col-3 ">Numero de orden</li>
-                    <li className="col-3 ">Monto</li>
-                    <li className="col-3 ">Estado</li>
-                    <li className="col-3 text-center">Acciones</li>
+            <section className="sectionTablesFilters">
+                <form >
+                    <section>
+                        <button><i className="bi bi-funnel"></i><span>Filtrar </span></button>
+                        <button type="button" className="buttonReload" onClick={() => obtenerPedidos()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                    </section>
+                    <section>
+                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
+                        <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                    </section>
+                </form>
+                <ul className="tableTitles row " style={{ fontSize: "1.08rem" }} >
+                    <li className="col-1">N° orden</li>
+                    <li className="col-2">Productos</li>
+                    <li className="col-3 ">Solicitante</li>
+                    <li className="col-2 text-center">Total</li>
+                    <li className="col-1 text-center">Detalle</li>
+                    <li className="col-1 text-center ">Pagado</li>
+                    <li className="col-2 text-center ">Estado</li>
                 </ul>
-                {pedidos.map((pedido) => (
-                    <ul key={pedido._id} className="w-100 mx-auto row ps-0" style={{ listStyle: "none" }}>
-                        <li className="col-3">{pedido.fullName}</li>
-                        <li className="col-3">{pedido.password}</li>
-                        <li className="col-3">{pedido.email}</li>
-                        <li className="text-center col-3 btn-group">
-                            <button className="btn btn-sm btn-danger fw-semibold " onClick={() => { borrarPedido(pedido.id) }}>borrar</button>
-                            <button className="btn btn-sm btn-warning fw-semibold" onClick={() => { modificarPedido(pedido.id) }}>modificar estado</button>
-                        </li>
-                    </ul>
-                ))}
 
+                <section class="accordion" id="accordionExample">
+                    {[1].map((pedido) => (
+                        <>
+                            <section key={pedido.id} class="accordion-item containerRows">
+                                <ul className="accordion-header row py-1" >
+                                    <li className="col-1">21732123</li>
+                                    <li className="col-2">4 Productos</li>  {/* pedido.productos.lenght*/}
+                                    <li className="col-3 ps-2">Pedro Pepe</li>
+                                    <li className="col-2 text-center">$ 25576</li>
+                                    <li className="col-1 text-center">
+                                        <button class=" collapsed  text-center " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <i class="bi bi-arrow-bar-down px-4"></i>
+                                        </button>
+                                    </li>
+                                    <li className="col-1 text-center ">
+                                        <button className="deleteButton" title="Eliminar " onClick={() => { borrarMenu(menu._id) }}><i className="bi bi-x-lg"></i></button>
+                                    </li>
+                                    <li className="col-2 text-center">
+                                        <button className="modificationButton" title="Modificar " onClick={() => { modificarMenu() }}><i class="bi bi-arrow-left-right"></i></button>
+                                    </li>
+                                </ul>
+                                <section id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                    {/* pedido.productos.map*/}
+                                    <article class="accordion-body contenedorDetalles">
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Productos</span>
+                                                <span className="fw-bold">Subtotal</span>
+                                            </li>
+                                        </ul>
+                                        <ul >
+                                            <li >
+                                                <span > - Sanguche de milanesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                            <li >
+                                                <span > - Sanguche de milanesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                            <li >
+                                                <span > - Hamburguesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Fecha: 31/03/2024</span>
+                                                <span className="fw-bold">Hora: 10:34:03</span>
+                                            </li>
+                                        </ul>
+                                    </article>
+                                </section>
+                            </section>
+
+                            <section key={pedido.id} class="accordion-item containerRows">
+                                <ul className="accordion-header row py-1" >
+                                    <li className="col-1">21732123</li>
+                                    <li className="col-2">4 Productos</li>  {/* pedido.productos.lenght*/}
+                                    <li className="col-3 ps-2">Pedro Pepe</li>
+                                    <li className="col-2 text-center">$ 25576</li>
+                                    <li className="col-1 text-center">
+                                        <button class=" collapsed  text-center " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="bi bi-arrow-bar-down px-4"></i>
+                                        </button>
+                                    </li>
+                                    <li className="col-1 text-center ">
+                                        <button className="deleteButton" title="Eliminar " onClick={() => { borrarMenu(menu._id) }}><i className="bi bi-x-lg"></i></button>
+                                    </li>
+                                    <li className="col-2 text-center">
+                                        <button className="modificationButton" title="Modificar " onClick={() => { modificarMenu() }}><i class="bi bi-arrow-left-right"></i></button>
+                                    </li>
+                                </ul>
+                                <section id="collapseTwo" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                    {/* pedido.productos.map*/}
+                                    <article class="accordion-body contenedorDetalles">
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Productos</span>
+                                                <span className="fw-bold">Subtotal</span>
+                                            </li>
+                                        </ul>
+                                        <ul >
+                                            <li >
+                                                <span > - Sanguche de milanesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                            <li >
+                                                <span > - Sanguche de milanesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                            <li >
+                                                <span > - Hamburguesa</span>
+                                                <span >$ 4300</span>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Fecha: 31/03/2024</span>
+                                                <span className="fw-bold">Hora: 10:34:03</span>
+                                            </li>
+                                        </ul>
+                                    </article>
+                                </section>
+                            </section>
+                        </>
+                    ))}
+                </section>
             </section>
         </>
     )
-}; 
+};
 export default AdminOrderControls;
