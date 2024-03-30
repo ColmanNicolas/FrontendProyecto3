@@ -35,8 +35,8 @@ const ServiceAdminPage = () => {
 
     return (
         <>
+            <section className="d-flex contenedorPrincipal">
             <Header />
-            <section className="d-flex ">
                 <NavbarAdmin devolverTabla={mostrarTablasAdmin} />
                 <main className="mainServiceAdmin ">
                     <article >
@@ -50,7 +50,6 @@ const ServiceAdminPage = () => {
             </section>
 
 
-            <Footer />
 
         </>
     )
