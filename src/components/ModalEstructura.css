@@ -1,6 +1,6 @@
 *{
-    padding: 0;
-    margin: 0;
+    padding: 0 ;
+    margin: 0 ;
 }
 .overlay{
     background-color: rgba(0, 0, 0, 0.493);
@@ -43,20 +43,19 @@
 
 .modalBody form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    padding-inline: 1rem;
 }
 .modalBody form section{
-    padding: 0.5rem;
-    width: 50%;
+    margin-block: 0.2rem;
+}
 
-}
-.modalBody form section section{
-    width: 100%;
-}
-.modalBody form section section label{
+
+.modalBody form section label{
     font-weight: 600;
 }
-.modalBody form section section input{
+
+.modalBody form section input,textarea{
     background-color: rgb(241, 241, 241);
     border: 1px solid rgba(0, 0, 0, 0.486);
     border-radius: 0.4rem;
@@ -67,14 +66,14 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
-    padding-right: 0.5rem;
-    margin-block: 0.7rem;
 }
 .modalBtnContainer button{
     font-weight: 600;
     border: 1px solid rgba(255, 0, 0, 0.582);
     border-radius: 0.4rem;
     padding-inline: 0.4rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
 }
 .modalBtnContainer button:hover{
     font-weight: 700;

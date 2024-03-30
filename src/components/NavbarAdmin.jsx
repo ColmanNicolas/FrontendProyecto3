@@ -6,14 +6,13 @@ const NavbarAdmin = ({ devolverTabla }) => {
                 <h2 className="">ADMINISTRACION</h2>
                 <div className="lineaDivisora"></div>
                 <ul>
-                    <li><button>EMPLEADOS</button></li>
-                    <li><button onClick={() => devolverTabla("USUARIOS")}>CLIENTES</button></li>
-                    <li><button onClick={() => devolverTabla("MENU")}>MENUS</button></li>
-                    <li><button onClick={() => devolverTabla("PEDIDOS")}>PEDIDOS</button></li>
+                <li><button onClick={() => devolverTabla("EMPLEADOS")}> PLANILLA DE EMPLEADOS</button></li>
+                    <li><button onClick={() => devolverTabla("CLIENTES")}>REGISTRO DE CLIENTES</button></li>
+                    <li><button onClick={() => devolverTabla("MENU")}>GESTIONAR MENU</button></li>
+                    <li><button onClick={() => devolverTabla("PEDIDOS")}>GESTION DE PEDIDOS</button></li>
                     <li><button>CONTROL DE STOCK</button></li>
                 </ul>
             </section>
-
             <section className="containerUserBox">
                 <section className="lineaDivisora "></section>
                 <section>
