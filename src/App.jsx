@@ -12,11 +12,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Navigate to={"home"} />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Navigate to={"/bar-app/home"} />} />
+          <Route path='/bar-app/home' element={<Home />} />
           <Route path='/admin-controls' element={<ServiceAdminPage/>} />
-          <Route path='/landing-page' element={<LandingPage/>} />
-          <Route path='/landing-page/auth' element={<PrincipalAuth/>} />
+          <Route path='/bar-app/landing-page' element={<LandingPage/>} />
+          <Route path='/bar-app/landing-page/auth' element={<PrincipalAuth/>} />
           <Route />
         </Routes>
       </BrowserRouter>

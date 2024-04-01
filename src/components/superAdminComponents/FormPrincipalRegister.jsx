@@ -14,7 +14,7 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
             <article>
                 <h2>REGISTRO</h2>
                 <button className="buttonAslAnchor" type="button" onClick={()=>cambiarComponente("LOGIN")}><i class="bi bi-arrow-up-left-circle"></i><span>Tengo Cuenta</span> </button>
-                <Link to={"/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>         
+                <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>         
             </article>
             <article>
                 <section className="rowInputsForm">
