@@ -1,10 +1,10 @@
 const FormPrincipalLogin = ()=>{
     return(
-        <form className="w-25 mx-auto text-white my-5">
+        <form className="">
         <hr />
         <h2>LOGIN</h2>
         <hr />
-        <section className="row pb-3">
+        <section className="row ">
             <section className="col-12">
                 <label htmlFor="" className="form-label">EMAIL</label>
                 <input type="text" className="form-control" id="" required />

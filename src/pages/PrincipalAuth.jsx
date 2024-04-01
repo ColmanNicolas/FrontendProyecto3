@@ -1,26 +1,20 @@
 import FormPrincipalLogin from "../components/superAdminComponents/FormPrincipalLogin";
 import FormPrincipalRegister from "../components/superAdminComponents/FormPrincipalRegister";
-
+import "../pages/PrincipalAuth.css"
 const PrincipalAuth = () => {
     return (
         <>
-            <section className="min-vh-100 d-flex  flex-column">
-
-                <header className="bg-danger d-flex justify-content-between align-items-center">
-                    <h1>PAGINA AUTH</h1>
-                    
+            <header className='headerLanding '>
+                    <h1>PAGINA AUTH</h1>  
                 </header>
-                <main className="container-fluid   bg-dark">
+                <main className="mainPrincipalAuth">
                     <FormPrincipalRegister />
-                    <div className="container-fluid w-100">
-                        <hr className="text-white" />
-                    </div>
-                    <FormPrincipalLogin />
                 </main>
-                <footer className="bg-danger mt-auto">
-                    <h1>FOOTER PAGINA AUTH</h1>
-                </footer>
-            </section>
+                <footer className="footerLanding">
+                <a href="tel:+543819999999">3819999999</a>
+                <a href="mailto:bar_app@gmail.com.ar">bar_app@gmail.com.ar</a>
+                <p>Copyright ©, Bar App Service</p>
+            </footer>
         </>
     )
 };
