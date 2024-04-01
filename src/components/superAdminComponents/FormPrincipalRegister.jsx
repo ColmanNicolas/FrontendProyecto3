@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
-const FormPrincipalRegister = () => {
+const FormPrincipalRegister = ({cambiarComponente}) => {
 
     const { handleSubmit, register, formState: { errors }, watch, reset, } = useForm();
     const enviarFormulario = (dataRegister) => {
@@ -13,7 +13,8 @@ const FormPrincipalRegister = () => {
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <article>
                 <h2>REGISTRO</h2>
-                <Link><span>Tengo cuenta</span><i className="bi bi-arrow-left-circle"></i> </Link>
+                <button className="buttonAslAnchor" type="button" onClick={()=>cambiarComponente("LOGIN")}><i class="bi bi-arrow-up-left-circle"></i><span>Tengo Cuenta</span> </button>
+                <Link to={"/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>         
             </article>
             <article>
                 <section className="rowInputsForm">
