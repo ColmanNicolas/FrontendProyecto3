@@ -1,10 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
-import ServiceAdminPage from './pages/ServiceAdminPage'
-import LandingPage from './pages/LandingPage'
-import './App.css'
-import PrincipalAuth from './pages/PrincipalAuth'
+import ServiceAdminPage from '../src/pages/ServiceAdminPage'
+import '../src/App.css'
+import PrincipalAuth from '../src/pages/principalPages/PrincipalAuth'
+import LandingPage from './pages/principalPages/LandingPage'
+import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
           <Route path='/admin-controls' element={<ServiceAdminPage/>} />
           <Route path='/bar-app/landing-page' element={<LandingPage/>} />
           <Route path='/bar-app/landing-page/auth' element={<PrincipalAuth/>} />
+          <Route path='/bar-app/mi-cuenta/:id' element={<PrincipalMyAccount/>} />
           <Route />
         </Routes>
       </BrowserRouter>

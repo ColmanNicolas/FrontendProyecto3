@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FormPrincipalLogin from "../components/superAdminComponents/FormPrincipalLogin";
-import FormPrincipalRegister from "../components/superAdminComponents/FormPrincipalRegister";
-import "../pages/PrincipalAuth.css"
+import "../principalPages/PrincipalAuth.css"
+import FormPrincipalLogin from "../../components/superAdminComponents/FormPrincipalLogin";
+import FormPrincipalRegister from "../../components/superAdminComponents/FormPrincipalRegister";
 const PrincipalAuth = () => {
 
     const [opcionSeleccionada, setOpcionSeleccionada] = useState("LOGIN");

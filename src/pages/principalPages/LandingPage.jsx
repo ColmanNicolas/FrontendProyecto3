@@ -1,5 +1,5 @@
 import { FaBeer } from "react-icons/fa";
-import '../pages/LandingPage.css'
+import '../principalPages/LandingPage.css'
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {

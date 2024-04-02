@@ -69,29 +69,7 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
                             errors.city.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                         )}
                     </section>
-
                 </section>
-                {/* 
-                <section className="rowInputsForm">
-                    <section className="">
-                        <label htmlFor="" className="form-label">SERVICIO</label>
-                        <Controller
-                            name="service"
-                            control={control}
-                            defaultValue=""
-                            rules={{ required: true }}
-                            render={({ field }) => (
-                                <select {...field} className="form-select" aria-label="Default select example" required>
-                                    <option value="" disabled hidden>Selecciona un servicio</option>
-                                    <option value="1">STANDARD SERVICE</option>
-                                    <option value="2">SELF-MANAGEMENT APP</option>
-                                    <option value="3">MENU APP</option>
-                                </select>
-                            )}
-                        />
-                    </section>
-                </section>
-            */}
                 <section className="rowInputsForm">
                     <section >
                         <label htmlFor="" className="form-label">EMAIL</label>
