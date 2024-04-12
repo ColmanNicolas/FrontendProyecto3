@@ -132,13 +132,25 @@
         padding: 0px ;
         padding-top: 0.5rem;
         border-radius: 0.5rem 0.5rem 0 0;
+        position: relative;
     }
 
     .mainPrincipalAuth article:nth-child(1) a {
-        display: none;
+        padding: 0;
+        top: 9%;
+        left: 1%;
+        position: absolute;
     }
-    .mainPrincipalAuth article:nth-child(2){    
-        padding-inline: 1rem;
+    .mainPrincipalAuth article:nth-child(1) button {   
+        height: 2.5rem;
+        padding: 0;
+        top: 10%;
+        right: 1%; 
+        position: absolute;
+    
+    }
+    .mainPrincipalAuth article span {
+        display: none;
     }
 
 }
