@@ -7,7 +7,7 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
     const { handleSubmit, register, formState: { errors }, watch, reset, } = useForm();
     const enviarFormulario = (dataRegister) => {
         try {
-            axios.post("http://localhost:5000/api/principalUsers", dataRegister)
+            axios.post("http://localhost:5000/api/principal-auth/register", dataRegister)
                 .then(response => {
                     console.log(response);
                     reset();
