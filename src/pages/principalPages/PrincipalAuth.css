@@ -178,25 +178,33 @@
     padding-left: 0.2rem;
 }
 
-.mainPrincipalAuth form input,
-select {
+.mainPrincipalAuth form input{
     color: rgb(255, 255, 255);
     font-weight: 500;
     background-color: rgba(0, 0, 0, 0.575);
     margin-bottom: 1rem;
 }
+.mainPrincipalAuth form input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Color blanco con una opacidad del 70% */
+    font-weight: 400;
 
-.mainPrincipalAuth form select {
-    color: rgb(255, 255, 255);
-    font-weight: 500;
-    background-color: rgba(0, 0, 0, 0.76);
 }
 
-.mainPrincipalAuth form select option {
-    color: white;
-    font-weight: 500;
-    background-color: rgba(0, 0, 0, 0.87) !important;
+.mainPrincipalAuth form input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Color blanco con una opacidad del 70% */
+    font-weight: 400;
 }
+
+.mainPrincipalAuth form input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Color blanco con una opacidad del 70% */
+    font-weight: 400;
+}
+
+.mainPrincipalAuth form input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Color blanco con una opacidad del 70% */
+    font-weight: 400;
+}
+
 
 .formButtonSection {
     width: 100%;

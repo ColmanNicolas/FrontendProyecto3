@@ -13,14 +13,14 @@ const FormPrincipalLogin = ({cambiarComponente}) => {
         <form  onSubmit={handleSubmit(enviarFormulario)} >
             <article>
                 <h2>LOGIN</h2>
-                <button className="buttonAslAnchor" type="button" onClick={()=>cambiarComponente("REGISTER")}><i class="bi bi-arrow-up-left-circle"></i><span>Registrarme</span> </button>
+                <button className="buttonAslAnchor" type="button" onClick={()=>cambiarComponente("REGISTER")}><i className="bi bi-arrow-up-left-circle"></i><span>Registrarme</span> </button>
                 <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>
             </article>
             <article className="w-100">
                 <section >
                     <section >
-                        <label htmlFor="" className="form-label">EMAIL</label>
-                        <input type="email" className="form-control" id="" {...register("email", {
+                        <label htmlFor="userEmail" className="form-label">EMAIL</label>
+                        <input type="email" className="form-control" id="userEmail" {...register("email", {
                             required: true,
                             minLength: 5,
                             maxLength: 35,
@@ -31,8 +31,8 @@ const FormPrincipalLogin = ({cambiarComponente}) => {
                         )}
                     </section>
                     <section >
-                        <label htmlFor="" className="form-label">CONTRASEÑA</label>
-                        <input type="password" className="form-control" id="" {...register("password", {
+                        <label htmlFor="userPass" className="form-label">CONTRASEÑA</label>
+                        <input type="password" className="form-control" id="userPass" {...register("password", {
                             required: true,
                             minLength: 5,
                             maxLength: 35,

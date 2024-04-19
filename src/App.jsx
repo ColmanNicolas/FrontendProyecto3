@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to={"/bar-app/home"} />} />
           <Route path='/bar-app/home' element={<Home />} />
-          <Route path='/admin-controls' element={<ServiceAdminPage/>} />
+          <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
           <Route path='/bar-app/landing-page' element={<LandingPage/>} />
           <Route path='/bar-app/landing-page/auth' element={<PrincipalAuth/>} />
           <Route path='/bar-app/mi-cuenta/:id' element={<PrincipalMyAccount/>} />
