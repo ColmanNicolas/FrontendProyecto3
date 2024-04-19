@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import PrincipalAuth from '../src/pages/principalPages/PrincipalAuth'
 import LandingPage from './pages/principalPages/LandingPage'
 import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
-import PrincipalMyAccount from './pages/principalPages/PrincipalAdminPage'
+import PrincipalAdminPage from './pages/principalPages/PrincipalAdminPage'
 import '../src/App.css'
 
 import ServiceAdminPage from '../src/pages/ServiceAdminPage'

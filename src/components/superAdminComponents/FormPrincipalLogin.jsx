@@ -12,10 +12,10 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                 .then(response => {
                     console.log(response);
                     reset();
-                    if(response.data.user.rol === "SERVICE_USER_ROLE"){
+                    if(response.data.user.role === "SERVICE_USER_ROLE"){
                         navigate(`/bar-app/mi-cuenta/${response.data.user.id}`);
                     }
-                    else if(response.data.user.rol === "ADMIN_ROLE"){
+                    else if(response.data.user.role === "ADMIN_ROLE"){
                         navigate(`/bar-app/principal-admin-controls`);
 
                     }
