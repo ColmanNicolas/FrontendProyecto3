@@ -1,35 +1,58 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import ContainerNewQR from "../../components/superAdminComponents/ContainerNewQR";
+import useUsersState from "../../hooks/useUsersState";
 
 const PrincipalAdminPage = () => {
     const [usuarios, setUsuarios] = useState([]);
+    const { crearUsuario, obtenerUsuarios } = useUsersState();
 
-    const obtenerUsuarios = async () => {
+    const obtenerPrincipalUsers = async () => {
+
         try {
+
             await axios.get("http://localhost:5000/api/principalUsers")
                 .then(response => {
-                    console.log(response);
                     setUsuarios(response.data);
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
         }
     };
-    const cambiarEstado = async (id)=>{
-        console.log(id);
+
+    const cambiarEstado = async (id, accion) => {
+        console.log(id, accion);
         try {
-            await axios.delete(`http://localhost:5000/api/principalUsers/${id}`)
-                .then(response => {
-                    obtenerUsuarios();
-                });
+            switch (accion) {
+                case "HABILITAR":
+                    await axios.put(`http://localhost:5000/api/principalUsers/enable/${id}`)
+                        .then(response => {
+                            console.log("hola", response);
+                            obtenerPrincipalUsers();
+                            const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
+                            rest.status = true;
+                            rest.role = "ADMIN_ROLE";
+                            rest.name = businessName;
+                            crearUsuario(rest);
+                        });
+                    break;
+                case "DESHABILITAR":
+                    await axios.put(`http://localhost:5000/api/principalUsers/disable/${id}`)
+                        .then(response => {
+                            obtenerPrincipalUsers();
+                        });
+                    break;
+                default:
+                    console.error('Acción no válida:', accion);
+            }
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error al realizar la operación:', error);
         }
-    }
+    };
+
 
     useEffect(() => {
-        obtenerUsuarios();
+        obtenerPrincipalUsers();
     }, [])
     return (
         <>
@@ -59,11 +82,11 @@ const PrincipalAdminPage = () => {
                                         <td className="text-center">{(usuario.paid && "SI") || (!usuario.paid && "NO")}</td>
                                         <td className="text-center">{(usuario.status && <>
                                             <span>HABILITADO</span>
-                                            <button className="checkButton px-2 rounded-2 ms-3" title="desHabilitar " onClick={() => {cambiarEstado(usuario.id)}}><i className="bi bi-gear"></i></button>
+                                            <button className="checkButton px-2 rounded-2 ms-3" title="desHabilitar " onClick={() => { cambiarEstado(usuario.id, "DESHABILITAR") }}><i className="bi bi-gear"></i></button>
                                         </>
                                         ) || (!usuario.status && <>
                                             <span>NO HABILITADO</span>
-                                            <button className="deleteButton px-2 rounded-2 ms-3" title="Habilitar " onClick={() => {cambiarEstado(usuario.id)}}><i className="bi bi-gear"></i></button>
+                                            <button className="deleteButton px-2 rounded-2 ms-3" title="Habilitar " onClick={() => { cambiarEstado(usuario.id, "HABILITAR") }}><i className="bi bi-gear"></i></button>
                                         </>)}
                                         </td>
                                         <td>
@@ -76,6 +99,7 @@ const PrincipalAdminPage = () => {
                     </section>
                 </article>
             </main>
+            <ContainerNewQR />
         </>
     )
 }
