@@ -35,13 +35,11 @@ const PrincipalMyAccount = () => {
             <header className='headerLanding '>
                 <h1>MI CUENTA</h1>
             </header>
-            <main>
+            <main className="principalMainMyAccount">
                 <article id="articuloMiCuenta">
-                    <section>
-                        <h2 >Menu Desplegable</h2>
-                    </section>
-                    <section>
-                        <h3 className="tituloH3MiCuenta">Toda  mi Info </h3>
+
+                        <h3 className="tituloH3MiCuenta">Mi información </h3>
+                    <section className="contenedorMiCuenta">
                         <form id="miCuentaForm">
                             <section>
                                 <label htmlFor="name">Nombre</label>
@@ -103,7 +101,7 @@ const PrincipalMyAccount = () => {
                                     errors.city.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                                 )}
                             </section>
-{      /*                      <section>
+                    {  /*  <section>
                                 <label htmlFor="password">Cambiar Contraseña</label>
                                 <input type="password" id="password"  {...register("password", {
                                     required: true,
@@ -122,10 +120,10 @@ const PrincipalMyAccount = () => {
                             </section>
                         </form>
                     </section>
-                    <section>
                         <h3 className="tituloH3MiCuenta">Sección de Pago</h3>
+                    <section className="contenedorMiCuenta">
                         <form id="pagoForm" action="">
-                            <label htmlFor="" className="form-label">Servicio</label>
+                            <label htmlFor="" className="form-label mt-2">Servicio</label>
                             <Controller
                                 name="service"
                                 control={control}
@@ -166,18 +164,18 @@ const PrincipalMyAccount = () => {
                         </form>
                     </section>
                     <h3 className="tituloH3MiCuenta">Estado de mi Servicio</h3>
-                    <section id="contenedorEstadoServicio">
+                    <section className="contenedorMiCuenta " id="contenedorEstadoServicio">
                         <section className="seccionEstadoServicio">
                             <p>Servicio:</p>
                             {!pagado && <button className="fondoRojo" disabled>No Pagado</button>}
                             {pagado && <button className="fondoVerde" disabled>Pagado</button>}
                         </section>
-                        <section className="seccionEstadoServicio">
+                        <section className="seccionEstadoServicio ">
                             <p>Servicio: </p>
                             {!habilitado && <button className="fondoRojo" disabled>No habilitado</button>}
                             {habilitado && <button className="fondoVerde" disabled>En activo</button>}
                         </section>
-                        <a href="">Redirigirse a logeo Servicio <i className="bi bi-arrow-up-right-circle"></i></a>
+                        <a href="" className="">Redirigirse a logeo Servicio <i className="bi bi-arrow-up-right-circle"></i></a>
                     </section>
                 </article>
             </main>

@@ -1,17 +1,29 @@
 /*css general*/
 .tituloH3MiCuenta{
     color: white;
+    text-align: center;
     font-size: 1.2em;
-    background-color: rgb(161, 5, 5);
-    padding-left: 0.4em;
-    padding-block: 0.1em;
+    background-color: rgb(224, 23, 23);
+    padding-block: 0.6em;
     margin: 0;
+    outline: 2px solid rgba(0, 0, 0, 0.5);
 }
-/*SECCION DE MI INFORMACION*/
+.contenedorMiCuenta{
+    margin-block: 2rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+.principalMainMyAccount{
+background-color: blue;
+}
 
+/*SECCION DE MI INFORMACION*/
+#articuloMiCuenta{
+    background-color: rgb(216, 123, 123);
+}
 #articuloMiCuenta h2{
     color: white;
-    background-color: red;
+    background-color: rgb(119, 2, 2);
     padding-left: 0.3em;
     padding-block: 0.3em;
     margin: 0;
@@ -22,7 +34,9 @@
 #miCuentaForm ,#pagoForm{
     color: white;
     font-weight: bold;
-    background-color: rgb(43, 41, 41);
+    background-color: rgba(0, 0, 0, 0.925);
+
+    border-radius: 0.3em;
     padding-block: 0.3em;
     padding-inline: 2.5%;
 }
@@ -46,6 +60,7 @@
     margin-block: 0.3em;
     transition: color 1s ease;
     transition: background-color 0.7s ease;
+    border: 1px solid rgba(255, 0, 0, 0.541);
 }
 #botonesFormulario input:hover, #botonesFormulario input:focus {
     color: black;
@@ -55,13 +70,13 @@
 
 /*seccion estado de mi servicio*/
 #contenedorEstadoServicio{
-    padding-block: 0.2em;
-    background-color: rgb(43, 41, 41);
+    border-radius: 0.3em;
+    background-color: rgba(0, 0, 0, 0.925);
     padding-inline: 2.5%;
-
+    margin-block: 0;
 }
+
 .seccionEstadoServicio{
-    background-color: rgb(43, 41, 41);
     display: flex;
     align-items: center;
     padding-top: 1.1rem;

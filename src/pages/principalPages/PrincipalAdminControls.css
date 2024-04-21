@@ -1,0 +1,11 @@
+#principal-controls-admin{
+    background-color: rgb(36, 247, 8);
+    margin: 1%;
+    padding-bottom: 1em;
+    overflow-x: auto;
+
+}
+#principal-controls-admin table{
+    min-width: 1000px;
+
+}

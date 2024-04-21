@@ -7,17 +7,16 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
     const navigate = useNavigate();
     const enviarFormulario = (dataLogin) => {
         try {
-            console.log(dataLogin);
             axios.post("http://localhost:5000/api/principal-auth/login", dataLogin)
                 .then(response => {
-                    console.log(response);
-                    reset();
                     if(response.data.user.role === "SERVICE_USER_ROLE"){
                         navigate(`/bar-app/mi-cuenta/${response.data.user.id}`);
+                    reset();
                     }
                     else if(response.data.user.role === "ADMIN_ROLE"){
                         navigate(`/bar-app/principal-admin-controls`);
-
+                    reset();
+                    }else{
                     }
                 })
                 .catch(error => {

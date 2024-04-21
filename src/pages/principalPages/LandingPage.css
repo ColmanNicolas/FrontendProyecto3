@@ -3,10 +3,12 @@
     margin: 0;
     border: 0;
 }
-.mainLanding{
+
+.mainLanding {
     background-color: rgb(29, 29, 29);
 }
-.sectionSeparator{
+
+.sectionSeparator {
     color: white;
     font-weight: bold;
     background-color: rgb(182, 0, 0);
@@ -19,6 +21,7 @@
     -moz-box-shadow: 0px 7px 8px 1px rgba(0, 0, 0, 0.75);
     z-index: 999;
 }
+
 .sectionSeparator h2 {
     font-weight: 700;
     margin: 0;
@@ -33,7 +36,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    
+
 }
 
 .headerLanding h1 {
@@ -41,6 +44,7 @@
     background-color: #ffffff00;
     font-size: 3em;
 }
+
 .headerLanding a {
     color: #ffffff;
     font-weight: bold;
@@ -58,31 +62,74 @@
     right: 1%;
 
 }
-.headerLanding a p{
+
+.headerLanding a p {
     margin: 0;
 }
 
-/* Propiedades del Navbar*/
-
-.navBarLanding {
-    color: white;
-    font-weight: bold;
+/* Propiedades del menu despelgable y Navbar*/
+#contenedor-menu {
+    scroll-margin-top: 10rem;
     background-color: #c40a0a;
-    min-height: 7vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 7px 8px 1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 7px 8px 1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 7px 8px 1px rgba(0, 0, 0, 0.75);
+    position: relative;
 }
 
-.navBarLanding ul {
+#contenedor-menu i {
+    color: white;
+    font-size: 2.8rem;
+
+}
+
+#contenedor-menu #cerrar-menu {
+    display: none;
+    position: absolute;
+    right: 2%;
+}
+
+#contenedor-menu #abrir-menu {
+    position: absolute;
+    top: -6%;
+    right: 2%;
+}
+
+#contenedor-menu #contenedor-enlaces {
+    height: 0;
+    transition: height 1s ease;
+    overflow: hidden;
+}
+
+#contenedor-menu:target #abrir-menu {
+    display: none;
+}
+
+#contenedor-menu:target #cerrar-menu {
+    display: block;
+}
+
+#contenedor-menu:target #contenedor-enlaces {
+    height: 33.5vh;
+    transition: height 1s ease;
+}
+
+#contenedor-enlaces {
+    padding-top: 7vh;
     display: flex;
+    flex-direction: column;
     list-style: none;
-    gap: 3em;
-    margin: 0;
-    padding: 0;
+
+    padding-inline: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-top:1px solid rgba(255, 255, 255, 0.692);
+    border-bottom:1px solid rgba(255, 255, 255, 0.678);
+}
+
+#contenedor-enlaces li {
+    border-top: 1px solid rgba(255, 255, 255, 0.705);
+    padding-inline: 0.9em;
+    padding-block: 0.3rem;
+    transition: background-color 0.5s ease;
+
 }
 
 .navBarLanding ul li a {
@@ -91,10 +138,41 @@
     font-weight: 500;
     background-color: rgba(0, 0, 0, 0);
     text-decoration: none;
+    width: 100%;
+    display: inline-block;
 }
 
-.navBarLanding ul li a:hover {
-    text-shadow: 0px 1px 9px rgba(0, 0, 0, 1);
+.navBarLanding ul li:hover {
+    color: rgb(190, 190, 190);
+    background-color: #990b0b;
+    transition: background-color 0.5s ease;
+    border-radius: 0.4em;
+}
+/*Menu para dispositivos grandes*/
+@media(min-width:950px){
+    #contenedor-menu #abrir-menu {
+        display: none ;
+    }
+    
+    #contenedor-menu #cerrar-menu {
+        display: none ;
+    }
+#contenedor-enlaces {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#contenedor-menu #contenedor-enlaces {
+    height:7vh;
+    transition: height 1s ease;
+    overflow: visible;
+}
+#contenedor-enlaces li {
+border: 0;
+margin-inline: 1rem;
+}
 }
 
 /* Primer Contenedor, imagen de inicio*/
@@ -104,9 +182,10 @@
     position: relative;
     overflow: hidden;
     margin: 0;
-    background-image: url("https://i.blogs.es/ccde36/cocktail-glass-with-ice-cubes-garnished-with-dried-lemon-fruit-1-/1366_2000.jpg"); /* Establecer la imagen de fondo */
-    background-size: fill; 
-    background-position: center; 
+    background-image: url("https://i.blogs.es/ccde36/cocktail-glass-with-ice-cubes-garnished-with-dried-lemon-fruit-1-/1366_2000.jpg");
+    /* Establecer la imagen de fondo */
+    background-size: fill;
+    background-position: center;
 }
 
 .contenedorImagen img {
@@ -133,6 +212,7 @@
     width: 100%;
     box-sizing: border-box;
 }
+
 /* Segundo Contenedor, introduccion  de la pagina/servicio*/
 
 .contendoresIntroduccionServicio {
@@ -142,11 +222,12 @@
     position: relative;
     display: flex;
 }
-.contendoresIntroduccionServicio section{
+
+.contendoresIntroduccionServicio section {
     width: 100%;
     position: absolute;
     top: 15%;
-    
+
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -162,21 +243,24 @@
     -webkit-box-shadow: -4px 11px 8px 7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -4px 11px 8px 7px rgba(0, 0, 0, 0.75);
 }
-@media(max-width:1100px){
+
+@media(max-width:1100px) {
 
 
-    .contendoresIntroduccionServicio section{
-    position: relative;
+    .contendoresIntroduccionServicio section {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-.contendoresIntroduccionServicio article {
-    border-radius: 10px;
-    margin-block: 4rem;
+
+    .contendoresIntroduccionServicio article {
+        border-radius: 10px;
+        margin-block: 4rem;
+    }
 }
-}
+
 .contendoresIntroduccionServicio h3 {
     color: white;
     text-align: center;
@@ -188,20 +272,21 @@
     font-size: 1.2em;
     padding-inline: 1.5em;
 }
+
 /* Tercer Contenedor, Precios y diferencias de cada servicio */
 
 .contenedorServicios {
-    position: relative; 
+    position: relative;
     background-color: rgb(0, 0, 0);
     min-height: 93vh;
     display: flex;
     justify-content: space-between;
-    z-index: 2; 
+    z-index: 2;
 
 }
 
 .contenedorServicios::before {
-    content: ""; 
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -211,8 +296,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(2px); 
-    z-index: -1; 
+    filter: blur(2px);
+    z-index: -1;
 }
 
 
@@ -257,7 +342,7 @@
 }
 
 .contenedorServicios ul li i {
-    font-size: 1.5rem ;
+    font-size: 1.5rem;
 
 }
 
@@ -277,75 +362,85 @@
     color: aliceblue;
     background-color: rgba(253, 3, 3, 0.555);
 }
-@media(max-width:1500px){
-.contenedorServicios {
-    flex-direction: column;
-    
-}
-.contenedorServicios::before {
-    background-image: none;
+
+@media(max-width:1500px) {
+    .contenedorServicios {
+        flex-direction: column;
+
+    }
+
+    .contenedorServicios::before {
+        background-image: none;
+
+    }
+
+    .contenedorServicios ul {
+        width: 80%;
+    }
+
+    .contenedorServicios h3 {
+        width: 100%;
+    }
+
+    .contenedorServicios article {
+        border-bottom: 2px solid rgba(240, 240, 240, 0.404);
+        border-left: 2px solid rgba(240, 240, 240, 0.404);
+        border-right: 2px solid rgba(240, 240, 240, 0.404);
+    }
+
+    .btnPrecio {
+        border: 2px solid rgba(255, 0, 0, 0.329);
+    }
+
+    .btnPrecio:hover {
+        background-color: rgba(255, 255, 255, 0.068);
+        outline: 2px solid rgba(255, 0, 0, 0.514);
+    }
+
+    .contenedorServicios article {
+        position: relative;
+        min-height: 93vh;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+
+    }
+
+    .contenedorServicios article::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(3px);
+        z-index: -1;
+    }
+
+
+    .contenedorServicios article:nth-child(1)::before {
+        background-image: url("../../public/istockphoto-490884810-612x612.jpg");
+        opacity: 0.25;
+        background-color: black;
+    }
+
+    .contenedorServicios article:nth-child(2)::before {
+        background-image: url('../../public/masha-kotliarenko-7qDBoSUBfvI-unsplash.jpg');
+        opacity: 0.8;
+        background-color: black;
+    }
+
+    .contenedorServicios article:nth-child(3)::before {
+        background-image: url("../../public/papers.co-bd60-night-cafe-bar-dark-city-art-illustration-red-36-3840x2400-4k-wallpaper.jpg");
+        opacity: 0.6;
+        background-color: black;
+    }
 
 }
 
-.contenedorServicios ul {
-    width: 80%;
-}
-.contenedorServicios h3 {
-    width: 100%;
-}
-.contenedorServicios article {
-    border-bottom: 2px solid rgba(240, 240, 240, 0.404);
-    border-left: 2px solid rgba(240, 240, 240, 0.404);
-    border-right: 2px solid rgba(240, 240, 240, 0.404);
-}
-.btnPrecio {
-    border: 2px solid rgba(255, 0, 0, 0.329);
-}
-.btnPrecio:hover {
-    background-color: rgba(255, 255, 255, 0.068);
-    outline: 2px solid rgba(255, 0, 0, 0.514);
-}
-
-.contenedorServicios article {
-    position: relative; 
-    min-height: 93vh;
-    display: flex;
-    justify-content: space-between;
-    z-index: 2; 
-
-}
-.contenedorServicios article::before{
-    content: ""; 
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(3px); 
-    z-index: -1; 
-}
-
-
-.contenedorServicios article:nth-child(1)::before{
-    background-image: url("../../public/istockphoto-490884810-612x612.jpg") ;
-    opacity: 0.25; 
-    background-color: black; 
-}
-.contenedorServicios article:nth-child(2)::before{
-    background-image: url('../../public/masha-kotliarenko-7qDBoSUBfvI-unsplash.jpg');
-    opacity: 0.8; 
-    background-color: black; 
-}
-.contenedorServicios article:nth-child(3)::before{
-    background-image: url("../../public/papers.co-bd60-night-cafe-bar-dark-city-art-illustration-red-36-3840x2400-4k-wallpaper.jpg") ;
-    opacity: 0.6; 
-    background-color: black; 
-}
-
-}
 /* Cuarto contenedor , recomendaciones para contratar un servicio */
 
 .contendorRecomendacionesServicio {
@@ -358,7 +453,7 @@
     margin-block: 2rem;
 }
 
-.contendorRecomendacionesServicio article{
+.contendorRecomendacionesServicio article {
     width: 80%;
     background-color: rgb(17, 17, 17);
     outline: 1px solid rgba(224, 13, 13, 0.671);
@@ -386,7 +481,7 @@
 }
 
 
-.contendorRecomendacionesServicio article section  h4 {
+.contendorRecomendacionesServicio article section h4 {
     color: white;
     font-size: 1.4rem;
     font-weight: bold;
@@ -401,27 +496,30 @@
     padding-inline: 2rem;
     padding-block: 2rem;
 }
-@media(max-width:700px){
-.contendorRecomendacionesServicio article{
-    width: 100%;
-}
-.contendorRecomendacionesServicio article section {
-    font-size: 1.1rem;
-    padding-inline: 0rem;
 
-}
+@media(max-width:700px) {
+    .contendorRecomendacionesServicio article {
+        width: 100%;
+    }
+
+    .contendorRecomendacionesServicio article section {
+        font-size: 1.1rem;
+        padding-inline: 0rem;
+
+    }
 }
 
 /* Quinto contenedor , para realizar una prueba de 7 dias */
 
 .contenedorImagenPrueba {
-    background-color: rgb(255, 0, 0) ;
+    background-color: rgb(255, 0, 0);
     min-height: 93vh;
     position: relative;
     margin: 0;
-    background-image: url("https://static.wixstatic.com/media/78b131d5940c4fa4af3c52691d889ee2.jpg/v1/fill/w_1903,h_740,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/78b131d5940c4fa4af3c52691d889ee2.jpg"); 
-    background-size:cover; 
-    background-position: center; /* Centrar la imagen de fondo */
+    background-image: url("https://static.wixstatic.com/media/78b131d5940c4fa4af3c52691d889ee2.jpg/v1/fill/w_1903,h_740,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/78b131d5940c4fa4af3c52691d889ee2.jpg");
+    background-size: cover;
+    background-position: center;
+    /* Centrar la imagen de fondo */
     margin: 0;
 }
 
@@ -476,6 +574,7 @@ button {
     border-radius: 10px;
     padding-inline: 1em;
 }
+
 /* propiedades del footer */
 
 .footerLanding {
@@ -491,9 +590,11 @@ button {
 .footerLanding p {
     margin-bottom: 0;
 }
+
 .footerLanding a {
     color: white;
 }
+
 .footerLanding p {
     color: white;
     margin-block: 1rem;

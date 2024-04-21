@@ -9,16 +9,20 @@ const LandingPage = () => {
                 <h1 className=" m-0 ">BAR APP SERVICE</h1>
                 <Link to={"auth"}><i class="bi bi-person-vcard-fill fs-3"></i><p>ACCESO</p></Link>
             </header>
-            <nav id="home" className="navBarLanding">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#informacion">Información</a></li>
-                    <li><a href="#precios">Precios</a></li>
-                    <li><a href="">Contacto</a></li>
-                    <li><a href="#recomendaciones">Recomendaciones</a></li>
-                    <li><a href="#prueba7dias">Prueba de 7 dias</a></li>
-                </ul>
-            </nav>
+            <section id="contenedor-menu">
+                <a href="#contenedor-menu" id="abrir-menu"><i class="bi bi-list f1" ></i></a>
+                <a href="#"><i class="bi bi-x-circle" id="cerrar-menu"></i></a>
+                <nav id="home" className="navBarLanding">
+                    <ul id="contenedor-enlaces">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#informacion">Información</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="">Contacto</a></li>
+                        <li><a href="#recomendaciones">Recomendaciones</a></li>
+                        <li><a href="#prueba7dias">Prueba de 7 dias</a></li>
+                    </ul>
+                </nav>
+            </section>
             <main className="mainLanding" >
                 <section >
                     <article id="home">
@@ -51,25 +55,25 @@ const LandingPage = () => {
                     </section>
                     <section className='contenedorServicios'>
                         <article >
-                                <h3>STANDARD SERVICE</h3>
-                                <ul>
-                                    <li><p>Gestión de Personal</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                    <li><p>Creación de Menús</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                    <li><p>Administración de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                    <li><p>Control de Stock</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                    <li><p>Menú Virtual</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                    <li><p>Configuración Visual de Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Búsqueda en Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Filtrar Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Login para Clientes</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Pago en la Aplicación</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Seguimiento de Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Delivery de Pedidos</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                    <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                </ul>
-                                <section className='text-center'>
-                                    <button className='btn btnPrecio' > 100 usd</button>
-                                </section>
+                            <h3>STANDARD SERVICE</h3>
+                            <ul>
+                                <li><p>Gestión de Personal</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Creación de Menús</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Administración de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Control de Stock</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Menú Virtual</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Configuración Visual de Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Búsqueda en Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Filtrar Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Login para Clientes</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Pago en la Aplicación</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Seguimiento de Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Delivery de Pedidos</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                            </ul>
+                            <section className='text-center'>
+                                <button className='btn btnPrecio' > 100 usd</button>
+                            </section>
                         </article>
                         <article className="articleSecondService">
                             <h3>SELF-MANAGEMENT TERMINAL</h3>

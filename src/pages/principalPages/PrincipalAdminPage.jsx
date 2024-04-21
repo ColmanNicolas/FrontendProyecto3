@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ContainerNewQR from "../../components/superAdminComponents/ContainerNewQR";
 import useUsersState from "../../hooks/useUsersState";
+import "../principalPages/PrincipalAdminControls.css"
 
 const PrincipalAdminPage = () => {
     const [usuarios, setUsuarios] = useState([]);
@@ -56,12 +57,12 @@ const PrincipalAdminPage = () => {
     }, [])
     return (
         <>
-            <header className='headerLanding '>
+            <header className='headerLanding'>
                 <h1>MI CUENTA</h1>
             </header>
             <main>
-                <article>
-                    <h2>admin controls</h2>
+                <article id="principal-controls-admin">
+                    <h2>Admin controls</h2>
                     <section>
                         <table className="table">
                             <thead>
@@ -70,7 +71,8 @@ const PrincipalAdminPage = () => {
                                     <th className="col-3" scope="col">Empresa</th>
                                     <th className="col-2" scope="col">Usuario</th>
                                     <th className="col-1 text-center" scope="col">Pagado</th>
-                                    <th className="col-2 text-center" scope="col">Estado</th>
+                                    <th className="col-2 text-center" scope="col">Habilitación</th>
+                                    <th className="col-1 text-center" scope="col">Informacion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,15 +83,15 @@ const PrincipalAdminPage = () => {
                                         <td>{usuario.name}</td>
                                         <td className="text-center">{(usuario.paid && "SI") || (!usuario.paid && "NO")}</td>
                                         <td className="text-center">{(usuario.status && <>
-                                            <span>HABILITADO</span>
+                                            <span>SI</span>
                                             <button className="checkButton px-2 rounded-2 ms-3" title="desHabilitar " onClick={() => { cambiarEstado(usuario.id, "DESHABILITAR") }}><i className="bi bi-gear"></i></button>
                                         </>
                                         ) || (!usuario.status && <>
-                                            <span>NO HABILITADO</span>
+                                            <span>NO</span>
                                             <button className="deleteButton px-2 rounded-2 ms-3" title="Habilitar " onClick={() => { cambiarEstado(usuario.id, "HABILITAR") }}><i className="bi bi-gear"></i></button>
                                         </>)}
                                         </td>
-                                        <td>
+                                        <td className="text-center">
                                             <button className="infoButton px-2 rounded-2 ms-3" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
                                         </td>
                                     </tr>
