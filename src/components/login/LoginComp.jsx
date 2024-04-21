@@ -9,7 +9,7 @@ import '../formRegister/form.css';
 
 const LoginComp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const [showPassword, setShowPassword] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -23,18 +23,23 @@ const LoginComp = () => {
                 headers: { 'Content-Type': 'application/json' }
             });
             const data = await response.json();
+            console.log(data);
             if (data.messageError) {
                 toast.error(data.messageError, {
                     theme: 'dark'
                 });
+            } else if (!data.user.status) {         //controlo el status del usuario
+                toast.error(data.msg, {
+                    theme: 'dark'
+                });
             } else {
-              toast.success(`Iniciaste sesión exitosamente como ${data.user.email} `, {
-                theme: 'dark'
-            });
-              sessionStorage.setItem('loguedUser', JSON.stringify(data.user));
-              console.log("Datos del usuario guardados en sessionStorage:", data.user); // Agrega este console.log para verificar los datos guardados en sessionStorage
-              setTimeout(navigate, 7000);
-          }
+                toast.success(`Iniciaste sesión exitosamente como ${data.user.email} `, {
+                    theme: 'dark'
+                });
+                sessionStorage.setItem('loguedUser', JSON.stringify(data.user));
+                console.log("Datos del usuario guardados en sessionStorage:", data.user); // Agrega este console.log para verificar los datos guardados en sessionStorage
+                setTimeout(navigate, 5000);
+            }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
                 theme: 'dark'
@@ -48,8 +53,8 @@ const LoginComp = () => {
     };
 
     const enviarFormulario = body => {
-      login(body)
-      reset()
+        login(body)
+        reset()
     }
 
     return (

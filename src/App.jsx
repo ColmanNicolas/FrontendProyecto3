@@ -7,7 +7,6 @@ import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
 import PrincipalAdminPage from '../src/pages/principalPages/PrincipalAdminPage'
 import ServiceAdminPage from '../src/pages/ServiceAdminPage'
 import '../src/App.css'
-
 import RegisterUser from './pages/register/RegisterUser'
 import Login from './pages/login/LoginUser'
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
