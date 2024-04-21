@@ -24,6 +24,16 @@ const useUsersState = () => {
         } catch (error) {
             console.error('Error al obtener datos:', error);
         }
+    };    
+    const generarServiceAdmin = async (data) => {
+        try {
+            await axios.post("http://localhost:5000/api/users/admin", data)
+                .then(response => {
+                    console.log(response);
+                });
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+        }
     };
     
     const modificarUsuario = async (id) => {
@@ -36,13 +46,24 @@ const useUsersState = () => {
             console.error('Error al obtener datos:', error);
         }
     };
+    const darAltaUsuario = async (id) => {
+        try {
+            await axios.put(`http://localhost:5000/api/users/enable/${id}`)
+                .then(response => {
+                    console.log(response);
+                }).then(()=>{
+                    obtenerUsuarios();
+                });
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+        }
+    };
     const borrarUsuario = async (id) => {
         try {
             await axios.delete(`http://localhost:5000/api/users/${id}`)
                 .then(response => {
                     console.log(response);
                 }).then(()=>{
-                    console.log("entro en actualizar");
                     obtenerUsuarios();
                 });
         } catch (error) {
@@ -53,7 +74,9 @@ const useUsersState = () => {
         users,
         obtenerUsuarios,
         crearUsuario,
+        generarServiceAdmin,
         modificarUsuario,
+        darAltaUsuario,
         borrarUsuario,
     }
 };
