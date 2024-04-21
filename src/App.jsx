@@ -4,10 +4,13 @@ import Home from './pages/Home'
 import PrincipalAuth from '../src/pages/principalPages/PrincipalAuth'
 import LandingPage from './pages/principalPages/LandingPage'
 import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
-import PrincipalAdminPage from './pages/principalPages/PrincipalAdminPage'
-import '../src/App.css'
-
+import PrincipalAdminPage from '../src/pages/principalPages/PrincipalAdminPage'
 import ServiceAdminPage from '../src/pages/ServiceAdminPage'
+import '../src/App.css'
+import RegisterUser from './pages/register/RegisterUser'
+import Login from './pages/login/LoginUser'
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 
 function App() {
   
@@ -22,6 +25,8 @@ function App() {
           <Route path='/bar-app/mi-cuenta/:id' element={<PrincipalMyAccount/>} />
           <Route path='/bar-app/principal-admin-controls' element={<PrincipalAdminPage/>} />
           <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
+          <Route path='/register' element={<RegisterUser/>} />
+          <Route path='/login' element={<Login/>} />
           <Route />
         </Routes>
       </BrowserRouter>
