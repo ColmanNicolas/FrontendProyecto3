@@ -1,0 +1,120 @@
+/*css general*/
+.tituloH3MiCuenta{
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: rgb(224, 23, 23);
+    padding-block: 0.6em;
+    margin: 0;
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+.contenedorMiCuenta{
+    margin-block: 2rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+.principalMainMyAccount{
+background-color: blue;
+}
+
+/*SECCION DE MI INFORMACION*/
+#articuloMiCuenta{
+    background-color: rgb(216, 123, 123);
+}
+#articuloMiCuenta h2{
+    color: white;
+    background-color: rgb(119, 2, 2);
+    padding-left: 0.3em;
+    padding-block: 0.3em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+#miCuentaForm ,#pagoForm{
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.925);
+
+    border-radius: 0.3em;
+    padding-block: 0.3em;
+    padding-inline: 2.5%;
+}
+#miCuentaForm section, #pagoForm section{
+    margin-block: 0.4em;
+    display: flex;
+    flex-direction: column;
+}
+#miCuentaForm section input, #pagoForm input{
+    border-radius: 0.3em;
+    padding-left: 0.3em;
+}
+
+#botonesFormulario{
+    padding-block: 0.7em;
+}
+#botonesFormulario input{
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-block: 0.3em;
+    transition: color 1s ease;
+    transition: background-color 0.7s ease;
+    border: 1px solid rgba(255, 0, 0, 0.541);
+}
+#botonesFormulario input:hover, #botonesFormulario input:focus {
+    color: black;
+    background-color: rgb(245, 48, 48);
+}
+
+
+/*seccion estado de mi servicio*/
+#contenedorEstadoServicio{
+    border-radius: 0.3em;
+    background-color: rgba(0, 0, 0, 0.925);
+    padding-inline: 2.5%;
+    margin-block: 0;
+}
+
+.seccionEstadoServicio{
+    display: flex;
+    align-items: center;
+    padding-top: 1.1rem;
+}
+.seccionEstadoServicio p{
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.seccionEstadoServicio button{
+    font-weight: 600;
+    margin-left: 0.5em;
+    padding-inline: 0.5em;
+    border-radius: 0.3em;
+    outline: 1px solid black;
+    box-shadow: 0px -3px 31px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px -3px 31px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -3px 31px 0px rgba(0,0,0,0.75);
+}
+.seccionEstadoServicio .fondoRojo{
+    color: white;
+    background-color: rgb(218, 37, 37);
+}
+.seccionEstadoServicio .fondoVerde{
+    color: white;
+    background-color: rgb(46, 139, 27);
+}
+#contenedorEstadoServicio a{
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    padding-block: 1rem;
+    text-decoration: none;
+}
+#contenedorEstadoServicio a:hover, #contenedorEstadoServicio a:focus{
+    color: rgb(240, 71, 71);
+    font-size: 1.1rem;
+    padding-block: 0.9rem;
+
+}
