@@ -1,0 +1,52 @@
+.contenedorForm {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorForm form {
+    width: 400px;
+    color: aliceblue;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    color: #a8a8a8;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.input-icon-lock {
+    color: #a8a8a8;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.password-input, .email-input, .name-input {
+    position: relative;
+}
+
+.password-toggle-icon {
+    color: #a8a8a8;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.form-control {
+    padding-left: 35px;
+}
