@@ -6,7 +6,7 @@ import "../principalPages/PrincipalAdminControls.css"
 
 const PrincipalAdminPage = () => {
     const [usuarios, setUsuarios] = useState([]);
-    const { crearUsuario, obtenerUsuarios } = useUsersState();
+    const { generarServiceAdmin  } = useUsersState();
 
     const obtenerPrincipalUsers = async () => {
 
@@ -34,7 +34,7 @@ const PrincipalAdminPage = () => {
                             rest.status = true;
                             rest.role = "ADMIN_ROLE";
                             rest.name = businessName;
-                            crearUsuario(rest);
+                            generarServiceAdmin(rest);
                         });
                     break;
                 case "DESHABILITAR":

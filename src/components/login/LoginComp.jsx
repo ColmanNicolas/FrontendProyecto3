@@ -23,7 +23,6 @@ const LoginComp = () => {
                 headers: { 'Content-Type': 'application/json' }
             });
             const data = await response.json();
-            console.log(data);
             if (data.messageError) {
                 toast.error(data.messageError, {
                     theme: 'dark'
@@ -38,7 +37,7 @@ const LoginComp = () => {
                 });
                 sessionStorage.setItem('loguedUser', JSON.stringify(data.user));
                 console.log("Datos del usuario guardados en sessionStorage:", data.user); // Agrega este console.log para verificar los datos guardados en sessionStorage
-                setTimeout(navigate, 5000);
+                setTimeout(navigate,5000)
             }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
@@ -75,7 +74,7 @@ const LoginComp = () => {
                                 {...register('email', {
                                     required: true,
                                     minLength: 6,
-                                    maxLength: 25,
+                                    maxLength: 45,
                                     pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/
                                 })}
                             />
@@ -87,7 +86,7 @@ const LoginComp = () => {
                             <p className='text-danger fs-6 mt-1'>Debe contener al menos 6 caracteres</p>
                         )}
                         {errors.email && errors.email.type === 'maxLength' && (
-                            <p className='text-danger fs-6 mt-1'>Debe contener menos de 26 caracteres</p>
+                            <p className='text-danger fs-6 mt-1'>Debe contener menos de 45 caracteres</p>
                         )}
                         {errors.email && errors.email.type === 'pattern' && (
                             <p className='text-danger fs-6 mt-1'>Correo electrónico inválido.</p>

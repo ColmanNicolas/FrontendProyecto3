@@ -52,10 +52,10 @@ const AdminOrderControls = () => {
                                             </button>
                                         </li>
                                         <li className="col-1 text-center ">
-                                            <button className="deleteButton" title="Eliminar " onClick={() => { borrarMenu(menu._id) }}><i className="bi bi-x-lg"></i></button>
+                                            <button className="deleteButton" title="Eliminar " onClick={() => {} }><i className="bi bi-x-lg"></i></button>
                                         </li>
                                         <li className="col-2 text-center">
-                                            <button className="modificationButton" title="Modificar " onClick={() => { modificarMenu() }}><i class="bi bi-arrow-left-right"></i></button>
+                                            <button className="modificationButton" title="Modificar " onClick={() => {} }><i class="bi bi-arrow-left-right"></i></button>
                                         </li>
                                     </ul>
                                     <section id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">

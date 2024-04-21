@@ -101,7 +101,7 @@ const Form = () => {
                               {...register('email', {
                                   required: true,
                                   minLength: 6,
-                                  maxLength: 25,
+                                  maxLength: 45,
                                   pattern: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/
                               })}
                           />

@@ -55,9 +55,9 @@
     font-weight: 600;
 }
 
-.modalBody form section input,textarea{
+.modalBody form section input,textarea,select{
     background-color: rgb(241, 241, 241);
-    border: 1px solid rgba(0, 0, 0, 0.486);
+    border: 1px solid rgba(0, 0, 0, 0.486) !important;
     border-radius: 0.4rem;
     padding-inline: 0.3rem;
     width: 100%;
