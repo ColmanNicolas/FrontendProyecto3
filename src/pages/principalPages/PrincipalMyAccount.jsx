@@ -16,7 +16,7 @@ const PrincipalMyAccount = () => {
                 .then(response => {
                     setValue('name', response.data.user.name);
                     setValue('businessName', response.data.user.businessName);
-                    setValue('email', response.data.user.email);
+                    setValue('principalEmail', response.data.user.principalEmail);
                     setValue('country', response.data.user.country);
                     setValue('city', response.data.user.city);
                     setPagado(response.data.user.paid);
@@ -67,14 +67,14 @@ const PrincipalMyAccount = () => {
                             </section>
                             <section>
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" {...register("email", {
+                                <input type="email" id="email" {...register("principalEmail", {
                                     required: true,
                                     minLength: 3,
                                     maxLength: 35,
                                     pattern: /^[a-zA-Z ]+$/
                                 })} />
-                                {errors.email && (
-                                    errors.email.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                                {errors.principalEmail && (
+                                    errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                                 )}
                             </section>
                             <section>

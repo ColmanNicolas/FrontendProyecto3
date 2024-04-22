@@ -98,21 +98,21 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
                 <section className="rowInputsForm">
                     <section >
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
-                        <input type="email" className="form-control" id="userEmail" name="email" {...register("email", {
+                        <input type="email" className="form-control" id="userEmail" name="email" {...register("principalEmail", {
                             required: true,
                             minLength: 5,
                             maxLength: 35,
                             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                         })} />
-                        {errors.email && (
-                            errors.email.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                        {errors.principalEmail && (
+                            errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                         )}
                     </section>
                     <section >
                         <label htmlFor="userEmailRepeat" className="form-label">REPETIR EMAIL</label>
                         <input type="text" className="form-control" id="userEmailRepeat" name="emailRepetido" {...register("emailRepeat", {
                             required: true,
-                            validate: (value) => value === watch("email"),
+                            validate: (value) => value === watch("principalEmail"),
                         })} />
                         {errors.emailRepeat && (
                             errors.emailRepeat.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
