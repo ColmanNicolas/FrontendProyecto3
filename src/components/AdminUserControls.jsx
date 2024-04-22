@@ -9,7 +9,8 @@ import useUsersState from "../hooks/useUsersState";
 const AdminUserControls = ({ userList }) => {
 
     const { isOpen, openModal, closeModal } = useModal();
-    const { users, obtenerUsuarios, crearUsuario, modificarUsuario,darAltaUsuario, borrarUsuario } = useUsersState();
+    const { users, obtenerUsuarios, crearUsuario, modificarUsuario, darAltaUsuario, borrarUsuario,filtrarUsuarios } = useUsersState();
+    
 
     useEffect(() => {
         obtenerUsuarios();
@@ -36,8 +37,18 @@ const AdminUserControls = ({ userList }) => {
             <section className="sectionTablesFilters">
                 <form className="row">
                     <section className="col-12 col-md-5">
-                        <button><i className="bi bi-funnel"></i><span>Filtrar </span></button>
+                        <section class="dropdown">
+                            <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i className="bi bi-funnel"></i><span>Filtrar </span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
+                                <hr className="m-0" />
+                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
+                            </ul>
                         <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                        </section>
                     </section>
                     <section className="col-12 col-md-7 d-flex justify-content-end">
                         <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
@@ -66,13 +77,13 @@ const AdminUserControls = ({ userList }) => {
                                     <li className="col-4 text-center containerButtonActions">
                                         {(usuario.role != "ADMIN_ROLE") && <>
                                             <button className="infoButton" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
-                                            <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>
-                                            <button className="checkButton" title="Habilitar " onClick={() => { }}><i className="bi bi-check-lg "></i></button>
+                                        {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
+                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
                                         </>}
                                     </li>
                                 </ul>
                             )
-                            ||   /*mostrar empleados */
+                            ||   /*mostrar clientes */
                             (userList === "CLIENTES" && (usuario.role === "USER_ROLE") &&
                                 <ul key={usuario._id} className="row py-2" >
                                     <li className="col-3">{usuario.name}</li>
@@ -83,7 +94,7 @@ const AdminUserControls = ({ userList }) => {
                                     <li className="col-4 text-center containerButtonActions">
                                         <button className="infoButton" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
                                         {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
-                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id)}}><i className="bi bi-check-lg "></i></button>}
+                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
                                     </li>
                                 </ul>
                             )
@@ -94,7 +105,7 @@ const AdminUserControls = ({ userList }) => {
             {isOpen &&
                 <ModalEstructuraBase closeModal={closeModal} >
                     <h3>{userList === "EMPLEADOS" ? "Nuevo Empleado" : "Nuevo Cliente"}</h3>
-                    <FormCrearUsuario closeModal={closeModal}  form={userList} />
+                    <FormCrearUsuario closeModal={closeModal} form={userList} />
                 </ModalEstructuraBase>
             }
         </>

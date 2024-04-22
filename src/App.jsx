@@ -5,6 +5,7 @@ import PrincipalAuth from '../src/pages/principalPages/PrincipalAuth'
 import LandingPage from './pages/principalPages/LandingPage'
 import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
 import PrincipalAdminPage from '../src/pages/principalPages/PrincipalAdminPage'
+import ServiceMenus from '../src/pages/ServiceMenus'
 import ServiceAdminPage from '../src/pages/ServiceAdminPage'
 import '../src/App.css'
 import RegisterUser from './pages/register/RegisterUser'
@@ -27,6 +28,7 @@ function App() {
           <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
           <Route path='/register' element={<RegisterUser/>} />
           <Route path='/login' element={<Login/>} />
+          <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route />
         </Routes>
       </BrowserRouter>

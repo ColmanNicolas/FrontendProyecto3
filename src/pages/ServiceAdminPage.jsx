@@ -45,7 +45,6 @@ const ServiceAdminPage = () => {
                             <SwitchComponenteAdmin opcion={opcionSeleccionada} />
                         )}
                     </article>
-
                 </main>
             </section>
 

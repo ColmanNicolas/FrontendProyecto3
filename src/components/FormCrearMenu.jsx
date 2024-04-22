@@ -1,9 +1,9 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import useMenuState from "../hooks/useMenuState";
 
 const FormCrearMenu = ({ closeModal }) => {
 
-    const { handleSubmit, register, formState: { errors }, watch, reset } = useForm();
+    const { handleSubmit, register, formState: { errors }, watch, reset, control } = useForm();
 
     const { crearMenu } = useMenuState();
 
@@ -21,16 +21,43 @@ const FormCrearMenu = ({ closeModal }) => {
         closeModal();
     };
 
+    const categories = [
+        "Promociones",
+        "Comida Extranjera",
+        "Bebidas",
+        "Bebidas alcohólicas",
+        "Al plato",
+        "Empanadas",
+        "Entradas",
+        "Hamburguesas",
+        "Fideos",
+        "Postres",
+        "Pizzas",
+        "Sanguches",
+        "Sopas",
+        "Sushi",
+        "Tacos"
+    ];
+
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <section className="row">
                 <section className="col-6" >
                     <label htmlFor="">Categoria</label>
-                    <input type="text" {...register("category", {
-                        required: true,
-                        minLength: 3,
-                        maxLength: 30,
-                    })} />
+                    <Controller
+                        name="category"
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                            <select {...field} className="form-select" aria-label="Default select example" required>
+                                <option value="" disabled hidden>Selecciona una categoría</option>
+                                {categories.map(category => (
+                                    <option key={category.toLowerCase()} value={category.toLowerCase()}>{category}</option>
+                                ))}
+                            </select>
+                        )}
+                    />
                 </section>
                 <section className="col-6" >
                     <label htmlFor="">Plato</label>
