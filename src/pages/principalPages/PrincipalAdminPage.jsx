@@ -26,21 +26,30 @@ const PrincipalAdminPage = () => {
         try {
             switch (accion) {
                 case "HABILITAR":
-                    await axios.put(`http://localhost:5000/api/principalUsers/enable/${id}`)
-                        .then(response => {
-                            console.log("hola", response);
-                            obtenerPrincipalUsers();
+                    await axios.get(`http://localhost:5000/api/principalUsers/${id}`)
+                        .then(async (response) => { 
                             const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
-                            rest.status = true;
                             rest.role = "ADMIN_ROLE";
                             rest.name = businessName;
-                            generarServiceAdmin(rest);
+                            console.log("llamo a genenerar true", rest);
+                            await generarServiceAdmin(rest); 
+                            await axios.put(`http://localhost:5000/api/principalUsers/enable/${id}`) 
+                                .then(async () => { 
+                                    await obtenerPrincipalUsers();
+                                })
                         });
                     break;
+                
                 case "DESHABILITAR":
-                    await axios.put(`http://localhost:5000/api/principalUsers/disable/${id}`)
-                        .then(response => {
-                            obtenerPrincipalUsers();
+                    await axios.get(`http://localhost:5000/api/principalUsers/${id}`)
+                        .then(async (response) => {
+                            const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
+                            console.log("llamo a dar false",rest);
+                            await generarServiceAdmin(rest);
+                            await axios.put(`http://localhost:5000/api/principalUsers/disable/${id}`) 
+                                .then(async () => { 
+                                    await obtenerPrincipalUsers();
+                                })
                         });
                     break;
                 default:
@@ -78,7 +87,7 @@ const PrincipalAdminPage = () => {
                             <tbody>
                                 {usuarios.map((usuario) => (
                                     <tr key={usuario.id}>
-                                        <td>{usuario.email}</td>
+                                        <td>{usuario.principalEmail}</td>
                                         <td>{usuario.businessName}</td>
                                         <td>{usuario.name}</td>
                                         <td className="text-center">{(usuario.paid && "SI") || (!usuario.paid && "NO")}</td>

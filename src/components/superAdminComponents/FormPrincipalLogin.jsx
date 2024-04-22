@@ -39,14 +39,14 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                 <section >
                     <section >
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
-                        <input type="email" className="form-control" id="userEmail" {...register("email", {
+                        <input type="email" className="form-control" id="userEmail" {...register("principalEmail", {
                             required: true,
                             minLength: 5,
                             maxLength: 35,
                             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                         })} />
-                        {errors.email && (
-                            errors.email.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                        {errors.principalEmail && (
+                            errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                         )}
                     </section>
                     <section >

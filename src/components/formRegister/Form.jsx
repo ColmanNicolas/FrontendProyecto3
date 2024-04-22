@@ -108,7 +108,7 @@ const Form = () => {
                         </div>
                         {errors.email && errors.email.type === 'required' && <p className='text-danger fs-6 mt-1'>Inserte un correo electrónico</p> }
                         {errors.email && errors.email.type === 'minLength' && <p className='text-danger fs-6 mt-1'>Debe contener al menos 6 caracteres</p> }
-                        {errors.email && errors.email.type === 'maxLength' && <p className='text-danger fs-6 mt-1'>Debe contener menos de 26 caracteres</p> }
+                        {errors.email && errors.email.type === 'maxLength' && <p className='text-danger fs-6 mt-1'>Debe contener menos de 45 caracteres</p> }
                         {errors.email && errors.email.type === 'pattern' && <p className='text-danger fs-6 mt-1'>Correo electrónico inválido.</p> }
                     </div>
                     <div className="mb-3 input-container">
