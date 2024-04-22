@@ -50,7 +50,6 @@ const useUsersState = () => {
         try {
             await axios.put(`http://localhost:5000/api/users/enable/${id}`)
                 .then(response => {
-                    console.log(response);
                 }).then(()=>{
                     obtenerUsuarios();
                 });
@@ -62,7 +61,6 @@ const useUsersState = () => {
         try {
             await axios.delete(`http://localhost:5000/api/users/${id}`)
                 .then(response => {
-                    console.log(response);
                 }).then(()=>{
                     obtenerUsuarios();
                 });
@@ -70,6 +68,17 @@ const useUsersState = () => {
             console.error('Error al obtener datos:', error);
         }
     };
+    const filtrarUsuarios = async (status)=>{
+        try {
+            await axios.get(`http://localhost:5000/api/users/filter/:${status}`)
+                .then(response => {
+                    setUsers(response.data);
+                });
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+        }
+
+    }
     return {
         users,
         obtenerUsuarios,
@@ -78,6 +87,7 @@ const useUsersState = () => {
         modificarUsuario,
         darAltaUsuario,
         borrarUsuario,
+        filtrarUsuarios
     }
 };
 export default useUsersState;
