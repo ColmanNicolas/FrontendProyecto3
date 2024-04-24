@@ -67,6 +67,7 @@ const Form = () => {
         <>
             <div className='contenedorForm'>
                 <form onSubmit={handleSubmit(enviarFormulario)}>
+                <h3 className='text-center mb-4'>REGISTRATE</h3>
                     <div className="mb-3 input-container">
                         <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
                         <div className="name-input">
@@ -162,7 +163,7 @@ const Form = () => {
                         {errors.repetirContraseña && errors.repetirContraseña.type === 'validate' && <p className='text-danger fs-6 mt-1'>Las contraseñas no coinciden</p> }
                     </div>
                     <div className='d-flex gap-3 justify-content-end'>
-                        <Link to='/home' className="btn btn-primary">Volver</Link>
+                        <Link to='/bar-app/home' className="btn btn-primary">Volver</Link>
                         <button type="button" className="btn btn-primary" onClick={resetear}>Resetear</button>
                         <button type="submit" className="btn btn-primary" disabled={isLoading}>Enviar</button>
                     </div>

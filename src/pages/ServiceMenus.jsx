@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../pages/ServiceMenus.css"
+import Navbar from "../components/navBar/Navbar"
 
 const products = [
   { name: 'Pizza', price: 10, quality: 'Buena', image: 'pizza.jpg' },
@@ -14,7 +15,11 @@ const ServiceMenus = () => {
     };
   
     return (
+
         <>
+
+        <Navbar></Navbar>       
+
         <main id='fondoMenu'>
 
             <div className="container">

@@ -27,7 +27,7 @@ const LoginComp = () => {
                 toast.error(data.messageError, {
                     theme: 'dark'
                 });
-            } else if (!data.user.status) {         //controlo el status del usuario
+            } else if (!data.user.status) {         
                 toast.error(data.msg, {
                     theme: 'dark'
                 });
@@ -35,20 +35,20 @@ const LoginComp = () => {
                 toast.success(`Iniciaste sesión exitosamente como ${data.user.email} `, {
                     theme: 'dark'
                 });
-                sessionStorage.setItem('loguedUser', JSON.stringify(data.user));
-                console.log("Datos del usuario guardados en sessionStorage:", data.user); // Agrega este console.log para verificar los datos guardados en sessionStorage
-                setTimeout(navigate,5000)
+                console.log("Token recibido:", data.token); 
+                sessionStorage.setItem('loguedUser', JSON.stringify(data));
+                setTimeout(navigate, 4500)
             }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
                 theme: 'dark'
             });
-            console.error('Error durante la llamada a la API:', error); // Agrega este console.error para verificar cualquier error durante la llamada a la API
+            console.error('Error durante la llamada a la API:', error); 
         }
     };
 
     const navigate = () => {
-        window.location.pathname = '/home';
+        window.location.pathname = '/bar-app/home';
     };
 
     const enviarFormulario = body => {
@@ -58,8 +58,9 @@ const LoginComp = () => {
 
     return (
         <>
-            <div className='contenedorForm'>
+            <div className='contenedorForm'>            
                 <form onSubmit={handleSubmit(enviarFormulario)}>
+                <h3 className='text-center mb-4'>INICIO DE SESION</h3>
                     <div className='mb-3 input-container'>
                         <label htmlFor='correo' className='form-label'>
                             Correo Electrónico
@@ -121,7 +122,7 @@ const LoginComp = () => {
                         )}
                     </div>
                     <div className='d-flex gap-3 justify-content-end'>
-                        <Link to='/home' className='btn btn-primary'>
+                        <Link to='/bar-app/home' className='btn btn-primary'>
                             Volver
                         </Link>
                         <button type='submit' className='btn btn-primary'>
