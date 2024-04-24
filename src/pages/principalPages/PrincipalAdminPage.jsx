@@ -151,6 +151,10 @@ const PrincipalAdminPage = () => {
                 </article>
             </main>
             <ContainerNewQR />
+            <figure className="bg-dark">
+                <img src="/pizza-muzarella.jpg" alt=""  />
+                <figcaption className="text-white">HOLAAAA</figcaption>
+            </figure>
         </>
     )
 }

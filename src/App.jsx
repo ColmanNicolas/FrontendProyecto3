@@ -19,16 +19,16 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Navigate to={"/bar-app/home"} />} />
+          <Route path='/' element={<Navigate to={"/bar-app/landing-page"} />} />
           <Route path='/bar-app/home' element={<Home />} />
           <Route path='/bar-app/landing-page' element={<LandingPage/>} />
           <Route path='/bar-app/landing-page/auth' element={<PrincipalAuth/>} />
           <Route path='/bar-app/mi-cuenta/:id' element={<PrincipalMyAccount/>} />
           <Route path='/bar-app/principal-admin-controls' element={<PrincipalAdminPage/>} />
           <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
+          <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route path='/register' element={<RegisterUser/>} />
           <Route path='/login' element={<Login/>} />
-          <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route />
         </Routes>
       </BrowserRouter>
