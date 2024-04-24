@@ -57,7 +57,7 @@ const PrincipalAdminPage = () => {
         }
     };
     const cerrarSesion = () => {
-        console.log("cierro Sesion");
+        console.log("cierro Sesion admin");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
         }, 1000);

@@ -72,7 +72,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className='btn btnPrecio' > 100 usd</button>
+                                <button className=' btnPrecioServicio' > 100 usd</button>
                             </section>
                         </article>
                         <article className="articleSecondService">
@@ -93,7 +93,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className='btn btnPrecio' > 130 usd</button>
+                                <button className=' btnPrecioServicio' > 130 usd</button>
                             </section>
                         </article>
                         <article className="articleThirdService">
@@ -114,7 +114,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className='btn btnPrecio' > 150 usd</button>
+                                <button className=' btnPrecioServicio' > 150 usd</button>
                             </section>
                         </article>
                     </section>

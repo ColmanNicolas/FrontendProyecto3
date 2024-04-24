@@ -32,7 +32,7 @@
     font-size: 1.8rem;
     font-weight: 700;
 }
-
+/*css para los form login y register*/
 .mainPrincipalAuth form {
     background-color: rgba(0, 0, 0, 0.87);
     font-weight: 700;
@@ -105,16 +105,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block: 1.5rem;
-    padding-inline: 5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+.mainPrincipalAuth article:nth-child(2) section{
+    width: 90% ;
+    margin-inline: auto;
 }
 
 /* Responsive para dispositivos mas chicos */
 
 @media(max-width:1100px) {
-    .mainPrincipalAuth article:nth-child(2) {
-        padding-inline: 2rem;
-    }
 
     .rowInputsForm {
         column-gap: 1rem !important;
@@ -149,7 +150,7 @@
         position: absolute;
     
     }
-    .mainPrincipalAuth article span {
+    .mainPrincipalAuth article:nth-child(1) span {
         display: none;
     }
 
@@ -221,3 +222,6 @@
 }
 
 /* CSS PARA EL FORM DE LOGIN*/
+#formPrincipalLogin{
+    max-width: 600px ;
+}

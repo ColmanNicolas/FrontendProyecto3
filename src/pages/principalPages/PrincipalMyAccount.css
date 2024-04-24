@@ -3,23 +3,25 @@
     color: white;
     text-align: center;
     font-size: 1.2em;
-    background-color: rgb(224, 23, 23);
+    background-color: rgb(172, 12, 12);
+    border-radius: 0.4em;
     padding-block: 0.6em;
     margin: 0;
-    outline: 2px solid rgba(0, 0, 0, 0.5);
+    margin-block: 0.7em;
+    outline: 1px solid rgba(248, 1, 1, 0.5);
 }
 .contenedorMiCuenta{
-    margin-block: 2rem;
     max-width: 600px;
     margin-inline: auto;
 }
 .principalMainMyAccount{
-background-color: blue;
+background-color: rgba(255, 255, 255, 0);
 }
 
 /*SECCION DE MI INFORMACION*/
 #articuloMiCuenta{
-    background-color: rgb(216, 123, 123);
+    padding-block: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.938);
 }
 #articuloMiCuenta h2{
     color: white;
@@ -73,6 +75,7 @@ background-color: blue;
     border-radius: 0.3em;
     background-color: rgba(0, 0, 0, 0.925);
     padding-inline: 2.5%;
+    padding-block: 0.5em;
     margin-block: 0;
 }
 

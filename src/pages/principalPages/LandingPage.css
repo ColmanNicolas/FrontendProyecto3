@@ -346,21 +346,24 @@ margin-inline: 1rem;
 
 }
 
-.btnPrecio {
+.btnPrecioServicio {
     color: aliceblue;
     font-size: 1.5rem;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.788);
+    background-color: rgba(0, 0, 0, 0.788) ;
     margin-top: 0.4em;
     margin-bottom: 2em;
     border-radius: 9px;
     padding-block: 0.2em;
     padding-inline: 2em;
+    transition: background-color 0.4s ease;
 }
 
-.btnPrecio:hover {
+.btnPrecioServicio:hover {
     color: aliceblue;
     background-color: rgba(253, 3, 3, 0.555);
+    transition: background-color 0.4s ease;
+
 }
 
 @media(max-width:1500px) {
@@ -388,11 +391,11 @@ margin-inline: 1rem;
         border-right: 2px solid rgba(240, 240, 240, 0.404);
     }
 
-    .btnPrecio {
+    .btnPrecioServicio {
         border: 2px solid rgba(255, 0, 0, 0.329);
     }
 
-    .btnPrecio:hover {
+    .btnPrecioServicio:hover {
         background-color: rgba(255, 255, 255, 0.068);
         outline: 2px solid rgba(255, 0, 0, 0.514);
     }

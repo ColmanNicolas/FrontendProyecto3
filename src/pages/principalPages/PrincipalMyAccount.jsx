@@ -1,14 +1,16 @@
 import { Controller, useForm } from "react-hook-form";
 import "../principalPages/PrincipalMyAccount.css"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import FormPagoServicio from "../../components/FormPagoServicio";
 
 const PrincipalMyAccount = () => {
     const { id } = useParams();
-    const { handleSubmit, setValue, register, formState: { errors }, watch, reset, control } = useForm();
-    const [ pagado, setPagado] =useState(null);
-    const [ habilitado, setHabilitado] =useState(null);
+    const { handleSubmit, setValue, register, formState: { errors, isSubmitSuccessful }, watch, reset, control  ,  focus } = useForm();
+    const [pagado, setPagado] = useState(null);
+    const [habilitado, setHabilitado] = useState(null);
+    const navigate = useNavigate();
 
     const setearInformacion = async () => {
         try {
@@ -26,6 +28,32 @@ const PrincipalMyAccount = () => {
             console.error('Error al completar campos:', error);
         }
     }
+    const enviarFormularioModificacion = (dataModificaction)=>{
+        console.log("llego aqui por 100",dataModificaction);
+
+
+    }
+    const enviarFormularioPago = async (dataPay)=>{
+        console.log("llego aqui",dataPay);
+        try {
+            await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`)
+            .then(response =>{
+                console.log("pago realizado",response);
+            }
+            )
+         
+        } catch (error) {
+            console.error('Error al completar el pago:', error);
+            
+        }
+    }
+    const cerrarSesion = () => {
+        console.log("cierro Sesion usuario principal");
+        setTimeout(() => {
+            navigate("/bar-app/landing-page/auth")
+        }, 1000);
+    }
+
     useEffect(() => {
         setearInformacion();
     }, []);
@@ -36,11 +64,13 @@ const PrincipalMyAccount = () => {
                 <h1>MI CUENTA</h1>
             </header>
             <main className="principalMainMyAccount">
+                <h4 id="H4PrincipalAdmin" className="text-end">
+                    <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
+                </h4>
                 <article id="articuloMiCuenta">
-
-                        <h3 className="tituloH3MiCuenta">Mi información </h3>
-                    <section className="contenedorMiCuenta">
-                        <form id="miCuentaForm">
+                    <section className="contenedorMiCuenta mb-5">
+                        <form id="miCuentaForm" onSubmit={handleSubmit(enviarFormularioModificacion)}>
+                            <h3 className="tituloH3MiCuenta">Mi información </h3>
                             <section>
                                 <label htmlFor="name">Nombre</label>
                                 <input type="text" id="name" {...register("name", {
@@ -71,10 +101,12 @@ const PrincipalMyAccount = () => {
                                     required: true,
                                     minLength: 3,
                                     maxLength: 35,
-                                    pattern: /^[a-zA-Z ]+$/
                                 })} />
                                 {errors.principalEmail && (
-                                    errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                                    (errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>) ||
+                                    (errors.principalEmail.type === "minLength" && <p className="error-message bg-danger">email muy corto</p>) ||
+                                    (errors.principalEmail.type === "maxLength" && <p className="error-message bg-danger">email muy largo</p>) ||
+                                    (errors.principalEmail.type === "pattern" && <p className="error-message bg-danger">No cumple con la condicion para email</p>) 
                                 )}
                             </section>
                             <section>
@@ -101,7 +133,7 @@ const PrincipalMyAccount = () => {
                                     errors.city.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
                                 )}
                             </section>
-                    {  /*  <section>
+                            {  /*  <section>
                                 <label htmlFor="password">Cambiar Contraseña</label>
                                 <input type="password" id="password"  {...register("password", {
                                     required: true,
@@ -120,51 +152,11 @@ const PrincipalMyAccount = () => {
                             </section>
                         </form>
                     </section>
-                        <h3 className="tituloH3MiCuenta">Sección de Pago</h3>
-                    <section className="contenedorMiCuenta">
-                        <form id="pagoForm" action="">
-                            <label htmlFor="" className="form-label mt-2">Servicio</label>
-                            <Controller
-                                name="service"
-                                control={control}
-                                defaultValue=""
-                                rules={{ required: true }}
-                                render={({ field }) => (
-                                    <select {...field} className="form-select" aria-label="Default select example" required>
-                                        <option value="" disabled hidden>Selecciona un servicio</option>
-                                        <option value="1">STANDARD SERVICE</option>
-                                        <option value="2">SELF-MANAGEMENT APP</option>
-                                        <option value="3">MENU APP</option>
-                                    </select>
-                                )}
-                            />
-                            <section>
-                                <label htmlFor="">Número de Tarjeta</label>
-                                <input type="number"  placeholder="0000-0000-0000-0000"/>
-                            </section>
-                            <section>
-                                <label htmlFor="">Codigo de Seguridad</label>
-                                <input type="text" placeholder="000" />
-                            </section>
-                            <section>
-                                <label htmlFor="">Fecha de Vencimiento</label>
-                                <input type="text" placeholder="00/00"/>
-                            </section>
-                            <section>
-                                <label htmlFor="">DNI</label>
-                                <input type="text" placeholder="99999999"/>
-                            </section>
-                            <section>
-                                <label htmlFor="">Nombre Completo</label>
-                                <input type="text" placeholder=""/>
-                            </section>
-                            <section id="botonesFormulario">
-                                <input type="submit" value={"Realizar Pago"} />
-                            </section>
-                        </form>
+                    <section className="contenedorMiCuenta mb-5">
+                        {!pagado &&<FormPagoServicio/>}
                     </section>
-                    <h3 className="tituloH3MiCuenta">Estado de mi Servicio</h3>
                     <section className="contenedorMiCuenta " id="contenedorEstadoServicio">
+                        <h3 className="tituloH3MiCuenta ">Estado de mi Servicio</h3>
                         <section className="seccionEstadoServicio">
                             <p>Servicio:</p>
                             {!pagado && <button className="fondoRojo" disabled>No Pagado</button>}

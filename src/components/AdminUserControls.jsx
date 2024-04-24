@@ -9,8 +9,8 @@ import useUsersState from "../hooks/useUsersState";
 const AdminUserControls = ({ userList }) => {
 
     const { isOpen, openModal, closeModal } = useModal();
-    const { users, obtenerUsuarios, crearUsuario, modificarUsuario, darAltaUsuario, borrarUsuario,filtrarUsuarios } = useUsersState();
-    
+    const { users, obtenerUsuarios, crearUsuario, modificarUsuario, darAltaUsuario, borrarUsuario, filtrarUsuarios } = useUsersState();
+
 
     useEffect(() => {
         obtenerUsuarios();
@@ -39,7 +39,7 @@ const AdminUserControls = ({ userList }) => {
                     <section className="col-12 col-md-5">
                         <section class="dropdown">
                             <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i className="bi bi-funnel"></i><span>Filtrar </span>
+                                <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -47,7 +47,7 @@ const AdminUserControls = ({ userList }) => {
                                 <hr className="m-0" />
                                 <li><a class="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
                             </ul>
-                        <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                            <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                         </section>
                     </section>
                     <section className="col-12 col-md-7 d-flex justify-content-end">
@@ -77,8 +77,8 @@ const AdminUserControls = ({ userList }) => {
                                     <li className="col-4 text-center containerButtonActions">
                                         {(usuario.role != "ADMIN_ROLE") && <>
                                             <button className="infoButton" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
-                                        {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
-                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
+                                            {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
+                                            {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
                                         </>}
                                     </li>
                                 </ul>
