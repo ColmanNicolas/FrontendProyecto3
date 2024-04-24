@@ -371,6 +371,15 @@
     display: flex;
     flex-direction: row;
 }
+.containerRows li{
+    display:flex;
+    align-items: center;
+    height: 2rem ;
+}
+.containerRows .li-centrado{
+    justify-content: center !important;
+
+}
 
 .containerRows article ul li span:nth-child(1){
     display: block;

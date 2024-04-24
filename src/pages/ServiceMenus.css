@@ -111,3 +111,7 @@
       height: auto;
       margin-bottom: 10px;
   }
+  .tamano-modal{
+    width: 100% !important;
+    height: 24rem;
+  }

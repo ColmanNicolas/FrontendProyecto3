@@ -41,6 +41,17 @@ const usePedidosState = () => {
             console.error('Error al modificar pedido:', error);
         }
     }
+    const filtrarPedidos = async (filtro) => {
+        try {
+            await axios.get(`http://localhost:5000/api/order/filter/${filtro}`).then((response) => {
+                console.log(response.data.order);
+                setPedidos(response.data.order);
+            })
+        } catch (error) {
+            console.error('Error al crear un pedido:', error);
+        }
+    }
+
 
     return {
         pedidos,
@@ -48,6 +59,7 @@ const usePedidosState = () => {
         obtenerUnPedido,
         crearPedido,
         modificarPedido,
+        filtrarPedidos
     }
 };
 export default usePedidosState;
