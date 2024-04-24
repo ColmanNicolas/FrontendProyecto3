@@ -1,32 +1,30 @@
 .contenedorForm {
-    min-height: 100vh;
+    min-height: 70vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f0f0f0; 
 }
 
 .contenedorForm form {
     width: 400px;
-    color: aliceblue;
+    color: #333; 
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    font-family: Arial, sans-serif; 
 }
 
 .input-container {
     position: relative;
     width: 100%;
+    margin-bottom: 20px; 
 }
 
-.input-icon {
-    color: #a8a8a8;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.input-icon-lock {
-    color: #a8a8a8;
+.input-icon, .input-icon-lock {
+    color: #555; 
     position: absolute;
     left: 10px;
     top: 50%;
@@ -39,7 +37,7 @@
 }
 
 .password-toggle-icon {
-    color: #a8a8a8;
+    color: #555; 
     position: absolute;
     right: 10px;
     top: 50%;
@@ -48,5 +46,22 @@
 }
 
 .form-control {
-    padding-left: 35px;
+    padding-left: 35px !important;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+}
+
+.btn {
+    background-color: #007bff; 
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #0056b3; 
 }

@@ -9,6 +9,7 @@ import sanguche from '../public/sandwich-de-milanesa.jpg';
 
 import "../pages/ServiceMenus.css"
 import axios from 'axios';
+import Navbar from "../components/navBar/Navbar"
 
 const products = [
     { name: 'Pizza muzzarella', price: 10, description: 'salsa de tomate, muzzarella, aceitunas verdes.', image: pizza },
@@ -63,7 +64,9 @@ const ServiceMenus = () => {
     }, [productOrderList])
 
     return (
+
         <>
+        <Navbar/>
             <main id='fondoMenu'>
                 <section className='text-end p-3'>
                     <button type="button" onClick={() => { openModal(true) }} class="btn btn-light">
@@ -105,9 +108,7 @@ const ServiceMenus = () => {
                         </div>
                     )}
                 </div>
-                <figure>
-                    <img src={"masha-kotliarenko-7qDBoSUBfvI-unsplash.jpg"} alt="" width={"200px"} height={"200px"} />
-                </figure>
+
                 {isOpen && <ModalEstructuraBase closeModal={closeModal} >
                     <h3>Carrito de compras</h3>
                     <ContenedorCarritoCompras generarPedido={generarPedido} quitarProductoCarrito={quitarProductoCarrito} closeModal={closeModal}  />
