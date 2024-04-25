@@ -1,8 +1,14 @@
 import { FaBeer } from "react-icons/fa";
 import '../principalPages/LandingPage.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ScrollToTopButton from "../../components/NavegarHastaTope";
 
 const LandingPage = () => {
+    const navigate = useNavigate()
+
+    const navegarAuth = ()=>{
+        navigate("/bar-app/landing-page/auth")
+    }
     return (
         <>
             <header className='headerLanding '>
@@ -17,7 +23,7 @@ const LandingPage = () => {
                         <li><a href="#home">Home</a></li>
                         <li><a href="#informacion">Información</a></li>
                         <li><a href="#precios">Precios</a></li>
-                        <li><a href="">Contacto</a></li>
+                        <li><a href="#footerLanding">Contacto</a></li>
                         <li><a href="#recomendaciones">Recomendaciones</a></li>
                         <li><a href="#prueba7dias">Prueba de 7 dias</a></li>
                     </ul>
@@ -72,7 +78,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className=' btnPrecioServicio' > 100 usd</button>
+                                <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 100 usd</button>
                             </section>
                         </article>
                         <article className="articleSecondService">
@@ -93,7 +99,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className=' btnPrecioServicio' > 130 usd</button>
+                                <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 130 usd</button>
                             </section>
                         </article>
                         <article className="articleThirdService">
@@ -114,7 +120,7 @@ const LandingPage = () => {
                                 <li><p>Retiro de un Pedido</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
                             </ul>
                             <section className='text-center'>
-                                <button className=' btnPrecioServicio' > 150 usd</button>
+                                <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 150 usd</button>
                             </section>
                         </article>
                     </section>
@@ -151,13 +157,14 @@ const LandingPage = () => {
                     </section>
                     <figure className='contenedorImagenPrueba'>
                         <figcaption >COMUNICATE CON NOSOTROS PARA HACER UNA PRUEBA DE NUESTROS SERVICIOS</figcaption>
-                        <form > 
-                            <button className="">Contactar</button>
+                        <form >
+                            <a className="text-decoration-none text-white   bg-dark rounded-2 px-2" href="mailto:bar_app@gmail.com.ar">Contactar por correo</a>
                         </form>
                     </figure>
                 </section>
+                <ScrollToTopButton />
             </main>
-            <footer className="footerLanding">
+            <footer id="footerLanding" className="footerLanding">
                 <a href="tel:+543819999999">3819999999</a>
                 <a href="mailto:bar_app@gmail.com.ar">bar_app@gmail.com.ar</a>
                 <p>Copyright ©, Bar App Service</p>

@@ -79,10 +79,14 @@ const useUsersState = () => {
         }
     }
     const filtrarRolUsuarios = async (filter)=>{
+        console.log("llego aqui");
+
         try {
             await axios.get(`http://localhost:5000/api/users/role_filter/${filter}`)
                 .then(response => {
-                    setUsers(response.data.filteredUsers);                    
+                    setUsers(response.data.filteredUsers);   
+                    console.log(response);
+
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);

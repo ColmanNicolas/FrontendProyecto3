@@ -39,25 +39,24 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                 <section className="">
                     <section >
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
-                        <input type="email" className="form-control" id="userEmail" {...register("principalEmail", {
+                        <input type="email" className="form-control mb-0" id="userEmail" {...register("principalEmail", {
                             required: true,
-                            minLength: 5,
                             maxLength: 35,
-                            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                         })} />
                         {errors.principalEmail && (
-                            errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            (errors.principalEmail.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) ||
+                            (errors.principalEmail.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) 
                         )}
                     </section>
                     <section >
                         <label htmlFor="userPass" className="form-label">CONTRASEÑA</label>
-                        <input type="password" className="form-control" id="userPass" {...register("password", {
+                        <input type="password" className="form-control mb-0" id="userPass" {...register("password", {
                             required: true,
-                            minLength: 5,
-                            maxLength: 35,
+                            maxLength: 30,
                         })} />
                         {errors.password && (
-                            errors.password.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            (errors.password.type === "required" && <p className=" ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>)||
+                            (errors.password.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">se excedio el maximo de caracteres. '30'</p>)
                         )}
                     </section>
                    <section className="d-flex flex-column pb-4 pt-2 text-center ">

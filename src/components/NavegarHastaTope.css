@@ -1,0 +1,24 @@
+.scroll-to-top-button {
+    color: white;
+    font-size: 1.5rem;
+    background-color: rgb(121, 6, 6);
+    outline: 2px solid black;
+    padding-inline: 1rem;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    transition: background-color 0.5s ease;
+    transition: outline 0.2s ease;
+}
+
+.scroll-to-top-button:hover {
+    background-color: rgb(206, 0, 0);
+    outline: 3px solid rgb(255, 255, 255);
+}
+
+.scroll-to-top-button.visible {
+    display: inline-block;
+    /* Muestra el botón cuando es visible */
+}

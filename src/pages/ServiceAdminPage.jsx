@@ -10,6 +10,7 @@ import NavbarAdmin from "../components/NavbarAdmin";
 import '../pages/ServiceAdminPage.css';
 import '../components/ModalEstructura.css';
 import { useNavigate } from "react-router-dom";
+import useNavbarAdmin from "../hooks/useNavbarAdmin";
 
 const ServiceAdminPage = () => {
 
@@ -18,6 +19,7 @@ const ServiceAdminPage = () => {
     const mostrarTablasAdmin = (opcion) => {
         setOpcionSeleccionada(opcion);
     };
+    const { isOpen, setNavbarState, changeNavbarState } = useNavbarAdmin();
 
     function SwitchComponenteAdmin({ opcion }) {
         switch (opcion) {
@@ -43,8 +45,8 @@ const ServiceAdminPage = () => {
             <section className="d-flex  contenedorPrincipal">
             <Header /> 
             <section id="contenedor-navButton-cerrarSesion">
-                <button>menu</button>
-                <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
+             
+                <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion fs-6 mx-2 my-2 px-2 bg-light">Cerrar Sesion</button>
             </section>
                 <NavbarAdmin devolverTabla={mostrarTablasAdmin} />
                 <main className="mainServiceAdmin ">

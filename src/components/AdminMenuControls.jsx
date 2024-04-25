@@ -40,7 +40,7 @@ const AdminMenuControls = () => {
                                 {categoriasMenu.map((menu, index) => (
                                     <React.Fragment key={index}>
                                         <li key={index}>
-                                            <a className="dropdown-item" onClick={() => filtrarMenus(menu.toLowerCase())} href="#">
+                                            <a className="dropdown-item" onClick={() => filtrarMenus(menu)} href="#">
                                                 {menu}
                                             </a>
                                         </li>
