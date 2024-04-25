@@ -10,6 +10,7 @@ import '../formRegister/form.css';
 const LoginComp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const navigateTo = useNavigate();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -37,7 +38,11 @@ const LoginComp = () => {
                 });
                 console.log("Token recibido:", data.token); 
                 sessionStorage.setItem('loguedUser', JSON.stringify(data));
-                setTimeout(navigate, 4500)
+                if (data.user.role === "ADMIN_ROLE") {
+                    navigateTo('/service/admin-controls');
+                } else {
+                    setTimeout(navigate, 2000);
+                }
             }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
