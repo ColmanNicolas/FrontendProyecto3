@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 
-const FormPrincipalRegister = ({cambiarComponente}) => {
+const FormPrincipalRegister = ({ cambiarComponente }) => {
 
     const { handleSubmit, register, formState: { errors }, watch, reset, } = useForm();
     const enviarFormulario = (dataRegister) => {
@@ -20,42 +20,49 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
             console.error('Error al enviar formulario:', error);
         }
     };
-    
+
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <article>
                 <h2>REGISTRO</h2>
-                <button className="buttonAslAnchor" type="button" onClick={()=>cambiarComponente("LOGIN")}><i className="bi bi-arrow-up-left-circle"></i><span>Tengo Cuenta</span> </button>
-                <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>         
+                <button className="buttonAslAnchor" type="button" onClick={() => cambiarComponente("LOGIN")}><i className="bi bi-arrow-up-left-circle"></i><span>Tengo Cuenta</span> </button>
+                <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>
             </article>
             <article>
                 <section className="rowInputsForm">
-                    <section >
+                    <section>
                         <label htmlFor="userName" className="form-label">USUARIO </label>
-                        <input type="text" className="form-control" name="nombre" id="userName" placeholder="nombre de usuario" {...register("name", {
-                            required: true,
-                            minLength: 3,
-                            maxLength: 35,
-                            pattern: /^[a-zA-Z ]+$/
-                        })} />
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="nombre"
+                            id="userName"
+                            placeholder="nombre de usuario"
+                            {...register("name", {
+                                required: "Campo requerido",
+                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
+                            })}
+                        />
                         {errors.name && (
-                            errors.name.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
-                        )}
-                    </section>
-                    <section >
-                        <label htmlFor="bussinesName" className="form-label">EMPRESA </label>
-                        <input type="text" className="form-control" name="nombreEmpresa" id="bussinesName" placeholder="nombre de su empresa gastronómica" {...register("businessName", {
-                            required: true,
-                            minLength: 3,
-                            maxLength: 35,
-                            pattern: /^[a-zA-Z ]+$/
-                        })} />
-                        {errors.businessName && (
-                            errors.businessName.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            <p className="ps-1 text-danger fs-semibold mb-2">{errors.name.message}</p>
                         )}
                     </section>
 
-{   /*                 <section >
+                    <section >
+                        <label htmlFor="bussinesName" className="form-label">EMPRESA </label>
+                        <input type="text" className="form-control" name="nombreEmpresa" id="bussinesName" placeholder="nombre de su empresa gastronómica" {...register("businessName", {
+                                required: "Campo requerido",
+                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
+                        })} />
+                        {errors.businessName && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.businessName.message}</p>)
+                        }
+                    </section>
+
+                    {   /*                 <section >
                         <label htmlFor="" className="form-label">CUIT</label>
                         <input type="number" className="form-control" id="" {...register("cuit", {
                             required: true,
@@ -79,19 +86,22 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
                             pattern: /^[a-zA-Z ]+$/
                         })} />
                         {errors.country && (
-                            errors.country.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            (errors.country.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) ||
+                            (errors.country.type === "minLength" && <p className="ps-1 text-danger fs-semibold mb-2">minimo de caracteres 3</p>) ||
+                            (errors.country.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">Se exedio el maximo de caractres. '35' </p>) ||
+                            (errors.country.type === "pattern" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>)
                         )}
                     </section>
                     <section >
                         <label htmlFor="city" className="form-label">PROVINCIA</label>
                         <input type="text" className="form-control" id="city" name="ciudad" {...register("city", {
-                            required: true,
-                            minLength: 3,
-                            maxLength: 35,
-                            pattern: /^[a-zA-Z ]+$/
+                                required: "Campo requerido",
+                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                         })} />
                         {errors.city && (
-                            errors.city.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                             <p className="ps-1 text-danger fs-semibold mb-2">{errors.city.message}</p>
                         )}
                     </section>
                 </section>
@@ -99,13 +109,12 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
                     <section >
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
                         <input type="email" className="form-control" id="userEmail" name="email" {...register("principalEmail", {
-                            required: true,
-                            minLength: 5,
-                            maxLength: 35,
-                            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                                required: "Campo requerido",
+                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Solo se permiten letras y espacios" }
                         })} />
-                        {errors.principalEmail && (
-                            errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                        {errors.principalEmail && ( <p className="ps-1 text-danger fs-semibold mb-2">{errors.principalEmail.message}</p>
                         )}
                     </section>
                     <section >
@@ -115,30 +124,32 @@ const FormPrincipalRegister = ({cambiarComponente}) => {
                             validate: (value) => value === watch("principalEmail"),
                         })} />
                         {errors.emailRepeat && (
-                            errors.emailRepeat.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            (errors.emailRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>)||
+                            (errors.emailRepeat.type === "validate" && <p className="ps-1 text-danger fs-semibold mb-2">No coinciden los campos email</p>)
                         )}
                     </section>
                 </section>
                 <section className="rowInputsForm">
                     <section >
                         <label htmlFor="userPass" className="form-label">CONTRASEÑA</label>
-                        <input type="password" className="form-control" id="userPass"  name="password" {...register("password", {
-                            required: true,
-                            minLength: 5,
-                            maxLength: 35,
+                        <input type="password" className="form-control" id="userPass" name="password" placeholder="Usuario123" {...register("password", {
+                                required: "Campo requerido",
+                                minLength: { value: 6, message: "Mínimo 6 caracteres" },
+                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un nuumero" }
                         })} />
-                        {errors.password && (
-                            errors.password.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                        {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p>
                         )}
                     </section>
                     <section >
                         <label htmlFor="userPassRepeat" className="form-label">REPETIR CONTRASEÑA</label>
-                        <input type="password" className="form-control" id="userPassRepeat" name="passRepeat" {...register("passwordRepeat", {
+                        <input type="password" className="form-control" id="userPassRepeat" name="passRepeat" placeholder="Usuario123" {...register("passwordRepeat", {
                             required: true,
                             validate: (value) => value === watch("password"),
                         })} />
                         {errors.passwordRepeat && (
-                            errors.passwordRepeat.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                            (errors.passwordRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>)||
+                            (errors.passwordRepeat.type === "validate" && <p className="ps-1 text-danger fs-semibold mb-2">Los campos contraseña no coinciden</p>)
                         )}
                     </section>
                 </section>

@@ -10,21 +10,21 @@ import superimagen from "../../public/sandwich-de-milanesa.jpg"
 
 
 const categories = [
-    "promociones",
-    "comida extranjera",
-    "bebidas",
-    "bebidas alcohólicas",
-    "al plato",
-    "empanadas",
-    "entradas",
-    "hamburguesas",
-    "fideos",
-    "postres",
-    "pizzas",
-    "sanguches",
-    "sopas",
-    "sushi",
-    "tacos"
+    "Promociones",
+    "Comida extranjera",
+    "Bebidas",
+    "Bebidas alcohólicas",
+    "Al plato",
+    "Empanadas",
+    "Entradas",
+    "Hamburguesas",
+    "Fideos",
+    "Postres",
+    "Pizzas",
+    "Sanguches",
+    "Sopas",
+    "Sushi",
+    "Tacos"
 ];
 
 function ContenedorCarrouselProductos({agregarProductoCarrito}) {

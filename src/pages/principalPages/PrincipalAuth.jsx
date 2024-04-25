@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../principalPages/PrincipalAuth.css"
 import FormPrincipalLogin from "../../components/superAdminComponents/FormPrincipalLogin";
 import FormPrincipalRegister from "../../components/superAdminComponents/FormPrincipalRegister";
@@ -20,6 +20,13 @@ const PrincipalAuth = () => {
                 return null;
         }
     }
+    useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Hace que el scroll sea suave en navegadores modernos
+          });
+    },[])
+
     return (
         <>
             <header className='headerLanding '>

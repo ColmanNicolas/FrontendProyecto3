@@ -129,7 +129,7 @@ const AdminOrderControls = () => {
 
                             <section key={index} className="accordion-item containerRows">
                                 <ul className="accordion-header row py-1" >
-                                    <li className="col-1 ps-1">{index + 1}</li>
+                                    <li className="col-1 ps-1">{pedidos.length - index}</li>
                                     <li className="col-1 ps-1">{pedido.items.length}</li>
                                     <li className="col-3 ps-3">{pedido.userId}</li>
                                     <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
@@ -165,7 +165,7 @@ const AdminOrderControls = () => {
                                         }}>{<i className="bi bi-arrow-left-right"></i>}</button>
                                     </li>
                                 </ul>
-                                <section id={pedido._id} className="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                <section id={pedido._id} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <article className="accordion-body contenedorDetalles">
                                         <ul>
                                             <li>
