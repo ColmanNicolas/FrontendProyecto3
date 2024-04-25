@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // Cambia el icono según tu preferencia
 import './navbar.css';
 
 const Navbar = () => {
   const [user, setUser] = useState('');
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
   const navigateTo = useNavigate();
   const userJSON = sessionStorage.getItem('loguedUser');
   const mUser = JSON.parse(userJSON);
@@ -21,10 +20,6 @@ const Navbar = () => {
     setIsButtonVisible(false);
     navigateTo('/');
     window.location.reload();
-  };
-
-  const handleSearch = () => {
-    console.log('Búsqueda realizada:', searchQuery);
   };
 
   const navbarCollapse = useRef();
@@ -44,29 +39,13 @@ const Navbar = () => {
   return (
     <div className='sticky-top navbar-container' ref={navbarCollapse}>
       <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-        <div className="container-fluid ">
+        <div className="container-fluid">
           <Link to="/">
-            <img
-              className="rounded-5"
-              alt="logo"
-              style={{ width: '100px', marginLeft: '20px' }}
-              />
+            <FontAwesomeIcon icon={faWineBottle} className="me-2 faWineBottle" />
           </Link>
           <Link to="/" className="mx-4 navbar-brand text-white fs-2 d-none d-sm-block">
             Barapp
           </Link>
-          <div className="d-flex mx-2 search-bar" role="search">
-            <input
-              type="search"
-              className="form-control  "
-              placeholder="Buscar..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className="btn btn-outline-secondary" type="button" onClick={handleSearch}>
-              Buscar
-            </button>
-          </div>
           <button
             className="navbar-toggler text-bg-secondary p-3 m-3"
             type="button"
@@ -78,7 +57,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse "
+            className="collapse navbar-collapse"
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav ms-auto px-4">
@@ -86,12 +65,12 @@ const Navbar = () => {
                 (!user?.user?.name) && isButtonVisible &&
                 <>
                   <li className="nav-item text-white">
-                    <Link to="/login" className="nav-link text-white">
+                    <Link to="/service/login" className="nav-link text-white">
                       Login
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/register" className="nav-link text-white">
+                    <Link to="/service/register" className="nav-link text-white">
                       Registrate
                     </Link>
                   </li>
@@ -104,7 +83,7 @@ const Navbar = () => {
               }
               {
                 (user?.user?.name) && isButtonVisible &&
-                <div className=' d-flex mt-2 '>
+                <div className=' d-flex me-2 '>
                   <li className=''>
                     <p className='text-white d-none d-md-block mx-3' >{`Bienvenido/a  ${user?.user?.name}`}</p>
                   </li>
