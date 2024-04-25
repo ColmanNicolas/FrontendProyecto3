@@ -6,11 +6,11 @@ const LandingPage = () => {
     return (
         <>
             <header className='headerLanding '>
-                <h1 className=" m-0 ">BAR APP SERVICE</h1>
+                <h1 className=" m-0 ">BAR APP </h1>
                 <Link to={"auth"}><i class="bi bi-person-vcard-fill fs-3"></i><p>ACCESO</p></Link>
             </header>
             <section id="contenedor-menu">
-                <a href="#contenedor-menu" id="abrir-menu"><i class="bi bi-list f1" ></i></a>
+                <a href="#contenedor-menu" id="abrir-menu"><i class="bi bi-list " ></i></a>
                 <a href="#"><i class="bi bi-x-circle" id="cerrar-menu"></i></a>
                 <nav id="home" className="navBarLanding">
                     <ul id="contenedor-enlaces">
@@ -150,11 +150,8 @@ const LandingPage = () => {
                         <h2>PRUEBA DE 7 DIAS</h2>
                     </section>
                     <figure className='contenedorImagenPrueba'>
-
-                        <figcaption >COMUNICATE CON NOSOTROS PARA HACER UNA PRUEBA</figcaption>
-                        <form >
-                            <label for="exampleFormControlInput1" className="form-label"></label>
-                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                        <figcaption >COMUNICATE CON NOSOTROS PARA HACER UNA PRUEBA DE NUESTROS SERVICIOS</figcaption>
+                        <form > 
                             <button className="">Contactar</button>
                         </form>
                     </figure>

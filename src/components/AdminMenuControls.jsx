@@ -32,11 +32,11 @@ const AdminMenuControls = () => {
             <section className="sectionTablesFilters">
                 <form className="row">
                     <section className="col-12 col-md-5">
-                        <section class="dropdown">
-                            <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <section className="dropdown">
+                            <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul className="dropdown-menu">
                                 {categoriasMenu.map((menu, index) => (
                                     <React.Fragment key={index}>
                                         <li key={index}>

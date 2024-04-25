@@ -29,8 +29,8 @@ function App() {
           <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
           <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route path='/service/menu-list' element={<ServiceMenuList/>} />
-          <Route path='/register' element={<RegisterUser/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/service/register' element={<RegisterUser/>} />
+          <Route path='/service/login' element={<Login/>} />
           <Route />
         </Routes>
       </BrowserRouter>

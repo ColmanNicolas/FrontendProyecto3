@@ -11,12 +11,12 @@ const FormPagoServicio=() =>{
     const enviarFormularioPago = async (dataPay)=>{
         console.log("llego aqui",dataPay);
         try {
-            await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`)
-            .then(response =>{
-                console.log("pago realizado",response);
-            }
-            )
-         
+            await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`,dataPay)
+            .then(response => {
+                console.log("pago realizado", response);
+                window.location.reload();
+            })
+            
         } catch (error) {
             console.error('Error al completar el pago:', error);
             
@@ -26,19 +26,19 @@ const FormPagoServicio=() =>{
     return(
         <form  id="pagoForm" onSubmit={handleSubmit(enviarFormularioPago)}>
         <h3 className="tituloH3MiCuenta">Sección de Pago</h3>
-        <label htmlFor="service" className="form-label mt-2">Servicio</label>
+        <label htmlFor="typeService" className="form-label mt-2">Servicio</label>
         <Controller
-            id="service"
-            name="service"
+            id="typeService"
+            name="typeService"
             control={control}
             defaultValue=""
             rules={{ required: true }}
             render={({ field }) => (
                 <select {...field} className="form-select" aria-label="Default select example" required>
                     <option value="" disabled hidden>Selecciona un servicio</option>
-                    <option value="1">STANDARD SERVICE</option>
-                    <option value="2">SELF-MANAGEMENT APP</option>
-                    <option value="3">MENU APP</option>
+                    <option value="STANDARD_SERVICE">STANDARD SERVICE</option>
+                    <option value="SELF_MANAGEMENT">SELF-MANAGEMENT APP</option>
+                    <option value="MENU_APP">MENU APP</option>
                 </select>
             )}
         />

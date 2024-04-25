@@ -26,7 +26,8 @@ const useMenuState = () => {
         try {
             await axios.get("http://localhost:5000/api/menu").then((response) => {
                 setMenus(response.data);
-                
+                console.log("muestro response",response);
+                console.log("muestro menus",menus);
                 setCategotriasMenu(categories)
             })
         } catch (error) {

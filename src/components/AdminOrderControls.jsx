@@ -20,8 +20,8 @@ const AdminOrderControls = () => {
         filtrarPedidos,
     } = usePedidosState();
 
-    const filtrosPedidos =["PENDIENTE","EN_PROCESO","COMPLETADA","CANCELADA","PAGADO","NO_PAGADO"];
-    
+    const filtrosPedidos = ["PENDIENTE", "EN_PROCESO", "COMPLETADA", "CANCELADA", "PAGADO", "NO_PAGADO"];
+
     const closeModal = () => {
         const modal = document.getElementById('staticBackdrop');
         console.log("recupero el modal", modal);
@@ -75,8 +75,8 @@ const AdminOrderControls = () => {
         obtenerPedidos();
     }, []);
 
-    return(
-        
+    return (
+
         <>
             <section className="sectionButtonNew">
                 <h2>GESTION DE PEDIDOS</h2>
@@ -89,21 +89,19 @@ const AdminOrderControls = () => {
             </section>
             <section className="sectionTablesFilters">
                 <form className="row">
-                    <section className="col-12 col-md-5">                        
-                    <section class="dropdown">
-                            <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <section className="col-12 col-md-5">
+                        <section className="dropdown">
+                            <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
-                            <ul class="dropdown-menu ">
+                            <ul className="dropdown-menu">
                                 {filtrosPedidos.map((filtro, index) => (
-                                    <React.Fragment key={index}>
-                                        <li className="" key={index}>
-                                            <a className="dropdown-item " onClick={() => filtrarPedidos(filtro)} href="#">
-                                                {filtro}
-                                            </a>
-                                        </li>
-                                        {index !== filtro.length - 1 && <hr className="m-0" />} {/* Agrega la línea horizontal solo si no es el último elemento */}
-                                    </React.Fragment>
+                                    <li className="" key={index}>
+                                        <a className="dropdown-item" onClick={() => filtrarPedidos(filtro)} href="#">
+                                            {filtro}
+                                        </a>
+                                        {index !== filtrosPedidos.length - 1 && <hr className="m-0" />}
+                                    </li>
                                 ))}
                             </ul>
                             <button type="button" className="buttonReload" onClick={() => obtenerPedidos()}><i className="bi bi-arrow-repeat fs-4"></i></button>
@@ -126,78 +124,75 @@ const AdminOrderControls = () => {
                         <li className="col-3 text-center ">Estado</li>
                     </ul>
 
-                    <section class="accordion" id="accordionExample">
+                    <section className="accordion" id="accordionExample">
                         {pedidos.map((pedido, index) => (
-                            <>
-                                <section key={pedido.id} class="accordion-item containerRows">
-                                    <ul className="accordion-header row py-1" >
-                                        <li className="col-1 ps-1">{index + 1}</li>
-                                        <li className="col-1 ps-1">{pedido.items.length}</li>
-                                        <li className="col-3 ps-3">{pedido.userId}</li>
-                                        <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
-                                        <li className="col-1 li-centrado">
-                                            <button
-                                                className="collapsed m-0"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target={`#${pedido._id}`}
-                                                aria-expanded="false"
-                                                aria-controls={pedido._id}
-                                                onClick={() => desplegarDetalle(pedido._id)}
-                                            >
-                                                <i
-                                                    className={`bi bi-arrow-bar-${idBotonAbierto === pedido._id ? "up" : "down"} m-0`}
-                                                ></i>
-                                            </button>
-                                        </li>
-                                        <li className="col-1 li-centrado ">
-                                            {!pedido.paid && <button className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
-                                            {pedido.paid && <button className="checkButton rounded-5" title="No pagado " >Pagado</button>}
-                                        </li>
 
-                                        <li className="col-3 li-centrado">
-                                            <span style={{width:"6.5rem"}}>{pedido.status}</span>
-                                            <button className="modificationButton" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Modificar " onClick={() => {
-                                                handleModalStatus({
-                                                    id: pedido._id,
-                                                    orden: index + 1,
-                                                    solicitante: pedido.userId,
-                                                    status: pedido.status
-                                                })
-                                            }}>{<i class="bi bi-arrow-left-right"></i>}</button>
-                                        </li>
-                                    </ul>
-                                    <section id={pedido._id} class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                                        {/* pedido.productos.map*/}
-                                        <article class="accordion-body contenedorDetalles">
-                                            <ul>
-                                                <li>
-                                                    <span className="fw-bold ps-2">Productos</span>
-                                                    <span className="fw-bold">Subtotal</span>
+                            <section key={index} className="accordion-item containerRows">
+                                <ul className="accordion-header row py-1" >
+                                    <li className="col-1 ps-1">{index + 1}</li>
+                                    <li className="col-1 ps-1">{pedido.items.length}</li>
+                                    <li className="col-3 ps-3">{pedido.userId}</li>
+                                    <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
+                                    <li className="col-1 li-centrado">
+                                        <button
+                                            className="collapsed m-0"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target={`#${pedido._id}`}
+                                            aria-expanded="false"
+                                            aria-controls={pedido._id}
+                                            onClick={() => desplegarDetalle(pedido._id)}
+                                        >
+                                            <i
+                                                className={`bi bi-arrow-bar-${idBotonAbierto === pedido._id ? "up" : "down"} m-0`}
+                                            ></i>
+                                        </button>
+                                    </li>
+                                    <li className="col-1 li-centrado ">
+                                        {!pedido.paid && <button className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
+                                        {pedido.paid && <button className="checkButton rounded-5" title="No pagado " >Pagado</button>}
+                                    </li>
+
+                                    <li className="col-3 li-centrado">
+                                        <span style={{ width: "6.5rem" }}>{pedido.status}</span>
+                                        <button className="modificationButton" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Modificar " onClick={() => {
+                                            handleModalStatus({
+                                                id: pedido._id,
+                                                orden: index + 1,
+                                                solicitante: pedido.userId,
+                                                status: pedido.status
+                                            })
+                                        }}>{<i className="bi bi-arrow-left-right"></i>}</button>
+                                    </li>
+                                </ul>
+                                <section id={pedido._id} className="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                    <article className="accordion-body contenedorDetalles">
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Productos</span>
+                                                <span className="fw-bold">Subtotal</span>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            {pedido.items.map((item, indexo) => (
+                                                <li key={indexo}>
+                                                    <span>{`- ${item.name}`}</span>
+                                                    <span>{`$ ${item.price}`}</span>
                                                 </li>
-                                            </ul>
-                                            <ul>
-                                                {pedido.items.map((item, index) => (
-                                                    <li key={index}>
-                                                        <span>{`- ${item.name}`}</span>
-                                                        <span>{`$ ${item.price}`}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                            <ul>
-                                                <li>
-                                                        <span className="fw-bold ps-2">Fecha: {formatoFecha(pedido.createdAt)}</span>
-                                                        <span className="fw-bold">Hora: {formatoHora(pedido.createdAt)}</span>
-                                                </li>
-                                            </ul>
-                                        </article>
-                                    </section>
+                                            ))}
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <span className="fw-bold ps-2">Fecha: {formatoFecha(pedido.createdAt)}</span>
+                                                <span className="fw-bold">Hora: {formatoHora(pedido.createdAt)}</span>
+                                            </li>
+                                        </ul>
+                                    </article>
                                 </section>
-                            </>
+                            </section>
                         ))}
                     </section>
                 </section>
-
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog ">
                         <div className="modal-content tamano-modal">
@@ -213,22 +208,22 @@ const AdminOrderControls = () => {
                                     <p>{!modalInformacion.paid && "Pago: No Realizado"}</p>
                                     <p>{`Estado actual: ${modalInformacion.status}`}</p>
                                     <fieldset>
-                                    <legend className="fs-5 fw-semibold"> Modificar Estado</legend>
-                                    <Controller                                    
-                                        id="status"
-                                        name="status"
-                                        control={control}
-                                        rules={{ required: true }}
-                                        render={({ field }) => (
-                                            <select {...field} className="form-select" aria-label="Default select example" required>
-                                                <option value="" hidden selected>Seleccione un estado</option>
-                                                <option value="EN_PROCESO">Cambiar a EN PROCESO</option>
-                                                <option value="COMPLETADA">Cambiar a COMPLETADA</option>
-                                                <option value="CANCELADA">Cambiar a CANCELADA</option>
-                                            </select>
-                                        )}
+                                        <legend className="fs-5 fw-semibold"> Modificar Estado</legend>
+                                        <Controller
+                                            id="status"
+                                            name="status"
+                                            control={control}
+                                            rules={{ required: true }}
+                                            render={({ field }) => (
+                                                <select {...field} defaultValue={modalInformacion.status} className="form-select" aria-label="Default select example" required>
+                                                    <option value="" hidden >Seleccione un estado</option>
+                                                    <option value="EN_PROCESO">Cambiar a EN PROCESO</option>
+                                                    <option value="COMPLETADA">Cambiar a COMPLETADA</option>
+                                                    <option value="CANCELADA">Cambiar a CANCELADA</option>
+                                                </select>
+                                            )}
                                         />
-                                        </fieldset>
+                                    </fieldset>
                                     <section className="modal-footer">
                                         <button type="button" className="btn text-dark" data-bs-dismiss="modal" onClick={closeModal}>Cerrar</button>
                                         <button type="submit" className="btn text-dark" data-bs-dismiss={"modal"}>Confirmar</button>

@@ -43,10 +43,14 @@ const ServiceMenus = () => {
             setProductOrder(nuevaListaProductos);
         }
     };
-
+    const cancelarPedido=()=>{
+        setProductOrder([]);
+        closeModal();
+    }
     const generarPedido = async () => {
         try {
 
+            /*  OBTENER ID DEL TOKEN */
             const userId = "id usuario";
             const items = productOrderList;
             let totalPrice = 0;
@@ -56,9 +60,9 @@ const ServiceMenus = () => {
             console.log(userId, items, totalPrice);
             await axios.post("http://localhost:5000/api/order", { userId, items, totalPrice })
                 .then(response => {
-                    console.log(response);
-                    closeModal();
+                    cancelarPedido()
                 })
+
         } catch (error) {
             console.log(error);
 
@@ -67,38 +71,26 @@ const ServiceMenus = () => {
 
     useEffect(() => {
         setCantidadProducto(productOrderList.length)
-        console.log(productOrderList);
+        console.log("stete categorias",productOrderList);
     }, [productOrderList])
 
     return (
 
         <>
-            <Navbar />
             <main id='fondoMenu'>
                 <section className='text-end p-3'>
-                    <button type="button" onClick={() => { openModal(true) }} class="btn btn-light">
+                    <button type="button" onClick={() => { openModal(true) }} className="btn btn-light">
                         CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
                     </button>
                 </section>
-                <section className='w-100'>
-                    <button onClick={() => { agregarProductoCarrito(products[0]) }}>pizza</button>
-                </section>
-                <section className='w-100'>
-                    <button onClick={() => { agregarProductoCarrito(products[1]) }}> sanguche</button>
-                </section>
-                <section className='w-100'>
-                    <button onClick={() => { agregarProductoCarrito(products[2]) }}>cocacola </button>
-                </section>
-                <section className='w-100'>
-                    <button className='btn btn-dark' onClick={() => { generarPedido() }}>Generar Pedido </button>
-                </section>
 
-                <ContenedorCarrouselProductos />
+
+                <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito}/>
 
 
                 {isOpen && <ModalEstructuraBase closeModal={closeModal} >
                     <h3>Carrito de compras</h3>
-                    <ContenedorCarritoCompras productOrderList={productOrderList} generarPedido={generarPedido} quitarProductoCarrito={quitarProductoCarrito} closeModal={closeModal} />
+                    <ContenedorCarritoCompras productOrderList={productOrderList} generarPedido={generarPedido} quitarProductoCarrito={quitarProductoCarrito} cancelarPedido={cancelarPedido} closeModal={closeModal} />
                 </ModalEstructuraBase>}
             </main>
             <Footer />

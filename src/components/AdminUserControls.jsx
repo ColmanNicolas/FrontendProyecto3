@@ -37,15 +37,15 @@ const AdminUserControls = ({ userList }) => {
             <section className="sectionTablesFilters">
                 <form className="row">
                     <section className="col-12 col-md-5">
-                        <section class="dropdown">
-                            <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <section className="dropdown">
+                            <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
 
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
+                            <ul className="dropdown-menu">
+                                <li><a className="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
                                 <hr className="m-0" />
-                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
+                                <li><a className="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
                             </ul>
                             <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                         </section>
@@ -67,7 +67,7 @@ const AdminUserControls = ({ userList }) => {
                         {users.map((usuario,index) => (
                             /*mostrar empleados */
                             (userList === "EMPLEADOS" && (usuario.role != "USER_ROLE") &&
-                                <ul key={usuario._id} className="row py-2" >
+                                <ul key={index} className="row py-2" >
                                     <li className="col-3">{usuario.name}</li>
                                     <li className="col-3">{usuario.email}</li>
                                     <li className="col-2">{
@@ -85,7 +85,7 @@ const AdminUserControls = ({ userList }) => {
                             )
                             ||   /*mostrar clientes */
                             (userList === "CLIENTES" && (usuario.role === "USER_ROLE") &&
-                                <ul key={usuario._id} className="row py-2" >
+                                <ul key={index} className="row py-2" >
                                     <li className="col-3">{usuario.name}</li>
                                     <li className="col-3">{usuario.email}</li>
                                     <li className="col-2 ">{
