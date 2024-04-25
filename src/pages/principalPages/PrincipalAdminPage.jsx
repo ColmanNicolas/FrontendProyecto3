@@ -150,7 +150,6 @@ const PrincipalAdminPage = () => {
                     </section>
                 </article>
             </main>
-  
         </>
     )
 }
