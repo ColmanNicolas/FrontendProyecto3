@@ -11,20 +11,17 @@ import superimagen from "../../public/sandwich-de-milanesa.jpg"
 
 const categories = [
     "Promociones",
-    "Comida extranjera",
-    "Bebidas",
-    "Bebidas alcohólicas",
+    "Entradas",
     "Al plato",
     "Empanadas",
-    "Entradas",
     "Hamburguesas",
-    "Fideos",
-    "Postres",
+    "Pastas",
     "Pizzas",
-    "Sanguches",
-    "Sopas",
+    "Sandwiches",
     "Sushi",
-    "Tacos"
+    "Postres",
+    "Bebidas",
+    "Bebidas alcohólicas",
 ];
 
 function ContenedorCarrouselProductos({agregarProductoCarrito}) {
@@ -73,8 +70,8 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
 
     return (
         <div id='contenedor-principal-menu'>
-            <h1 className="title fs-2">Selección de Menú</h1>
-            <div className="categories-carousel">
+            <h1 className="title fs-2 ">Selección de Menú</h1>
+            <div className="categories-carousel mt-4">
                 <AliceCarousel
                     mouseTracking
                     items={categories.map(category => (
@@ -120,7 +117,7 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
                              {/*IMAGEN DE LA TARJETA GRANDE */}
 
                         <figure>
-                            <img src={superimagen} alt={selectedProduct.name} className="selected-product-image" />
+                            <img src={superimagen} alt={selectedProduct.name} className="object-fit-contain" />
                         </figure>
 
                         
