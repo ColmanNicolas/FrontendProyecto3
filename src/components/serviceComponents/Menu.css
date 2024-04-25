@@ -1,0 +1,48 @@
+*{
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;      
+}
+
+.menu-item {
+  display: flex; 
+  flex-direction: column; 
+  border: 1px solid #ccc; 
+  padding: 0.5rem;
+  padding-bottom: 0; 
+  box-sizing: border-box;
+}
+.menu-item section{
+align-items: center;
+ height: 2.5rem;
+}
+
+.detalle-menu {
+  font-size: 0.9rem !important;
+  margin-top: 0; 
+  padding-bottom: 0;
+}
+.comida-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.precio-menu {
+  color: red;
+  margin-left: auto; 
+}
+.btn-quitar-producto{
+  color: red;
+  padding-inline: 0.5rem;
+  border-radius: 1rem;
+}
+.btn-quitar-producto:hover{
+  outline: 1px solid red;
+}
+
+  
+  @media screen and (max-width: 768px) {
+    .menu-item {
+      flex-basis: 100%;
+    }
+  }
