@@ -56,7 +56,9 @@ const Form = () => {
                 toast.success(`El usuario ${data.user.name} se está procesando. La aprobación será enviada a ${data.user.email}`, {
                     theme: 'dark'
                 });
-                setTimeout(navigate, 5500);
+                setTimeout(() => {
+                    navigateTo("/service/login");
+                }, 4500);
             }
         } catch (error) {
             toast.error('No se puede registrar el usuario', {
@@ -68,9 +70,6 @@ const Form = () => {
         }, 3000);
     }
 /*SE USA ESTE NAVIGATE? */
-    const navigate = () => {
-        navigateTo('/login');
-    }
 
     const resetear = () => {
         reset();
@@ -87,7 +86,7 @@ const Form = () => {
     const cargarServiciosSelect = async()=>{
 
         await filtrarRolUsuarios("ADMIN_ROLE");
-
+        
         if (!Array.isArray(users)) {
             console.error('La función cargarServiciosSelect requiere una lista de usuarios como parámetro.');
             return;
@@ -222,7 +221,7 @@ return (
                     />
                 </section>
                 <div className='d-flex gap-3 justify-content-end'>
-                    <Link to='/bar-app/home' className="btn btn-primary">Volver</Link>
+                    <Link to='/service/login' className="btn btn-primary">Volver</Link>
                     <button type="button" className="btn btn-primary" onClick={resetear}>Resetear</button>
                     <button type="submit" className="btn btn-primary" disabled={isLoading}>Enviar</button>
                 </div>

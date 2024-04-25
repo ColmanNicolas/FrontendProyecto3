@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeOpenText, faLock, faEye, faEyeSlash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import '../formRegister/form.css';
 const LoginComp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const navigateLogin = useNavigate()
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -37,7 +38,7 @@ const LoginComp = () => {
                 });
                 console.log("Token recibido:", data.token); 
                 sessionStorage.setItem('loguedUser', JSON.stringify(data));
-                setTimeout(navigate, 4500)
+                setTimeout(navigateLogin("/service/products-menu"), 3500)
             }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
@@ -47,9 +48,7 @@ const LoginComp = () => {
         }
     };
 
-    const navigate = () => {
-        window.location.pathname = '/bar-app/home';
-    };
+
 
     const enviarFormulario = body => {
         login(body)
@@ -122,7 +121,7 @@ const LoginComp = () => {
                         )}
                     </div>
                     <div className='d-flex gap-3 justify-content-end'>
-                        <Link to='/bar-app/home' className='btn btn-primary'>
+                        <Link to='/service/register' className='btn btn-primary'>
                             Volver
                         </Link>
                         <button type='submit' className='btn btn-primary'>
