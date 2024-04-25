@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelopeOpenText, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeOpenText, faLock, faEye, faEyeSlash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import 'react-toastify/dist/ReactToastify.css';
 import '../formRegister/form.css';
 
@@ -129,8 +129,22 @@ const LoginComp = () => {
                             Enviar
                         </button>
                     </div>
+                                
+            <div className="text-center mt-3">
+                <Link to="/404" className="text-decoration-none">
+                    ¿Olvidaste tu contraseña?
+                </Link>
+            </div>
+            <div className="text-center mt-2">
+                <Link to="/service/register" className="text-decoration-none">
+                    <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+                    Registrarse
+                </Link>
+            </div>
                 </form>
             </div>
+
+
             <ToastContainer />
         </>
     );

@@ -26,8 +26,8 @@ function App() {
           <Route path='/bar-app/mi-cuenta/:id' element={<PrincipalMyAccount/>} />
           <Route path='/bar-app/principal-admin-controls' element={<PrincipalAdminPage/>} />
           <Route path='/service/admin-controls' element={<ServiceAdminPage/>} />
-          <Route path='/register' element={<RegisterUser/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/service/register' element={<RegisterUser/>} />
+          <Route path='/service/login' element={<Login/>} />
           <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route />
         </Routes>
