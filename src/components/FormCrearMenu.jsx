@@ -1,26 +1,62 @@
 import { Controller, useForm } from "react-hook-form";
 import useMenuState from "../hooks/useMenuState";
+import { useEffect } from "react";
+import axios from "axios";
 
-const FormCrearMenu = ({ closeModal }) => {
+const FormCrearMenu = ({ closeModal, accionarModal }) => {
 
-    const { handleSubmit, register, formState: { errors }, watch, reset, control } = useForm();
+    const { handleSubmit, setValue, register, formState: { errors, isSubmitSuccessful }, watch, reset, control, focus } = useForm();
 
-    const { crearMenu } = useMenuState();
+    const { menus, obtenerMenus, crearMenu, modificarMenu, obtenerUnMenu, borrarMenu } = useMenuState();
 
     const enviarFormulario = async (data) => {
         try {
-            await crearMenu(data);
-            console.log("Formulario Enviado");
+            switch (accionarModal.accion) {
+                case "NUEVO":
+                    await crearMenu(data);
+                    break;
+                case "MODIFICAR":
+                    console.log("modifico menu");
+
+                    await modificarMenu(accionarModal.id, data);
+                    break;
+                default:
+                    console.log("no hago nada");
+                    break;
+            }
             reset();
             closeModal(); // Cierra el modal después de enviar el formulario
         } catch (error) {
             console.log("Ocurrió un error", error);
         }
     };
+
+    const handleBorrar = async () => {
+        await borrarMenu(accionarModal.id);
+        closeModal();
+    };
     const handleClose = () => {
         closeModal();
     };
-
+    const setearInformacionMenu = async () => {
+        try {
+            await axios.get(`http://localhost:5000/api/menu/${accionarModal.id}`).then((response) => {
+                console.log("recibo response", response);
+                setValue('category', response.data.category);
+                setValue('name', response.data.name);
+                setValue('price', response.data.price);
+                setValue('state', response.data.state);
+                setValue('detail', response.data.detail);
+            })
+        } catch (error) {
+            console.error('Error al crear menú:', error);
+        }
+    }
+    useEffect(() => {
+        if (accionarModal.accion === "MODIFICAR") {
+            setearInformacionMenu();
+        }
+    }, [])
     const categories = [
         "Promociones",
         "Comida Extranjera",
@@ -42,7 +78,7 @@ const FormCrearMenu = ({ closeModal }) => {
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <section className="row">
-                <section className="col-6" >
+                <section className="col-12 col-md-6" >
                     <label htmlFor="">Categoria</label>
                     <Controller
                         name="category"
@@ -52,14 +88,14 @@ const FormCrearMenu = ({ closeModal }) => {
                         render={({ field }) => (
                             <select {...field} className="form-select" aria-label="Default select example" required>
                                 <option value="" disabled hidden>Selecciona una categoría</option>
-                                {categories.map(category => (
-                                    <option key={category.toLowerCase()} value={category.toLowerCase()}>{category}</option>
+                                {categories.map((category, index) => (
+                                    <option key={index} value={category.toLowerCase()}>{category}</option>
                                 ))}
                             </select>
                         )}
                     />
                 </section>
-                <section className="col-6" >
+                <section className="col-12 col-md-6" >
                     <label htmlFor="">Plato</label>
                     <input type="text" {...register("name", {
                         required: true,
@@ -95,9 +131,10 @@ const FormCrearMenu = ({ closeModal }) => {
             </section>
             <section className="modalBtnContainer">
                 <button onClick={handleClose}>Cancelar</button>
+                {accionarModal.accion == "MODIFICAR" && <button onClick={handleBorrar}>Borrar</button>}
                 <button onClick={handleSubmit}>Confirmar</button>
             </section>
         </form>
     );
 };
-export default FormCrearMenu;
+export default FormCrearMenu

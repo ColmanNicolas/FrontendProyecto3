@@ -32,8 +32,9 @@
 .headerLanding {
     background-color: rgb(24, 29, 29);
     height: 100px;
+    padding-left: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     position: relative;
 
@@ -67,6 +68,17 @@
     margin: 0;
 }
 
+
+
+
+@media(min-width:1000px){
+.contenedorImagen figcaption {
+    font-size: 3rem !important;
+}
+.contenedorImagenPrueba figcaption{
+    font-size: 2.5rem !important;
+}
+}
 /* Propiedades del menu despelgable y Navbar*/
 #contenedor-menu {
     scroll-margin-top: 10rem;
@@ -107,12 +119,12 @@
 }
 
 #contenedor-menu:target #contenedor-enlaces {
-    height: 33.5vh;
+    height: 19rem;
     transition: height 1s ease;
 }
 
 #contenedor-enlaces {
-    padding-top: 7vh;
+    padding-top: 4rem;
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -202,7 +214,7 @@ margin-inline: 1rem;
 .contenedorImagen figcaption {
     position: absolute;
     text-align: center;
-    font-size: 4rem;
+    font-size: 2rem;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -10%);
@@ -530,8 +542,8 @@ margin-inline: 1rem;
 .contenedorImagenPrueba figcaption {
     position: absolute;
     text-align: center;
-    font-size: 2.2rem;
-    top: 50%;
+    font-size: 1.4rem;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -10%);
     background: rgba(0, 0, 0, 0.5);

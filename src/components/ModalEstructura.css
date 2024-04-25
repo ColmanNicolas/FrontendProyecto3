@@ -16,12 +16,15 @@
     color: black;
     background-color: aliceblue;
     border-radius: 0.25rem;
-    max-width: 55rem;
-    width: 100%;
+    max-width: 50rem;
+    width: 95%;
     position: fixed;
     top: 30%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+@media(max-width:750px){
+    .modalContainer{width: 80%;}
 }
 .modalHeader{
     color: aliceblue;

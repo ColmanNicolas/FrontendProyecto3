@@ -37,15 +37,15 @@ const AdminUserControls = ({ userList }) => {
             <section className="sectionTablesFilters">
                 <form className="row">
                     <section className="col-12 col-md-5">
-                        <section class="dropdown">
-                            <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <section className="dropdown">
+                            <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
 
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
+                            <ul className="dropdown-menu">
+                                <li><a className="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
                                 <hr className="m-0" />
-                                <li><a class="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
+                                <li><a className="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
                             </ul>
                             <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                         </section>
@@ -59,42 +59,42 @@ const AdminUserControls = ({ userList }) => {
                     <ul className="tableTitles row " >
                         <li className="col-3">Nombre</li>
                         <li className="col-3">Email</li>
-                        {userList === "EMPLEADOS" && <li className="col-2">rol</li>}
-                        {userList === "CLIENTES" && <li className="col-2">estado</li>}
+                        {userList === "EMPLEADOS" && <li className="col-2">Rol</li>}
+                        {userList === "CLIENTES" && <li className="col-2">Estado</li>}
                         <li className="col-4 text-center">Acciones</li>
                     </ul>
                     <section className="containerRows">
-                        {users.map((usuario) => (
+                        {users.map((usuario,index) => (
                             /*mostrar empleados */
                             (userList === "EMPLEADOS" && (usuario.role != "USER_ROLE") &&
-                                <ul key={usuario._id} className="row py-2" >
+                                <ul key={index} className="row py-2" >
                                     <li className="col-3">{usuario.name}</li>
                                     <li className="col-3">{usuario.email}</li>
                                     <li className="col-2">{
                                         (userList === "EMPLEADOS" && (usuario.role)) ||
                                         (userList === "CLIENTES" && ((usuario.status && "Habilitado") || "En espera"))
                                     }</li>
-                                    <li className="col-4 text-center containerButtonActions">
+                                    <li className="col-4 li-centrado containerButtonActions">
                                         {(usuario.role != "ADMIN_ROLE") && <>
                                             <button className="infoButton" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
-                                            {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
-                                            {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
+                                            {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}>Dar baja <i className="bi bi-x-lg"></i></button>}
+                                            {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}>Aprobar <i className="bi bi-check-lg "></i></button>}
                                         </>}
                                     </li>
                                 </ul>
                             )
                             ||   /*mostrar clientes */
                             (userList === "CLIENTES" && (usuario.role === "USER_ROLE") &&
-                                <ul key={usuario._id} className="row py-2" >
+                                <ul key={index} className="row py-2" >
                                     <li className="col-3">{usuario.name}</li>
                                     <li className="col-3">{usuario.email}</li>
-                                    <li className="col-2">{
+                                    <li className="col-2 ">{
                                         (userList === "CLIENTES" && ((usuario.status && "Habilitado") || "En espera"))}
                                     </li>
-                                    <li className="col-4 text-center containerButtonActions">
+                                    <li className="col-4 li-centrado  containerButtonActions">
                                         <button className="infoButton" title="Mas Información" onClick={() => { "masInfo" }}><i className="bi bi-info-lg"></i></button>
-                                        {usuario.status && <button className="deleteButton" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}><i className="bi bi-x-lg"></i></button>}
-                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}><i className="bi bi-check-lg "></i></button>}
+                                        {usuario.status && <button className="deleteButton px-3" title="Eliminar " onClick={() => { borrarUsuario(usuario.id) }}>Borrar <i className="bi bi-x-lg"></i></button>}
+                                        {!usuario.status && <button className="checkButton" title="Habilitar " onClick={() => { darAltaUsuario(usuario.id) }}>Aprobar <i className="bi bi-check-lg "></i></button>}
                                     </li>
                                 </ul>
                             )
