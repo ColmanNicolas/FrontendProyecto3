@@ -11,7 +11,7 @@ const NavbarAdmin = ({ devolverTabla }) => {
                 <section >
                     <section className="navbarTitleButton">
                         <h2 >ADMINISTRACION </h2>
-                        <button onClick={() => changeNavbarState()}><i className="bi bi-box-arrow-left " ></i></button>
+                        <button onClick={() => changeNavbarState()}><i className="bi bi-box-arrow-left text-white" ></i></button>
                     </section>
                     <div className="lineaDivisora"></div>
                     <ul>
@@ -37,7 +37,7 @@ const NavbarAdmin = ({ devolverTabla }) => {
             {!isOpen &&
                 <nav className="navbarSecondary" >
                     <section className="navbarTitleButton">
-                        <button onClick={() => changeNavbarState()}><i className="bi bi-list fs-1"></i></button>
+                        <button onClick={() => changeNavbarState()}><i className="bi bi-list"></i></button>
                     </section>
                 </nav>}
         </>

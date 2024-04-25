@@ -66,10 +66,10 @@ const LoginComp = () => {
                             Correo Electrónico
                         </label>
                         <div className='email-input'>
-                            <FontAwesomeIcon icon={faEnvelopeOpenText} className='input-icon' />
+                        <FontAwesomeIcon icon={faEnvelopeOpenText} className='input-icon' />
                             <input
                                 type='email'
-                                className='form-control'
+                                className='form-control-diego'
                                 id='correo'
                                 placeholder='email@test.com'
                                 {...register('email', {
@@ -101,7 +101,7 @@ const LoginComp = () => {
                             <FontAwesomeIcon icon={faLock} className='input-icon-lock' />
                             <input
                                 type={showPassword ? 'text' : 'password'}
-                                className='form-control'
+                                className='form-control-diego'
                                 id='password'
                                 placeholder='Juan123'
                                 {...register('password', {

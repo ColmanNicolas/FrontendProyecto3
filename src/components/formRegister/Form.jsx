@@ -112,7 +112,7 @@ return (
                         <FontAwesomeIcon icon={faIdCard} className="input-icon" />
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control-diego"
                             id="nombre"
                             placeholder='Juan López'
                             {...register('name', {
@@ -134,7 +134,7 @@ return (
                         <FontAwesomeIcon icon={faEnvelopeOpenText} className="input-icon" />
                         <input
                             type="email"
-                            className="form-control"
+                            className="form-control-diego"
                             id="correo"
                             placeholder='email@test.com'
                             {...register('email', {
@@ -156,7 +156,7 @@ return (
                         <FontAwesomeIcon icon={faLock} className="input-icon-lock" />
                         <input
                             type={showPassword ? "text" : "password"}
-                            className="form-control"
+                            className="form-control-diego"
                             id="password"
                             placeholder='Juan123'
                             {...register('password', {
@@ -183,7 +183,7 @@ return (
                         <FontAwesomeIcon icon={faLock} className="input-icon" />
                         <input
                             type={showRepeatPassword ? "text" : "password"}
-                            className="form-control"
+                            className="form-control-diego"
                             id="password2"
                             placeholder='Juan123'
                             {...register('repetirContraseña', {
