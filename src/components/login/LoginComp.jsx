@@ -10,6 +10,7 @@ import '../formRegister/form.css';
 const LoginComp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const navigateTo = useNavigate();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -51,7 +52,9 @@ const LoginComp = () => {
         }
     };
 
-
+    const navigate = () => {
+        window.location.pathname = '/bar-app/home';
+    };
 
     const enviarFormulario = body => {
         login(body)
@@ -68,10 +71,10 @@ const LoginComp = () => {
                             Correo Electrónico
                         </label>
                         <div className='email-input'>
-                        <FontAwesomeIcon icon={faEnvelopeOpenText} className='input-icon' />
+                            <FontAwesomeIcon icon={faEnvelopeOpenText} className='input-icon' />
                             <input
                                 type='email'
-                                className='form-control-diego'
+                                className='form-control-diego form-control'
                                 id='correo'
                                 placeholder='email@test.com'
                                 {...register('email', {
@@ -103,7 +106,7 @@ const LoginComp = () => {
                             <FontAwesomeIcon icon={faLock} className='input-icon-lock' />
                             <input
                                 type={showPassword ? 'text' : 'password'}
-                                className='form-control-diego'
+                                className='form-control-diego form-control'
                                 id='password'
                                 placeholder='Juan123'
                                 {...register('password', {
@@ -124,25 +127,12 @@ const LoginComp = () => {
                         )}
                     </div>
                     <div className='d-flex gap-3 justify-content-end'>
-                        <Link to='/service/register' className='btn btn-primary'>
+                        <Link to='/bar-app/home' className='btn btn-primary'>
                             Volver
                         </Link>
                         <button type='submit' className='btn btn-primary'>
                             Enviar
                         </button>
-                    </div>
-                                
-            <div className="text-center mt-3">
-                <Link to="/404" className="text-decoration-none">
-                    ¿Olvidaste tu contraseña?
-                </Link>
-            </div>
-            <div className="text-center mt-2">
-                <Link to="/service/register" className="text-decoration-none">
-                    <FontAwesomeIcon icon={faUserPlus} className="me-2" />
-                    Registrarse
-                </Link>
-            </div>
                     </div>
                                 
             <div className="text-center mt-3">
@@ -166,3 +156,4 @@ const LoginComp = () => {
 };
 
 export default LoginComp;
+
