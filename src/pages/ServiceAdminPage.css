@@ -14,12 +14,24 @@
     z-index: 999;
 }
 .contenedorPrincipal{
+    background-color: #f08e8e49;
     position: relative;
+    flex-direction: column;
 }
-
-.navbarServiceAdmin {
-    height: 90vh;
+#contenedor-navButton-cerrarSesion{
+    width: 100%;
     margin-top: 10vh;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: end;
+    padding-inline: 1rem;
+}
+#contenedor-navButton-cerrarSesion button{
+
+}
+.navbarServiceAdmin {
+    margin-top: 10vh;
+    height: 90vh;
     padding-block: 0.3em;
     padding-inline: 0.3em;
     background-color: rgb(31, 30, 30);
@@ -32,7 +44,6 @@
 }
 .navbarTitleButton {
     margin-block: 0.7rem;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,8 +61,8 @@
 
 }
 .navbarTitleButton button i{  
-    color: white;
-    font-size: 1.7rem;
+    color: rgb(0, 0, 0);
+    font-size: 3rem ;
     padding-inline: 0.4rem;
 }
 
@@ -94,11 +105,12 @@
     list-style: none;
 }
 .navbarSecondary{
-    background-color: rgb(31, 30, 30);
-    margin-top: 10vh;
-    width: 3.5rem;
-    height: 100vh;
-    position: fixed;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 6.7rem;
+    position: absolute;
+}
+.navbarSecondary button{
+    color: black;
 }
 
 .containerUserBox {
@@ -121,14 +133,11 @@
 .lineaDivisora {
     border: 1px solid rgba(255, 255, 255, 0.507);
 }
-
+/*CONTENIDO PRINCIPAL*/
 .mainServiceAdmin {
-    background-color: #ec6d6d49;
     width: 100%;
-    height: 90vh;
-    margin-top: 10vh;
+    min-height: 90vh;
     padding: 1rem;
-    margin-left: 3.5rem;
 }
 
 .sectionButtonNew {
@@ -370,6 +379,15 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+}
+.containerRows li{
+    display:flex;
+    align-items: center;
+    height: 2rem ;
+}
+.containerRows .li-centrado{
+    justify-content: center !important;
+
 }
 
 .containerRows article ul li span:nth-child(1){

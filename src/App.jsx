@@ -11,6 +11,7 @@ import '../src/App.css'
 import RegisterUser from './pages/register/RegisterUser'
 import Login from './pages/login/LoginUser'
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import ServiceMenuList from './pages/ServiceMenuList'
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           <Route path='/service/register' element={<RegisterUser/>} />
           <Route path='/service/login' element={<Login/>} />
           <Route path='/service/products-menu' element={<ServiceMenus/>} />
+          <Route path='/service/menu-list' element={<ServiceMenuList/>} />
+          <Route path='/service/register' element={<RegisterUser/>} />
+          <Route path='/service/login' element={<Login/>} />
           <Route />
         </Routes>
       </BrowserRouter>

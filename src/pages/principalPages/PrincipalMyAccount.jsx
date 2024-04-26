@@ -1,6 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import "../principalPages/PrincipalMyAccount.css"
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FormPagoServicio from "../../components/FormPagoServicio";
@@ -28,24 +28,10 @@ const PrincipalMyAccount = () => {
             console.error('Error al completar campos:', error);
         }
     }
+
     const enviarFormularioModificacion = (dataModificaction)=>{
         console.log("llego aqui por 100",dataModificaction);
 
-
-    }
-    const enviarFormularioPago = async (dataPay)=>{
-        console.log("llego aqui",dataPay);
-        try {
-            await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`)
-            .then(response =>{
-                console.log("pago realizado",response);
-            }
-            )
-         
-        } catch (error) {
-            console.error('Error al completar el pago:', error);
-            
-        }
     }
     const cerrarSesion = () => {
         console.log("cierro Sesion usuario principal");
@@ -167,7 +153,7 @@ const PrincipalMyAccount = () => {
                             {!habilitado && <button className="fondoRojo" disabled>No habilitado</button>}
                             {habilitado && <button className="fondoVerde" disabled>En activo</button>}
                         </section>
-                        <a href="" className="">Redirigirse a logeo Servicio <i className="bi bi-arrow-up-right-circle"></i></a>
+                        <Link to={"/service/login"}>Redirigirse a logeo Servicio <i className="bi bi-arrow-up-right-circle"></i></Link>
                     </section>
                 </article>
             </main>

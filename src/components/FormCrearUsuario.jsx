@@ -22,7 +22,7 @@ const FormCrearUsuario = ({ closeModal , form}) => {
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <section className="row">
-                <section className="col-6">
+                <section className="col-12 col-md-6">
                     <section >
                         <label htmlFor="">Nombre</label>
                         <input type="text" {...register("name", {
@@ -42,7 +42,7 @@ const FormCrearUsuario = ({ closeModal , form}) => {
                         />
                     </section>
                 </section>
-                <section className="col-6">
+                <section className="col-12 col-md-6">
                     <section >
                         <label htmlFor="">Contraseña</label>
                         <input type="password" {...register("password", {

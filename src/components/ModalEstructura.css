@@ -16,18 +16,23 @@
     color: black;
     background-color: aliceblue;
     border-radius: 0.25rem;
-    max-width: 55rem;
-    width: 100%;
+    max-width: 50rem;
+    width: 95%;
     position: fixed;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
+@media(max-width:750px){
+    .modalContainer{width: 100%; }
+    .modalBody .menu h3{
+        font-size: 1.2rem;
+       }
+}
 .modalHeader{
     color: aliceblue;
-    background-color:#c40202;
+    background-color:#b91313;
     border-radius: 0.25rem 0.25rem 0  0;
-
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -42,6 +47,11 @@
     padding: 1rem;
     display: flex;
     align-items: center;
+}
+
+.modalBody .menu {
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 .modalBody form {
