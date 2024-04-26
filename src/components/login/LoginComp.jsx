@@ -37,10 +37,11 @@ const LoginComp = () => {
                     theme: 'dark'
                 });
                 console.log("Token recibido:", data.token); 
-                sessionStorage.setItem('loguedUser', JSON.stringify(data));
+                sessionStorage.setItem('loguedUser', JSON.stringify({token:data.token,id:data.user.id}));
                 if (data.user.role === "ADMIN_ROLE") {
                     navigateTo('/service/admin-controls');
                 } else {
+            
                     setTimeout(navigate, 2000);
                 }
             }
@@ -53,7 +54,7 @@ const LoginComp = () => {
     };
 
     const navigate = () => {
-        window.location.pathname = '/bar-app/home';
+        window.location.pathname = '/service/menu-products';
     };
 
     const enviarFormulario = body => {
