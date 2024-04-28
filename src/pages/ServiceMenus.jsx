@@ -82,6 +82,7 @@ const ServiceMenus = () => {
                     <button type="button" onClick={() => { openModal(true) }} className="btn btn-light">
                         CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
                     </button>
+                    
                 </section>
 
 

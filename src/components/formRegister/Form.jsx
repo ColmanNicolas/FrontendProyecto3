@@ -95,15 +95,16 @@ const Form = () => {
     const cargarServiciosSelect = async () => {
 
         await filtrarRolUsuarios("ADMIN_ROLE");
-
+        console.log("traigo locales",users);
         if (!Array.isArray(users)) {
             console.error('La función cargarServiciosSelect requiere una lista de usuarios como parámetro.');
             return;
         }
         const selectInfo = users.map(user => ({ value: user.id, label: user.name }));
+        console.log("selected info ",selectInfo);
+
         setServiceOptions(selectInfo);
     }
-
 
     useEffect(() => {
         cargarServiciosSelect();
@@ -183,7 +184,7 @@ const Form = () => {
                         {errors.password && errors.password.type === 'required' && <p className='text-danger fs-6 mt-1'>Inserte una contraseña</p>}
                         {errors.password && errors.password.type === 'minLength' && <p className='text-danger fs-6 mt-1'>Debe contener al menos 6 caracteres</p>}
                         {errors.password && errors.password.type === 'maxLength' && <p className='text-danger fs-6 mt-1'>Debe contener menos de 26 caracteres</p>}
-                        {errors.password && errors.password.type === 'pattern' && <p className='text-danger fs-6 mt-1'>Debe tener al menos una mayúscula, una minúscula y un número</p>}
+                        {errors.password && errors.password.type === 'pattern' && <p className='text-danger fs-6 mt-1'>Debe empezar con una mayúscula y contener por lo menos un número</p>}
                     </div>
                     <div className="mb-3 input-container">
                         <label htmlFor="repetirContraseña" className="form-label">Repetir Contraseña</label>

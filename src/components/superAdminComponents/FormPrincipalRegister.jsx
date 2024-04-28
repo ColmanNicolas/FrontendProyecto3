@@ -41,7 +41,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                             {...register("name", {
                                 required: "Campo requerido",
                                 minLength: { value: 3, message: "Mínimo 3 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                maxLength: { value: 45, message: "Máximo 35 caracteres" },
                                 pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                             })}
                         />
@@ -136,7 +136,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                                 required: "Campo requerido",
                                 minLength: { value: 6, message: "Mínimo 6 caracteres" },
                                 maxLength: { value: 35, message: "Máximo 35 caracteres" },
-                                pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un nuumero" }
+                                pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un numero" }
                         })} />
                         {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p>
                         )}

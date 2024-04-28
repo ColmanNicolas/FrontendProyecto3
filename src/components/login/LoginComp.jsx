@@ -114,7 +114,6 @@ const LoginComp = () => {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 25,
-                                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/
                                 })}
                             />
                             <FontAwesomeIcon

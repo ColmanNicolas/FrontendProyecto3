@@ -41,11 +41,11 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
                         <input type="email" className="form-control mb-0" id="userEmail" {...register("principalEmail", {
                             required: true,
-                            maxLength: 35,
+                            maxLength: 45,
                         })} />
                         {errors.principalEmail && (
                             (errors.principalEmail.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) ||
-                            (errors.principalEmail.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) 
+                            (errors.principalEmail.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">el maximo de caracteres es 45 </p>) 
                         )}
                     </section>
                     <section >
