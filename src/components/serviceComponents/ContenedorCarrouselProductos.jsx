@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css'; // Importa los estilos del carrusel
-import '../serviceComponents/ContenedorCarrouselProductos.css'; // Importar estilos CSS externos
+import 'react-alice-carousel/lib/alice-carousel.css';
+import '../serviceComponents/ContenedorCarrouselProductos.css';
 import useMenuState from '../../hooks/useMenuState';
 
-/* PODES IMPORTAR MAS IMAGENES ACA*/
-import superimagen from "../../public/sandwich-de-milanesa.jpg"
-
-
+import superimagen from "../../public/sandwich-de-milanesa.jpg";
 
 const categories = [
     "Promociones",
@@ -30,11 +27,9 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
     const [selectedCategory, setSelectedCategory] = useState('Promociones');
     const { menus, categoriasMenu, obtenerMenus, filtrarMenus } = useMenuState();
 
-
     useEffect(() => {
         obtenerMenus();
     }, []);
-
 
     const handleProductSelect = (product) => {
         console.log("muestro productSelected", product);
@@ -43,7 +38,6 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
 
     const handleCategorySelect = (category) => {
         console.log("muestro categorySelected", category);
-
         setSelectedCategory(category);
     };
 
@@ -57,7 +51,6 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
         992: { items: 5 }
     };
 
-    /*  TENER EN CUENTA ESTE RESPONSIVE, LOS NUMEROS DE LA IZQUIERDA REPRESANTEAN PIXELES*/
     const responsiveTarjetas = {
         0: { items: 1 },
         350: { items: 2 },
@@ -66,7 +59,22 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
         992: { items: 5 }
     };
 
-    /* ---------------------------------- */
+    const renderCustomDots = (currentIndex, allItems) => (
+        <div className="custom-dots">
+            {allItems.map((item, index) => (
+                <span
+                    key={index}
+                    className={`dot ${index === currentIndex ? 'active' : ''}`}
+                    onClick={() => handleDotClick(index)}
+                >
+                    {index + 1}
+                </span>
+            ))}
+        </div>
+    );
+
+    const handleDotClick = (index) => {
+    };
 
     return (
         <div id='contenedor-principal-menu'>
@@ -85,11 +93,11 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                     ))}
                     responsive={responsive}
                     buttonsDisabled={false}
-                    infinite={false}
-
+                    infinite={true}
                 />
             </div>
-            <h2 className="title ">{selectedCategory}</h2>
+            <div className="mt-4">
+            <h2 className="title">{selectedCategory}</h2>
 
             <AliceCarousel
                 mouseTracking
@@ -99,8 +107,6 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                         {/*IMAGEN DE LAS TARJETAS PEQUEÑAS */}
                         {product.image && <img src={product.image} alt={product.name} className="product-image" />}
                         {!product.image && <img src={superimagen} alt={product.name} className="product-image" />}
-
-
                         <div className="product-info">
                             <h3 className="product-name">{product.name}</h3>
                             <p className="product-price">${product.price}</p>
@@ -108,12 +114,13 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                     </div>
                 ))}
                 responsive={responsiveTarjetas}
-                buttonsDisabled={true}
-                infinite={false}
+                buttonsDisabled={false}
+                infinite={true}
                 stagePadding={{ paddingRight: 100, paddingLeft: 100 }}
+                renderDotsNavigation={renderCustomDots} // Utiliza la función para renderizar los puntos de navegación personalizados
             />
+        </div>
             {selectedProduct && (
-
                 <section className="selected-product">
                     <section id='contenedor-boton-cerrar-responsive'>
                         <button onClick={() => { setSelectedProduct(null) }}>X</button>
@@ -127,8 +134,6 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                             {selectedProduct.image && <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />}
                             {!selectedProduct.image && <img src={superimagen} alt={selectedProduct.name} className="product-image" />}
                         </figure>
-
-
                         {selectedProduct.detail && <figcaption>Descripción: {selectedProduct.detail}</figcaption>}
                     </article>
                     <article className="articulo-product-info">
