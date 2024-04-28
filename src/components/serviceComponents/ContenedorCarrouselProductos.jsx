@@ -24,7 +24,7 @@ const categories = [
     "Bebidas alcohólicas",
 ];
 
-function ContenedorCarrouselProductos({agregarProductoCarrito}) {
+function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [cartItems, setCartItems] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('Promociones');
@@ -37,12 +37,12 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
 
 
     const handleProductSelect = (product) => {
-        console.log("muestro productSelected",product);
+        console.log("muestro productSelected", product);
         setSelectedProduct(product);
     };
 
     const handleCategorySelect = (category) => {
-        console.log("muestro categorySelected",category);
+        console.log("muestro categorySelected", category);
 
         setSelectedCategory(category);
     };
@@ -55,7 +55,7 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
         576: { items: 3 },
         720: { items: 4 },
         992: { items: 5 }
-    };    
+    };
 
     /*  TENER EN CUENTA ESTE RESPONSIVE, LOS NUMEROS DE LA IZQUIERDA REPRESANTEAN PIXELES*/
     const responsiveTarjetas = {
@@ -75,7 +75,13 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
                 <AliceCarousel
                     mouseTracking
                     items={categories.map(category => (
-                        <button key={category} className={`category-button ${selectedCategory === category.toLocaleLowerCase() ? 'selected' : ''}`} onClick={() => handleCategorySelect(category)}>{category}</button>
+                        <button
+                            key={category}
+                            className={`category-button ${selectedCategory === category.toLocaleLowerCase() ? 'selected' : ''}`}
+                            onClick={() => handleCategorySelect(category)}
+                        >
+                            {category}
+                        </button>
                     ))}
                     responsive={responsive}
                     buttonsDisabled={false}
@@ -91,7 +97,8 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
                     <div key={index} className="product-card" onClick={() => handleProductSelect(product)}>
 
                         {/*IMAGEN DE LAS TARJETAS PEQUEÑAS */}
-                        <img src={superimagen} alt={product.name} className="product-image" />
+                        {product.image && <img src={product.image} alt={product.name} className="product-image" />}
+                        {!product.image && <img src={superimagen} alt={product.name} className="product-image" />}
 
 
                         <div className="product-info">
@@ -114,13 +121,14 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
                     <article className='articulo-con-imagen' >
                         <h2>{selectedProduct.name}</h2>
 
-                             {/*IMAGEN DE LA TARJETA GRANDE */}
+                        {/*IMAGEN DE LA TARJETA GRANDE */}
 
                         <figure>
-                            <img src={superimagen} alt={selectedProduct.name} className="object-fit-contain" />
+                            {selectedProduct.image && <img src={selectedProduct.image} alt={selectedProduct.name} className="product-image" />}
+                            {!selectedProduct.image && <img src={superimagen} alt={selectedProduct.name} className="product-image" />}
                         </figure>
 
-                        
+
                         {selectedProduct.detail && <figcaption>Descripción: {selectedProduct.detail}</figcaption>}
                     </article>
                     <article className="articulo-product-info">
@@ -129,7 +137,7 @@ function ContenedorCarrouselProductos({agregarProductoCarrito}) {
                         </section>
                         <section className='contenedor-precio-agregar'>
                             <h3 className=''>Precio: ${selectedProduct.price}</h3>
-                            <button onClick={()=>{agregarProductoCarrito(selectedProduct)}}>Agregar al carrito</button>
+                            <button onClick={() => { agregarProductoCarrito(selectedProduct) }}>Agregar al carrito</button>
                         </section>
                     </article>
                 </section>

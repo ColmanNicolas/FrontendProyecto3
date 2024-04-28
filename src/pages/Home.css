@@ -1,0 +1,32 @@
+#main-home{
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#main-home section{
+    background-color: rgb(197, 32, 32);
+    
+}
+#main-home section article{
+    background-color: black;
+    padding: 1rem;
+    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+#main-home a{
+    color: rgb(0, 128, 233);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+#main-home a:hover,#main-home a:focus{
+    color: rgb(172, 193, 252);
+
+}
+h2{
+    color: black;
+    font-size: 4rem;
+}

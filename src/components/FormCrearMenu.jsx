@@ -10,6 +10,7 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
     const { menus, obtenerMenus, crearMenu, modificarMenu, obtenerUnMenu, borrarMenu } = useMenuState();
 
     const enviarFormulario = async (data) => {
+        console.log("envio form", data);
         try {
             switch (accionarModal.accion) {
                 case "NUEVO":
@@ -59,20 +60,17 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
     }, [])
     const categories = [
         "Promociones",
-        "Comida Extranjera",
-        "Bebidas",
-        "Bebidas alcohólicas",
+        "Entradas",
         "Al plato",
         "Empanadas",
-        "Entradas",
         "Hamburguesas",
-        "Fideos",
-        "Postres",
+        "Pastas",
         "Pizzas",
-        "Sanguches",
-        "Sopas",
+        "Sandwiches",
         "Sushi",
-        "Tacos"
+        "Postres",
+        "Bebidas",
+        "Bebidas alcohólicas",
     ];
 
     return (
@@ -89,7 +87,7 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                             <select {...field} className="form-select" aria-label="Default select example" required>
                                 <option value="" disabled hidden>Selecciona una categoría</option>
                                 {categories.map((category, index) => (
-                                    <option key={index} value={category.toLowerCase()}>{category}</option>
+                                    <option key={index} value={category}>{category}</option>
                                 ))}
                             </select>
                         )}
@@ -121,6 +119,23 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                     />
                 </section>
             </section>
+            <section className="col-12">
+                <label htmlFor="imageInput">Imagen URL</label>
+                <input
+                    type="text"
+                    id="imageInput"
+                    {...register("image", {
+                        required: true,
+                        pattern: {
+                            value: /^(ftp|http|https):\/\/[^ "]+$/,
+                            message: "Por favor, introduce una URL válida",
+                        },
+                    })}
+                />
+                <p>(introduce la URL de una imagen)</p>
+                {errors.imageUrl && <span>{errors.imageUrl.message}</span>}
+            </section>
+
             <section className="col-12 ">
                 <label htmlFor="" >Descripcion</label>
                 <textarea className="w-100" name="" id="" rows="3"  {...register("detail", {
