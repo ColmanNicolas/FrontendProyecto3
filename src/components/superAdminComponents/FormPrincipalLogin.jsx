@@ -37,7 +37,7 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
             </article>
             <article className="w-100">
                 <section className="">
-                    <section >
+                    <section className="mb-1">
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
                         <input type="email" className="form-control mb-0" id="userEmail" {...register("principalEmail", {
                             required: true,

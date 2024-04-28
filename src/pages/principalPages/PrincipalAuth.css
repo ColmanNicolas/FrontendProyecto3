@@ -47,6 +47,7 @@
 }
 
 .mainPrincipalAuth article:nth-child(1) {
+    
     border-radius: 1rem 0 0 1rem;
     border-right: 1px solid rgba(245, 245, 245, 0.514);
     background-color: rgb(202, 26, 26);
@@ -102,6 +103,7 @@
 }
 
 .mainPrincipalAuth article:nth-child(2) {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

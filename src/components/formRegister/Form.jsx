@@ -15,7 +15,7 @@ const Form = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-
+    const [sincronizar, setSincronizar] = useState(0);
     const [options, setServiceOptions] = useState([]);
 
 
@@ -61,7 +61,7 @@ const Form = () => {
                     theme: 'dark'
                 });
                 setTimeout(() => {
-                    console.log("entro aqui",data.user.role);
+                    console.log("entro aqui", data.user.role);
                     navegadorPostRegister(data.user.role)
                 }, 4500);
             }
@@ -94,14 +94,15 @@ const Form = () => {
 
     const cargarServiciosSelect = async () => {
 
-        await filtrarRolUsuarios("ADMIN_ROLE");
-        console.log("traigo locales",users);
-        if (!Array.isArray(users)) {
-            console.error('La función cargarServiciosSelect requiere una lista de usuarios como parámetro.');
+        const usuarios = await filtrarRolUsuarios("ADMIN_ROLE");
+        console.log("recibo usuariso nuevo", usuarios);
+
+        if (!Array.isArray(usuarios)) {
+            console.error('La función cargarServic iosSelect requiere una lista de usuarios como parámetro.');
             return;
         }
-        const selectInfo = users.map(user => ({ value: user.id, label: user.name }));
-        console.log("selected info ",selectInfo);
+        const selectInfo = usuarios.map(user => ({ value: user.id, label: user.name }));
+        console.log("selected info ", selectInfo);
 
         setServiceOptions(selectInfo);
     }
@@ -109,6 +110,10 @@ const Form = () => {
     useEffect(() => {
         cargarServiciosSelect();
     }, []);
+
+    useEffect(() => {
+        setSincronizar(sincronizar + 1)
+    }, [users])
 
     return (
         <>
@@ -216,11 +221,12 @@ const Form = () => {
                             id="idServicio"
                             name="idServicio"
                             control={control}
+                            rules={{ required: true }}
                             defaultValue=""
                             render={({ field }) => (
                                 <Select
                                     {...field}
-                                    options={options} 
+                                    options={options}
                                     isClearable
                                     placeholder="Selecciona una categoría"
                                     isSearchable
@@ -228,6 +234,8 @@ const Form = () => {
                                 />
                             )}
                         />
+                        {errors.idServicio && errors.idServicio.type === 'required' && <p className='text-danger fs-6 mt-1'>Selecione un servicio</p>}
+
                     </section>
 
                     <div className='d-flex gap-3 justify-content-end'>

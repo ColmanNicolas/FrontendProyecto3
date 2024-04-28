@@ -85,9 +85,7 @@ const ServiceMenus = () => {
                     
                 </section>
 
-
                 <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito}/>
-
 
                 {isOpen && <ModalEstructuraBase closeModal={closeModal} >
                     <h3>Carrito de compras</h3>
