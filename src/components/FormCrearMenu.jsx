@@ -96,27 +96,51 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                 </section>
                 <section className="col-12 col-md-6" >
                     <label htmlFor="">Plato</label>
-                    <input type="text" {...register("name", {
-                        required: true,
-                        minLength: 3,
-                        maxLength: 50,
-                    })}
+                    <input
+                        type="text"
+                        {...register("name", {
+                            required: "Este campo es requerido",
+                            minLength: {
+                                value: 3,
+                                message: "El nombre debe tener al menos 3 caracteres",
+                            },
+                            maxLength: {
+                                value: 50,
+                                message: "El nombre no puede tener más de 50 caracteres",
+                            },
+                        })}
                     />
+                    {errors.name && <p className='text-danger fs-6 mt-1'>{errors.name.message}</p>}
                 </section>
                 <section className="col-6" >
                     <label htmlFor="">Precio</label>
-                    <input type="Number" {...register("price", {
-                        required: true,
-                    })}
+                    <input
+                        type="number"
+                        step="any"
+                        {...register("price", {
+                            required: "Este campo es requerido",
+                            validate: {
+                                validNumber: (value) => !isNaN(value) || "Ingresa un número válido",
+                                greaterThanZero: (value) => parseFloat(value) > 0 || "El número debe ser mayor que cero",
+                            },
+                        })}
                     />
+                    {errors.price && <p className="text-danger fs-6 mt-1">{errors.price.message}</p>}
                 </section>
                 <section className="col-6" >
                     <label htmlFor="">Estado</label>
-                    <input type="text" {...register("state", {
-                        required: true,
-                        minLength: 3,
-                        maxLength: 25,
-                    })}
+                    <Controller
+                        name="state"
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                            <select {...field} className="form-select" aria-label="Default select example" required>
+                                <option value="" disabled hidden>Selecciona una categoría</option>
+                                <option value="Disponible">Disponible</option>
+                                <option value="No_Disponible">No Disponible</option>
+                            </select>
+                        )}
                     />
                 </section>
             </section>
@@ -125,8 +149,8 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                 <input
                     type="text"
                     id="imageInput"
+                    placeholder="Se seleccionara una imagen predeterminada en caso de dejar el campo vacio"
                     {...register("image", {
-                        required: true,
                         pattern: {
                             value: /^(ftp|http|https):\/\/[^ "]+$/,
                             message: "Por favor, introduce una URL válida",
@@ -134,16 +158,27 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                     })}
                 />
                 <p>(introduce la URL de una imagen)</p>
-                {errors.imageUrl && <span>{errors.imageUrl.message}</span>}
+                {errors.imageUrl && <span className="text-danger fs-6 mt-1">{errors.imageUrl.message}</span>}
             </section>
 
             <section className="col-12 ">
                 <label htmlFor="" >Descripcion</label>
-                <textarea className="w-100" name="" id="" rows="3"  {...register("detail", {
-                    required: true,
-                    minLength: 3,
-                    maxLength: 100,
-                })}></textarea>
+                <textarea
+                    className="w-100"
+                    rows="3"
+                    {...register("detail", {
+                        required: "Este campo es requerido",
+                        minLength: {
+                            value: 5,
+                            message: "El detalle debe tener al menos 5 caracteres",
+                        },
+                        maxLength: {
+                            value: 100,
+                            message: "El detalle no puede tener más de 100 caracteres",
+                        },
+                    })}
+                />
+                {errors.detail && <p className="text-danger fs-6 mt-1">{errors.detail.message}</p>}
             </section>
             <section className="modalBtnContainer">
                 <button onClick={handleClose}>Cancelar</button>
