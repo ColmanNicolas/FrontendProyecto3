@@ -15,7 +15,10 @@ const Form = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+
     const [options, setServiceOptions] = useState([]);
+
+
     const { register, formState: { errors }, handleSubmit, watch, reset, control } = useForm();
     const { users, filtrarRolUsuarios } = useUsersState();
     const navigate = useNavigate();
@@ -205,6 +208,7 @@ const Form = () => {
                         {errors.repetirContraseña && errors.repetirContraseña.type === 'required' && <p className='text-danger fs-6 mt-1'>Inserte una contraseña</p>}
                         {errors.repetirContraseña && errors.repetirContraseña.type === 'validate' && <p className='text-danger fs-6 mt-1'>Las contraseñas no coinciden</p>}
                     </div>
+
                     <section className='mb-2'>
                         <label htmlFor="idServicio">Elegir local Gastronomico</label>
                         <Controller
@@ -215,7 +219,7 @@ const Form = () => {
                             render={({ field }) => (
                                 <Select
                                     {...field}
-                                    options={options}
+                                    options={options} 
                                     isClearable
                                     placeholder="Selecciona una categoría"
                                     isSearchable
@@ -224,6 +228,7 @@ const Form = () => {
                             )}
                         />
                     </section>
+
                     <div className='d-flex gap-3 justify-content-end'>
                         <Link to='/service/login' className="btn btn-primary">Volver</Link>
                         <button type="button" className="btn btn-primary" onClick={resetear}>Resetear</button>

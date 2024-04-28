@@ -87,7 +87,11 @@
   .product-image {
     height: 100px; /* Reducir la altura de la imagen */
     width: 100%; /* Ajustar el ancho de la imagen al 100% de la tarjeta */
+    pointer-events: none;
   }
+  .no-click {
+    pointer-events: none;
+}
 
   .alice-carousel__prev-btn,
 .alice-carousel__next-btn {

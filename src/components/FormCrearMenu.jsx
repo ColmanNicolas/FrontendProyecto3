@@ -48,6 +48,7 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
                 setValue('price', response.data.price);
                 setValue('state', response.data.state);
                 setValue('detail', response.data.detail);
+                setValue('image', response.data.image);
             })
         } catch (error) {
             console.error('Error al crear menú:', error);

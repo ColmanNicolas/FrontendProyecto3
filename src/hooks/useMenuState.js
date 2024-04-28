@@ -65,7 +65,7 @@ const useMenuState = () => {
 
         try {
             const response = await axios.put(`http://localhost:5000/api/menu/${menuId}`, menuData);
-
+            console.log("actualizco menu",response);
         } catch (error) {
             console.error('Error al modificar menú:', error);
         }
