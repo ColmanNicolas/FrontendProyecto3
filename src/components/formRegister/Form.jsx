@@ -15,7 +15,10 @@ const Form = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+    const [sincronizar, setSincronizar] = useState(0);
     const [options, setServiceOptions] = useState([]);
+
+
     const { register, formState: { errors }, handleSubmit, watch, reset, control } = useForm();
     const { users, filtrarRolUsuarios } = useUsersState();
     const navigate = useNavigate();
@@ -58,7 +61,7 @@ const Form = () => {
                     theme: 'dark'
                 });
                 setTimeout(() => {
-                    console.log("entro aqui",data.user.role);
+                    console.log("entro aqui", data.user.role);
                     navegadorPostRegister(data.user.role)
                 }, 4500);
             }
@@ -91,20 +94,26 @@ const Form = () => {
 
     const cargarServiciosSelect = async () => {
 
-        await filtrarRolUsuarios("ADMIN_ROLE");
+        const usuarios = await filtrarRolUsuarios("ADMIN_ROLE");
+        console.log("recibo usuariso nuevo", usuarios);
 
-        if (!Array.isArray(users)) {
-            console.error('La función cargarServiciosSelect requiere una lista de usuarios como parámetro.');
+        if (!Array.isArray(usuarios)) {
+            console.error('La función cargarServic iosSelect requiere una lista de usuarios como parámetro.');
             return;
         }
-        const selectInfo = users.map(user => ({ value: user.id, label: user.name }));
+        const selectInfo = usuarios.map(user => ({ value: user.id, label: user.name }));
+        console.log("selected info ", selectInfo);
+
         setServiceOptions(selectInfo);
     }
-
 
     useEffect(() => {
         cargarServiciosSelect();
     }, []);
+
+    useEffect(() => {
+        setSincronizar(sincronizar + 1)
+    }, [users])
 
     return (
         <>
@@ -180,7 +189,7 @@ const Form = () => {
                         {errors.password && errors.password.type === 'required' && <p className='text-danger fs-6 mt-1'>Inserte una contraseña</p>}
                         {errors.password && errors.password.type === 'minLength' && <p className='text-danger fs-6 mt-1'>Debe contener al menos 6 caracteres</p>}
                         {errors.password && errors.password.type === 'maxLength' && <p className='text-danger fs-6 mt-1'>Debe contener menos de 26 caracteres</p>}
-                        {errors.password && errors.password.type === 'pattern' && <p className='text-danger fs-6 mt-1'>Debe tener al menos una mayúscula, una minúscula y un número</p>}
+                        {errors.password && errors.password.type === 'pattern' && <p className='text-danger fs-6 mt-1'>Debe empezar con una mayúscula y contener por lo menos un número</p>}
                     </div>
                     <div className="mb-3 input-container">
                         <label htmlFor="repetirContraseña" className="form-label">Repetir Contraseña</label>
@@ -205,12 +214,14 @@ const Form = () => {
                         {errors.repetirContraseña && errors.repetirContraseña.type === 'required' && <p className='text-danger fs-6 mt-1'>Inserte una contraseña</p>}
                         {errors.repetirContraseña && errors.repetirContraseña.type === 'validate' && <p className='text-danger fs-6 mt-1'>Las contraseñas no coinciden</p>}
                     </div>
+
                     <section className='mb-2'>
                         <label htmlFor="idServicio">Elegir local Gastronomico</label>
                         <Controller
                             id="idServicio"
                             name="idServicio"
                             control={control}
+                            rules={{ required: true }}
                             defaultValue=""
                             render={({ field }) => (
                                 <Select
@@ -223,7 +234,10 @@ const Form = () => {
                                 />
                             )}
                         />
+                        {errors.idServicio && errors.idServicio.type === 'required' && <p className='text-danger fs-6 mt-1'>Selecione un servicio</p>}
+
                     </section>
+
                     <div className='d-flex gap-3 justify-content-end'>
                         <Link to='/service/login' className="btn btn-primary">Volver</Link>
                         <button type="button" className="btn btn-primary" onClick={resetear}>Resetear</button>

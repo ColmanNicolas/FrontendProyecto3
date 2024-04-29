@@ -82,11 +82,10 @@ const ServiceMenus = () => {
                     <button type="button" onClick={() => { openModal(true) }} className="btn btn-light">
                         CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
                     </button>
+                    
                 </section>
 
-
                 <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito}/>
-
 
                 {isOpen && <ModalEstructuraBase closeModal={closeModal} >
                     <h3>Carrito de compras</h3>

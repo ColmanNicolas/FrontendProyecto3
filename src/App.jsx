@@ -31,8 +31,6 @@ function App() {
           <Route path='/service/login' element={<Login/>} />
           <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route path='/service/menu-list' element={<ServiceMenuList/>} />
-          <Route path='/service/register' element={<RegisterUser/>} />
-          <Route path='/service/login' element={<Login/>} />
           <Route />
         </Routes>
       </BrowserRouter>

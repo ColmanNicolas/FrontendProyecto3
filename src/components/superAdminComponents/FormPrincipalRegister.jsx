@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 
 const FormPrincipalRegister = ({ cambiarComponente }) => {
 
-    const { handleSubmit, register, formState: { errors }, watch, reset, } = useForm();
+    const { handleSubmit, register, formState: { errors }, watch, reset,control } = useForm();
     const enviarFormulario = (dataRegister) => {
         try {
             axios.post("http://localhost:5000/api/principal-auth/register", dataRegister)
@@ -20,7 +20,6 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
             console.error('Error al enviar formulario:', error);
         }
     };
-
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <article>
@@ -41,7 +40,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                             {...register("name", {
                                 required: "Campo requerido",
                                 minLength: { value: 3, message: "Mínimo 3 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                maxLength: { value: 45, message: "Máximo 35 caracteres" },
                                 pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                             })}
                         />
@@ -53,10 +52,10 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     <section >
                         <label htmlFor="bussinesName" className="form-label">EMPRESA </label>
                         <input type="text" className="form-control" name="nombreEmpresa" id="bussinesName" placeholder="nombre de su empresa gastronómica" {...register("businessName", {
-                                required: "Campo requerido",
-                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
-                                pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
+                            required: "Campo requerido",
+                            minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                            maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                            pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                         })} />
                         {errors.businessName && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.businessName.message}</p>)
                         }
@@ -95,13 +94,13 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     <section >
                         <label htmlFor="city" className="form-label">PROVINCIA</label>
                         <input type="text" className="form-control" id="city" name="ciudad" {...register("city", {
-                                required: "Campo requerido",
-                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
-                                pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
+                            required: "Campo requerido",
+                            minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                            maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                            pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                         })} />
                         {errors.city && (
-                             <p className="ps-1 text-danger fs-semibold mb-2">{errors.city.message}</p>
+                            <p className="ps-1 text-danger fs-semibold mb-2">{errors.city.message}</p>
                         )}
                     </section>
                 </section>
@@ -109,12 +108,12 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     <section >
                         <label htmlFor="userEmail" className="form-label">EMAIL</label>
                         <input type="email" className="form-control" id="userEmail" name="email" {...register("principalEmail", {
-                                required: "Campo requerido",
-                                minLength: { value: 3, message: "Mínimo 3 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
-                                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Solo se permiten letras y espacios" }
+                            required: "Campo requerido",
+                            minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                            maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Solo se permiten letras y espacios" }
                         })} />
-                        {errors.principalEmail && ( <p className="ps-1 text-danger fs-semibold mb-2">{errors.principalEmail.message}</p>
+                        {errors.principalEmail && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.principalEmail.message}</p>
                         )}
                     </section>
                     <section >
@@ -124,7 +123,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                             validate: (value) => value === watch("principalEmail"),
                         })} />
                         {errors.emailRepeat && (
-                            (errors.emailRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>)||
+                            (errors.emailRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>) ||
                             (errors.emailRepeat.type === "validate" && <p className="ps-1 text-danger fs-semibold mb-2">No coinciden los campos email</p>)
                         )}
                     </section>
@@ -133,13 +132,12 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     <section >
                         <label htmlFor="userPass" className="form-label">CONTRASEÑA</label>
                         <input type="password" className="form-control" id="userPass" name="password" placeholder="Usuario123" {...register("password", {
-                                required: "Campo requerido",
-                                minLength: { value: 6, message: "Mínimo 6 caracteres" },
-                                maxLength: { value: 35, message: "Máximo 35 caracteres" },
-                                pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un nuumero" }
+                            required: "Campo requerido",
+                            minLength: { value: 6, message: "Mínimo 6 caracteres" },
+                            maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                            pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un numero" }
                         })} />
-                        {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p>
-                        )}
+                        {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p> )}
                     </section>
                     <section >
                         <label htmlFor="userPassRepeat" className="form-label">REPETIR CONTRASEÑA</label>
@@ -148,12 +146,27 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                             validate: (value) => value === watch("password"),
                         })} />
                         {errors.passwordRepeat && (
-                            (errors.passwordRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>)||
+                            (errors.passwordRepeat.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo requerido</p>) ||
                             (errors.passwordRepeat.type === "validate" && <p className="ps-1 text-danger fs-semibold mb-2">Los campos contraseña no coinciden</p>)
                         )}
                     </section>
                 </section>
-                <p className="fw-light"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, blanditiis nam hic pariatur doloremque aspernatur ipsa adipisci dolorem quod culpa deleniti, earum, quam eveniet? Tempora suscipit cupiditate quaerat consequuntur temporibus. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, blanditiis nam hic pariatur doloremque aspernatur ipsa adipisci dolorem quod culpa deleniti, earum, quam eveniet? Tempora suscipit cupiditate quaerat consequuntur temporibus.</p>
+                <section className="rowInputsForm d-flex align-items-center flex-row bg-dark p-2 rounded-2 mb-3">
+                    <p> Al enviar este formulario, aceptas nuestros términos y condiciones. Gracias por registrarte en nuestro servicio.</p>
+                    <Controller
+                        name="terminosYCondiciones"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                            <label className="fw-light pe-4">
+                                <input type="checkbox" {...field} />
+                            </label>
+                        )}
+                    />
+                </section>
+                <section className="rowInputsForm">
+                        {errors.terminosYCondiciones && (<p className="ps-1 text-danger fs-semibold mb-2">Falta aceptar terminos y condiciones</p> )}
+                </section>
                 <section className="formButtonSection">
                     <button className="">Registrarme</button>
                 </section>

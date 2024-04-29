@@ -36,10 +36,14 @@ const ServiceAdminPage = () => {
         }
     }
     const cerrarSesion = ()=>{
+
+        sessionStorage.removeItem('loguedUser');
+        
         setTimeout(() => {
-            navigate("/bar-app/landing-page");
+            navigate("/bar-app/landing-page/auth");
         }, 1000);
     }
+
     return (
         <>
             <section className="d-flex  contenedorPrincipal">
