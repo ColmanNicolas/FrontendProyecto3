@@ -42,7 +42,7 @@ const LoginComp = () => {
                     navigateTo('/service/admin-controls');
                 } else {
             
-                    setTimeout(navigate, 2000);
+                    setTimeout(navigate, 2500);
                 }
             }
         } catch (error) {
@@ -54,7 +54,7 @@ const LoginComp = () => {
     };
 
     const navigate = () => {
-        window.location.pathname = '/service/menu-products';
+        window.location.pathname = '/service/products-menu';
     };
 
     const enviarFormulario = body => {

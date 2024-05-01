@@ -3,21 +3,46 @@ import useModal from "../hooks/useModal";
 import FormCrearMenu from "./FormCrearMenu";
 import ModalEstructuraBase from "./ModalEstructuraBase";
 import useMenuState from "../hooks/useMenuState";
+import { useForm } from "react-hook-form";
 
 const AdminMenuControls = () => {
-    const { menus, categoriasMenu, obtenerMenus, modificarMenu, borrarMenu, filtrarMenus } = useMenuState();
+    const {categoriasMenu, obtenerMenus, modificarMenu, borrarMenu, filtrarMenus,buscadorMenus } = useMenuState();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { isOpen, openModal, closeModal } = useModal();
     const [accionarModal, setAccionarModal] = useState([]);
+    const [menus, setMenus] = useState([]);
 
+    const enviarBusqueda = async (data) => {
+        const response = await buscadorMenus(data);
+        setMenus(response.data.menus)
+    }
+
+    const setearDataMenus = async () => {
+        try {
+            const response = await obtenerMenus();
+            console.log("recibo menu", response);
+            setMenus(response.data);
+        } catch (error) {
+            console.error('Error al obtener menus:', error);
+        }
+    };
+    const filtrar = async(menu)=>{
+        const response = await filtrarMenus(menu);
+        console.log("recibo lista filtrada",response);
+        setMenus(response)
+
+    }
     useEffect(() => {
-        obtenerMenus();
+        setearDataMenus();
     }, []);
-
+    
     //recargo lista al finalizar operacion en el modal
+    /* 
     useEffect(() => {
         obtenerMenus();
     }, [isOpen]);
-
+    */
+    
     return (
         <>
             <section className="sectionButtonNew">
@@ -30,7 +55,7 @@ const AdminMenuControls = () => {
                 </button>
             </section>
             <section className="sectionTablesFilters">
-                <form className="row">
+                <form onSubmit={handleSubmit(enviarBusqueda)} className="row">
                     <section className="col-12 col-md-5">
                         <section className="dropdown">
                             <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,23 +65,22 @@ const AdminMenuControls = () => {
                                 {categoriasMenu.map((menu, index) => (
                                     <React.Fragment key={index}>
                                         <li key={index}>
-                                            <a className="dropdown-item" onClick={() => filtrarMenus(menu)} href="#">
+                                            <a className="dropdown-item" onClick={() => filtrar(menu)} href="#">
                                                 {menu}
                                             </a>
                                         </li>
                                         {index !== menus.length - 1 && <hr className="m-0" />} {/* Agrega la línea horizontal solo si no es el último elemento */}
                                     </React.Fragment>
                                 ))}
-
-
                             </ul>
-                            <button type="button" className="buttonReload" onClick={() => obtenerMenus()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                            <button type="button" className="buttonReload" onClick={() => setearDataMenus()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                         </section>
                     </section>
-                    <section className="col-12 col-md-7 d-flex justify-content-end">
-                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
+                    <section className="col-12 col-md-7 d-flex justify-content-end ">
+                        <input type="text" maxLength={30} placeholder="Ingrese algo para buscar" {...register("buscador", { required: true })} />
                         <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
                     </section>
+                    
                 </form>
                 <section className="containerDesplazable">
                     <ul className="tableTitles row " >

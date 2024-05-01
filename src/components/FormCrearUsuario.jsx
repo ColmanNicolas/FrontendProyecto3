@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import useUsersState from "../hooks/useUsersState";
 
-const FormCrearUsuario = ({ closeModal, form }) => {
+const FormCrearUsuario = ({ closeModal, form, setearDataUsuarios }) => {
     const { crearUsuario, obtenerUsuarios } = useUsersState();
 
     const { handleSubmit, register, formState: { errors }, watch, reset, control } = useForm();
@@ -10,7 +10,7 @@ const FormCrearUsuario = ({ closeModal, form }) => {
             await crearUsuario(data);
             reset();
             closeModal(); // Cierra el modal después de enviar el formulario
-            obtenerUsuarios();
+            setearDataUsuarios();
         } catch (error) {
             console.log("Ocurrió un error", error);
         }
