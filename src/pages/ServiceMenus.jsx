@@ -43,22 +43,25 @@ const ServiceMenus = () => {
             setProductOrder(nuevaListaProductos);
         }
     };
-    const cancelarPedido=()=>{
+    const cancelarPedido = () => {
         setProductOrder([]);
         closeModal();
     }
     const generarPedido = async () => {
         try {
 
-            /*  OBTENER ID DEL TOKEN */
-            const userId = "id usuario";
+            const storedUser = sessionStorage.getItem('loguedUser');
+            const parsedUser = JSON.parse(storedUser);
+            const {token, ...rest} = parsedUser;
+
             const items = productOrderList;
             let totalPrice = 0;
             items.map((producto) => {
                 totalPrice = totalPrice + producto.price;
             })
-            console.log(userId, items, totalPrice);
-            await axios.post("http://localhost:5000/api/order", { userId, items, totalPrice })
+
+            console.log(rest, items, totalPrice);
+            await axios.post("http://localhost:5000/api/order", { rest, items, totalPrice })
                 .then(response => {
                     cancelarPedido()
                 })
@@ -71,7 +74,7 @@ const ServiceMenus = () => {
 
     useEffect(() => {
         setCantidadProducto(productOrderList.length)
-        console.log("stete categorias",productOrderList);
+        console.log("stete categorias", productOrderList);
     }, [productOrderList])
 
     return (
@@ -82,10 +85,10 @@ const ServiceMenus = () => {
                     <button type="button" onClick={() => { openModal(true) }} className="btn btn-light">
                         CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
                     </button>
-                    
+
                 </section>
 
-                <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito}/>
+                <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito} />
 
                 {isOpen && <ModalEstructuraBase closeModal={closeModal} >
                     <h3>Carrito de compras</h3>

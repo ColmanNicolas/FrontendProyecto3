@@ -25,16 +25,17 @@ const useMenuState = () => {
 
     const obtenerMenus = async () => {
         try {
-            await axios.get("http://localhost:5000/api/menu").then((response) => {
-                setMenus(response.data);
-                console.log("muestro response", response);
-                console.log("muestro menus", menus);
-                setCategotriasMenu(categories)
-            })
+            const response = await axios.get("http://localhost:5000/api/menu");
+            setMenus(response.data);
+            console.log("muestro response", response);
+            setCategotriasMenu(categories);
+            return response;
+
         } catch (error) {
-            console.error('Error al crear menú:', error);
+            console.error('Error al obtener menú:', error);
+            throw error; 
         }
-    }
+    };
     const obtenerUnMenu = async (id) => {
         try {
             await axios.get(`http://localhost:5000/api/menu/${id}`).then((response) => {
@@ -48,10 +49,12 @@ const useMenuState = () => {
         try {
             const response = await axios.get(`http://localhost:5000/api/menu/filter/${filtro}`);
             setMenus(response.data.menu);
+            return response.data.menu;
         } catch (error) {
             console.error('Error al filtrar pedidos:', error);
+            throw error; 
         }
-    }
+    };
     const crearMenu = async (menuData) => {
         try {
             await axios.post("http://localhost:5000/api/menu", menuData).then(response => {
@@ -75,6 +78,18 @@ const useMenuState = () => {
             const response = await axios.delete(`http://localhost:5000/api/menu/${menuId}`);
         } catch (error) {
             console.error('Error al borrar menú:', error);
+        }
+    }
+
+    const buscadorMenus = async (data) => {
+        try {
+            const {buscador}=data;
+            const response = await axios.get(`http://localhost:5000/api/menu/search/${buscador}`);
+            console.log("realiz",response);
+            setMenus(response);
+            return response;
+        } catch (error) {
+            throw error;
         }
     }
 
@@ -131,8 +146,8 @@ const useMenuState = () => {
         crearMenu,
         modificarMenu,
         borrarMenu,
-        filtrarMenus
-
+        filtrarMenus,
+        buscadorMenus
     }
 };
 export default useMenuState;

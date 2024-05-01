@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, memo } from 'react';
 
 import AdminMenuControls from "../components/AdminMenuControls";
 import AdminOrderControls from "../components/AdminOrderControls";
@@ -40,7 +40,7 @@ const ServiceAdminPage = () => {
         sessionStorage.removeItem('loguedUser');
         
         setTimeout(() => {
-            navigate("/bar-app/landing-page/auth");
+            navigate("/service/login");
         }, 1000);
     }
 
@@ -68,4 +68,4 @@ const ServiceAdminPage = () => {
         </>
     )
 };
-export default ServiceAdminPage;
+export default memo(ServiceAdminPage);

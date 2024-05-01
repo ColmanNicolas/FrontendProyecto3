@@ -4,17 +4,43 @@ import ModalEstructuraBase from "./ModalEstructuraBase";
 import useModal from '../hooks/useModal';
 import FormCrearUsuario from "./FormCrearUsuario";
 import useUsersState from "../hooks/useUsersState";
+import { useForm } from "react-hook-form";
 
 
 const AdminUserControls = ({ userList }) => {
 
     const { isOpen, openModal, closeModal } = useModal();
-    const { users, obtenerUsuarios, crearUsuario, modificarUsuario, darAltaUsuario, borrarUsuario, filtrarUsuarios } = useUsersState();
+    const { users, obtenerUsuarios, darAltaUsuario, borrarUsuario, crearUsuario, filtrarUsuarios, buscadorUsers } = useUsersState();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const [usuarios, setUsuarios] = useState([]);
 
+    const enviarBusqueda = async (data) => {
+        console.log("llego aqui");
+        const response = await buscadorUsers(data);
+        setUsuarios(response)
+    }
+
+    const setearDataUsuarios = async () => {
+        try {
+            const response = await obtenerUsuarios();
+            console.log("recibo usaurios", response);
+            setUsuarios(response);
+        } catch (error) {
+            console.error('Error al obtener usuarios:', error);
+        }
+    };
+    
+    useEffect(() => {
+        setearDataUsuarios();
+    }, []);
+    
+    
 
     useEffect(() => {
-        obtenerUsuarios();
-    }, []);
+        setUsuarios(users)
+    }, [filtrarUsuarios, obtenerUsuarios]);
+
+
     return (
         <>
             <section className="sectionButtonNew">
@@ -35,13 +61,13 @@ const AdminUserControls = ({ userList }) => {
 
             </section>
             <section className="sectionTablesFilters">
-                <form className="row">
+
+                <form onSubmit={handleSubmit(enviarBusqueda)} className="row">
                     <section className="col-12 col-md-5">
                         <section className="dropdown">
                             <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
-
                             <ul className="dropdown-menu">
                                 <li><a className="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
                                 <hr className="m-0" />
@@ -50,11 +76,12 @@ const AdminUserControls = ({ userList }) => {
                             <button type="button" className="buttonReload" onClick={() => obtenerUsuarios()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                         </section>
                     </section>
-                    <section className="col-12 col-md-7 d-flex justify-content-end">
-                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
+                    <section className="col-12 col-md-7 d-flex justify-content-end ">
+                        <input type="text" maxLength={30} placeholder="Ingrese algo para buscar" {...register("buscador", { required: true })} />
                         <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
                     </section>
                 </form>
+
                 <section className="containerDesplazable">
                     <ul className="tableTitles row " >
                         <li className="col-3">Nombre</li>
@@ -64,7 +91,7 @@ const AdminUserControls = ({ userList }) => {
                         <li className="col-4 text-center">Acciones</li>
                     </ul>
                     <section className="containerRows">
-                        {users.map((usuario,index) => (
+                        {usuarios.map((usuario, index) => (
                             /*mostrar empleados */
                             (userList === "EMPLEADOS" && (usuario.role != "USER_ROLE") &&
                                 <ul key={index} className="row py-2" >
@@ -99,13 +126,15 @@ const AdminUserControls = ({ userList }) => {
                                 </ul>
                             )
                         ))}
+                        {usuarios.length === 0 && <p className="col-12  px-2 py-2 fs-5">{` Se encontraron 0 usuarios`}</p>}
+
                     </section>
                 </section>
             </section>
             {isOpen &&
                 <ModalEstructuraBase closeModal={closeModal} >
                     <h3>{userList === "EMPLEADOS" ? "Nuevo Empleado" : "Nuevo Cliente"}</h3>
-                    <FormCrearUsuario closeModal={closeModal} form={userList} />
+                    <FormCrearUsuario closeModal={closeModal} form={userList} setearDataUsuarios={setearDataUsuarios}/>
                 </ModalEstructuraBase>
             }
         </>

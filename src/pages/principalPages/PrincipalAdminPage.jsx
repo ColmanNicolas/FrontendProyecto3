@@ -75,6 +75,7 @@ const PrincipalAdminPage = () => {
         }
     };
     const cerrarSesion = () => {
+        sessionStorage.removeItem('loguedUser');
         console.log("cierro Sesion admin");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")

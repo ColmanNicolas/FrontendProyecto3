@@ -1,32 +1,51 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 const FormPrincipalLogin = ({ cambiarComponente }) => {
     const { handleSubmit, register, formState: { errors }, reset, } = useForm();
     const navigate = useNavigate();
-    const enviarFormulario = (dataLogin) => {
+    const enviarFormulario = async (dataLogin) => {
         try {
-            axios.post("http://localhost:5000/api/principal-auth/login", dataLogin)
-                .then(response => {
-                    if(response.data.user.role === "SERVICE_USER_ROLE"){
-                        navigate(`/bar-app/mi-cuenta/${response.data.user.id}`);
+            const response = await axios.post("http://localhost:5000/api/principal-auth/login", dataLogin);
+            console.log("me llega esta response", response);
+            const { data } = response;
+            if (data.messageError) {
+                toast.error(data.messageError, { theme: 'dark' });
+            } else {
+                toast.success(`Iniciaste sesión exitosamente como ${data.user.principalEmail} `, { theme: 'dark' });
+                console.log("Token recibido:", data.token);
+                sessionStorage.setItem('loguedUser', JSON.stringify({ token: data.token, id: data.user.id, name: data.user.name }));
+
+                if (data.user.role === "SERVICE_USER_ROLE") {
                     reset();
-                    }
-                    else if(response.data.user.role === "ADMIN_ROLE"){
+                    setTimeout(() => {
+                        navigate(`/bar-app/mi-cuenta/${data.user.id}`);
+                    }, 3000);
+                } else if (data.user.role === "ADMIN_ROLE") {
+                    reset();
+                    setTimeout(() => {
                         navigate(`/bar-app/principal-admin-controls`);
-                    reset();
-                    }else{
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al enviar formulario:', error);
-                });
+                    }, 3000);
+                }
+            }
         } catch (error) {
-            console.error('Error al enviar formulario:', error);
+            if (error.response) {
+                toast.error(error.response.data.messageError, { theme: 'dark' });
+                console.error('Error en la respuesta:', error.response);
+            } else if (error.request) {
+                // El error se produjo pero no se recibió respuesta del servidor
+                toast.error('Error en la solicitud, no se recibió respuesta del servidor', { theme: 'dark' });
+                console.error('Error en la solicitud:', error.request);
+            } else {
+                // Otro tipo de error
+                toast.error('Error al enviar la solicitud', { theme: 'dark' });
+                console.error('Error general:', error.messageError);
+            }
         }
-        reset();
     };
+
 
     return (
         <form id="formPrincipalLogin" onSubmit={handleSubmit(enviarFormulario)} >
@@ -45,7 +64,7 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                         })} />
                         {errors.principalEmail && (
                             (errors.principalEmail.type === "required" && <p className="ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) ||
-                            (errors.principalEmail.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">el maximo de caracteres es 45 </p>) 
+                            (errors.principalEmail.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">el maximo de caracteres es 45 </p>)
                         )}
                     </section>
                     <section >
@@ -55,21 +74,24 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
                             maxLength: 30,
                         })} />
                         {errors.password && (
-                            (errors.password.type === "required" && <p className=" ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>)||
+                            (errors.password.type === "required" && <p className=" ps-1 text-danger fs-semibold mb-2">Campo Requerido</p>) ||
                             (errors.password.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-2">se excedio el maximo de caracteres. '30'</p>)
                         )}
                     </section>
-                   <section className="d-flex flex-column pb-4 pt-2 text-center ">
-                    <span>
-                        <a href="" className=" fw-light text-white text-decoration-none text-center ">¿Olvidaste tu contraseña?</a>
-                    </span>
-                   </section>
+                    <section className="d-flex flex-column pb-4 pt-2 text-center ">
+                        <span>
+                            <a href="" className=" fw-light text-white text-decoration-none text-center ">¿Olvidaste tu contraseña?</a>
+                        </span>
+                    </section>
                     <section className="formButtonSection">
                         <button className="">Acceder</button>
                     </section>
                 </section>
             </article>
+            <ToastContainer />
+
         </form>
+
     )
 };
 export default FormPrincipalLogin;
