@@ -14,9 +14,7 @@ const AdminOrderControls = () => {
     const {
         pedidos,
         obtenerPedidos,
-        obtenerUnPedido,
-        crearPedido,
-        modificarPedido,
+        buscadorPedidos,
         filtrarPedidos,
     } = usePedidosState();
 
@@ -38,10 +36,10 @@ const AdminOrderControls = () => {
         console.log(informacion);
         setModalInformacion({ id, orden, solicitante, status, paid });
     }
+
     const formularioCambiarEstado = async (data) => {
         try {
             await axios.put(`http://localhost:5000/api/order/${modalInformacion.id}`, data).then(response => {
-                console.log("llego aqui y respuesta"), response;
                 reset();
                 obtenerPedidos();
                 closeModal()
@@ -50,6 +48,18 @@ const AdminOrderControls = () => {
         } catch (error) {
             console.log("exploto aqui", error);
 
+        }
+    }
+    const RealizarBusqueda= async ()=>{
+        try {
+            const query = document.getElementById('inputBuscador').value;
+            const data={
+                buscador:query,
+            }
+            const respuesta = await buscadorPedidos(data)
+            console.log("realice bien la busqeuda", respuesta);
+        } catch (error) {
+            
         }
     }
     const cambiarrEstadoPaid = async (id,data) => {
@@ -61,12 +71,11 @@ const AdminOrderControls = () => {
                 console.log("llego aqui y respuesta de paid"), response;
                 obtenerPedidos();
             })
-
         } catch (error) {
             console.log("exploto aqui", error);
 
         }
-     }
+    }
 
     const desplegarDetalle = (pedidoId) => {
         if (idBotonAbierto !== pedidoId) {
@@ -75,17 +84,18 @@ const AdminOrderControls = () => {
             setIdBotonAbierto(null);
         }
     };
+
     function formatoFecha(fechaString) {
         const fecha = new Date(fechaString);
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         return fecha.toLocaleDateString('es-ES', options);
     }
-
     function formatoHora(fechaString) {
         const fecha = new Date(fechaString);
         const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
         return fecha.toLocaleTimeString('es-ES', options);
     }
+
     useEffect(() => {
         obtenerPedidos();
     }, []);
@@ -123,9 +133,9 @@ const AdminOrderControls = () => {
 
                         </section>
                     </section>
-                    <section className="col-12 col-md-7 d-flex justify-content-end">
-                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
-                        <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                    <section className="col-12 col-md-7 d-flex justify-content-end ">
+                        <input type="text" maxLength={30} id="inputBuscador" placeholder="Ingrese algo para buscar" required />
+                        <button onClick={()=>{RealizarBusqueda()}} type="button"><span>Buscar</span><i className="bi bi-search"></i></button>
                     </section>
                 </form>
                 <section className="containerDesplazable">
@@ -207,6 +217,7 @@ const AdminOrderControls = () => {
                                 </section>
                             </section>
                         ))}
+                         {pedidos.length === 0 && <p className="col-12  px-2 py-2 fs-5">{` Se encontraron 0 pedidos`}</p>}
                     </section>
                 </section>
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

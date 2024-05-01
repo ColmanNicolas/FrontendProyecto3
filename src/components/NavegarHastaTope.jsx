@@ -32,7 +32,7 @@ const ScrollToTopButton = () => {
             className={`scroll-to-top-button ${isVisible ? 'visible' : ''}`}
             onClick={scrollToTop}
         >
-            <i class="bi bi-arrow-90deg-up"></i>
+            <i className="bi bi-arrow-90deg-up"></i>
         </button>
     );
 };

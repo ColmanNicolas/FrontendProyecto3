@@ -51,6 +51,19 @@ const usePedidosState = () => {
             console.error('Error al crear un pedido:', error);
         }
     }
+    const buscadorPedidos = async (data) => {
+        try {
+            const {buscador}=data;
+            const response = await axios.get(`http://localhost:5000/api/orders/search/${buscador}`);
+            console.log("realiz",response);
+            setPedidos(response.data.orders);
+            return response.data.orders;
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+            setPedidos([]);
+            // Puedes lanzar el error nuevamente para que sea manejado en el contexto que llama a esta función
+        }
+    }
 
 
     return {
@@ -59,7 +72,8 @@ const usePedidosState = () => {
         obtenerUnPedido,
         crearPedido,
         modificarPedido,
-        filtrarPedidos
+        filtrarPedidos,
+        buscadorPedidos
     }
 };
 export default usePedidosState;
