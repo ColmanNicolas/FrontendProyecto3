@@ -34,9 +34,9 @@ const AdminOrderControls = () => {
     };
 
     const handleModalStatus = (informacion) => {
-        const { id, orden, solicitante, status } = informacion;
+        const { id, orden, solicitante, status, paid } = informacion;
         console.log(informacion);
-        setModalInformacion({ id, orden, solicitante, status });
+        setModalInformacion({ id, orden, solicitante, status,paid });
     }
     const formularioCambiarEstado = async (data) => {
         try {
@@ -94,7 +94,7 @@ const AdminOrderControls = () => {
                             <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
-                            <ul className="dropdown-menu">
+                            <ul className="dropdown-menu ">
                                 {filtrosPedidos.map((filtro, index) => (
                                     <li className="" key={index}>
                                         <a className="dropdown-item" onClick={() => filtrarPedidos(filtro)} href="#">
@@ -115,7 +115,7 @@ const AdminOrderControls = () => {
                 </form>
                 <section className="containerDesplazable">
                     <ul className="tableTitles row " style={{ fontSize: "1.08rem" }} >
-                        <li className="col-1 ps-1">N°</li>
+                        <li className="col-1 ps-2">N°</li>
                         <li className="col-1">Productos</li>
                         <li className="col-3 ps-3">Solicitante</li>
                         <li className="col-2 ">Total</li>
@@ -128,8 +128,8 @@ const AdminOrderControls = () => {
                         {pedidos.map((pedido, index) => (
 
                             <section key={index} className="accordion-item containerRows">
-                                <ul className="accordion-header row py-1" >
-                                    <li className="col-1 ps-1">{pedidos.length - index}</li>
+                                <ul className="accordion-header row py-2" >
+                                    <li className="col-1 ps-1 fw-bold">{pedido.orderNumber}</li>
                                     <li className="col-1 ps-1">{pedido.items.length}</li>
                                     <li className="col-3 ps-3">{pedido.userId}</li>
                                     <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
@@ -158,8 +158,9 @@ const AdminOrderControls = () => {
                                         <button className="modificationButton" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Modificar " onClick={() => {
                                             handleModalStatus({
                                                 id: pedido._id,
-                                                orden: index + 1,
+                                                orden: pedido.orderNumber,
                                                 solicitante: pedido.userId,
+                                                paid: pedido.paid,
                                                 status: pedido.status
                                             })
                                         }}>{<i className="bi bi-arrow-left-right"></i>}</button>
