@@ -36,7 +36,7 @@ const AdminOrderControls = () => {
     const handleModalStatus = (informacion) => {
         const { id, orden, solicitante, status, paid } = informacion;
         console.log(informacion);
-        setModalInformacion({ id, orden, solicitante, status,paid });
+        setModalInformacion({ id, orden, solicitante, status, paid });
     }
     const formularioCambiarEstado = async (data) => {
         try {
@@ -52,6 +52,21 @@ const AdminOrderControls = () => {
 
         }
     }
+    const cambiarrEstadoPaid = async (id,data) => {
+        const Object ={
+            paid: data
+        }
+        try {
+            await axios.put(`http://localhost:5000/api/order/${id}`, Object).then(response => {
+                console.log("llego aqui y respuesta de paid"), response;
+                obtenerPedidos();
+            })
+
+        } catch (error) {
+            console.log("exploto aqui", error);
+
+        }
+     }
 
     const desplegarDetalle = (pedidoId) => {
         if (idBotonAbierto !== pedidoId) {
@@ -149,8 +164,8 @@ const AdminOrderControls = () => {
                                         </button>
                                     </li>
                                     <li className="col-1 li-centrado ">
-                                        {!pedido.paid && <button className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
-                                        {pedido.paid && <button className="checkButton rounded-5" title="No pagado " >Pagado</button>}
+                                        {!pedido.paid && <button onClick={() => { cambiarrEstadoPaid(pedido._id, pedido.paid) }} className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
+                                        {pedido.paid && <button onClick={() => { cambiarrEstadoPaid(pedido._id, pedido.paid) }} className="checkButton rounded-5" title="No pagado " >SI</button>}
                                     </li>
 
                                     <li className="col-3 li-centrado">
