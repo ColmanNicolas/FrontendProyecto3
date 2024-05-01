@@ -131,7 +131,7 @@ const AdminOrderControls = () => {
                                 <ul className="accordion-header row py-2" >
                                     <li className="col-1 ps-1 fw-bold">{pedido.orderNumber}</li>
                                     <li className="col-1 ps-1">{pedido.items.length}</li>
-                                    <li className="col-3 ps-3">{pedido.userId}</li>
+                                    <li className="col-3 ps-3">{pedido.userId[0].name}</li>
                                     <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
                                     <li className="col-1 li-centrado">
                                         <button
@@ -159,7 +159,7 @@ const AdminOrderControls = () => {
                                             handleModalStatus({
                                                 id: pedido._id,
                                                 orden: pedido.orderNumber,
-                                                solicitante: pedido.userId,
+                                                solicitante: pedido.userId[0].name,
                                                 paid: pedido.paid,
                                                 status: pedido.status
                                             })
