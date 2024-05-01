@@ -152,14 +152,14 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     </section>
                 </section>
                 <section className="rowInputsForm d-flex align-items-center flex-row bg-dark p-2 rounded-2 mb-3">
-                    <p> Al enviar este formulario, aceptas nuestros términos y condiciones. Gracias por registrarte en nuestro servicio.</p>
+                    <p className="mb-0"> Al enviar este formulario, aceptas nuestros términos y condiciones. Gracias por registrarte en nuestro servicio.</p>
                     <Controller
                         name="terminosYCondiciones"
                         control={control}
                         rules={{ required: true }}
                         render={({ field }) => (
-                            <label className="fw-light pe-4">
-                                <input type="checkbox" {...field} />
+                            <label className="fw-light p-0">
+                                <input className="form-check-input m-0 mt-1 me-2" type="checkbox" {...field} />
                             </label>
                         )}
                     />

@@ -40,7 +40,7 @@ const ServiceAdminPage = () => {
         sessionStorage.removeItem('loguedUser');
         
         setTimeout(() => {
-            navigate("/bar-app/landing-page/auth");
+            navigate("/service/login");
         }, 1000);
     }
 

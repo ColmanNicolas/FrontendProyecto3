@@ -34,6 +34,7 @@ const PrincipalMyAccount = () => {
 
     }
     const cerrarSesion = () => {
+        sessionStorage.removeItem('loguedUser');
         console.log("cierro Sesion usuario principal");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")

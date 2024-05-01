@@ -41,7 +41,6 @@ const LoginComp = () => {
                 if (data.user.role === "ADMIN_ROLE") {
                     navigateTo('/service/admin-controls');
                 } else {
-
                     setTimeout(navigate, 2500);
                 }
             }
