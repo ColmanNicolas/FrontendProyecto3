@@ -126,6 +126,8 @@ const AdminUserControls = ({ userList }) => {
                                 </ul>
                             )
                         ))}
+                        {usuarios.length === 0 && <p className="col-12  px-2 py-2 fs-5">{` Se encontraron 0 usuarios`}</p>}
+
                     </section>
                 </section>
             </section>
