@@ -13,8 +13,15 @@ const AdminMenuControls = () => {
     const [menus, setMenus] = useState([]);
 
     const enviarBusqueda = async (data) => {
-        const response = await buscadorMenus(data);
-        setMenus(response.data.menus)
+
+        try {
+            const response = await buscadorMenus(data);
+            setMenus(response.data.menus)
+        } catch (error) {
+            console.error('Error: no se encontro coincidencia', error);
+            setMenus([]);
+
+        }
     }
 
     const setearDataMenus = async () => {
@@ -23,7 +30,9 @@ const AdminMenuControls = () => {
             console.log("recibo menu", response);
             setMenus(response.data);
         } catch (error) {
-            console.error('Error al obtener menus:', error);
+            console.error('Error al obtener menusen setear:', error);
+            setMenus([]);
+
         }
     };
     const filtrar = async(menu)=>{

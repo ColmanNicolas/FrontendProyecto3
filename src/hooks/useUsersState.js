@@ -101,6 +101,8 @@ const useUsersState = () => {
             return response.data.users;
         } catch (error) {
             console.error('Error al obtener datos:', error);
+            setUsers([]);
+
             // Puedes lanzar el error nuevamente para que sea manejado en el contexto que llama a esta función
             throw error;
         }
