@@ -20,6 +20,24 @@ const PrincipalAdminPage = () => {
             console.error('Error al obtener datos:', error);
         }
     };
+    const filtrarPrincipalesStatus = async (status) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/principalUsers/status/${status}`)
+            setUsuarios(response.data.filteredUsers);
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+        }
+    };
+    
+    const filtrarPrincipalesPaid = async (paid) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/principalUsers/paid/${paid}`);
+            setUsuarios(response.data.filteredUsers);
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+        }
+    };
+    
     const cambiarEstado = async (id, accion) => {
         console.log(id, accion);
         try {
@@ -57,6 +75,7 @@ const PrincipalAdminPage = () => {
         }
     };
     const cerrarSesion = () => {
+        sessionStorage.removeItem('loguedUser');
         console.log("cierro Sesion admin");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
@@ -85,9 +104,13 @@ const PrincipalAdminPage = () => {
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" onClick={() => filtrarUsuarios(true)} href="#">Habilitados</a></li>
+                                    <li><a class="dropdown-item" onClick={() => filtrarPrincipalesStatus(true)} href="#">Habilitados</a></li>
                                     <hr className="m-0" />
-                                    <li><a class="dropdown-item" onClick={() => filtrarUsuarios(false)} href="#">Deshabilitados</a></li>
+                                    <li><a class="dropdown-item" onClick={() => filtrarPrincipalesStatus(false)} href="#">Deshabilitados</a></li>
+                                    <hr className="m-0" />
+                                    <li><a class="dropdown-item" onClick={() => filtrarPrincipalesPaid(true)} href="#">Pago Realizado</a></li>
+                                    <hr className="m-0" />
+                                    <li><a class="dropdown-item" onClick={() => filtrarPrincipalesPaid(false)} href="#">Pago Pendiente</a></li>
                                 </ul>
                                 <button type="button" className="buttonReload" onClick={() => obtenerPrincipalUsers()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                             </section>

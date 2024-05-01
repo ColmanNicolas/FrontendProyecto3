@@ -43,7 +43,9 @@
 .headerLanding h1 {
     color: #ffffff;
     background-color: #ffffff00;
-    font-size: 3em;
+    font-size: 2.5em;
+  font-weight: bold;
+
 }
 
 .headerLanding a {
@@ -218,7 +220,7 @@ margin-inline: 1rem;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -10%);
-    background: rgba(0, 0, 0, 0.753);
+    background: rgba(0, 0, 0, 0.851);
     color: white;
     padding: 10px;
     width: 100%;
@@ -546,7 +548,7 @@ margin-inline: 1rem;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -10%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.685);
     color: white;
     padding: 10px;
     width: 100%;
@@ -558,7 +560,7 @@ margin-inline: 1rem;
     font-size: 2.2rem;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
     color: white;
     padding: 10px;
     width: 100%;
@@ -573,6 +575,7 @@ margin-inline: 1rem;
 .contenedorImagenPrueba form input {
     width: 300px;
     margin-right: 1em;
+    background-color: #c40a0a;
 }
 
 .contenedorImagenPrueba form label,
@@ -582,12 +585,18 @@ button {
     height: 2.3em;
 }
 
-.contenedorImagenPrueba form button {
+.contenedorImagenPrueba form a {
     color: #ffffff;
+    font-size: 1.5rem;
     font-weight: 500;
-    background-color: rgb(38, 150, 47);
+    background-color: rgb(124, 20, 20) !important;
     border-radius: 10px;
-    padding-inline: 1em;
+    padding-inline: 1.5em;
+}
+.contenedorImagenPrueba form a:hover {
+    background-color: rgb(192, 33, 33) !important;
+    outline: 1px solid rgba(255, 255, 255, 0.685);
+
 }
 
 /* propiedades del footer */

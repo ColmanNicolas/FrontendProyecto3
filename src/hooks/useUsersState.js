@@ -6,13 +6,13 @@ const useUsersState = () => {
 
     const obtenerUsuarios = async () => {
         try {
-            await axios.get("http://localhost:5000/api/users")
-                .then(response => {
-                    console.log(response);
-                    setUsers(response.data.users);
-                });
+            const response = await axios.get("http://localhost:5000/api/users");
+            console.log(response);
+            setUsers(response.data.users);
+            return response.data.users;
         } catch (error) {
             console.error('Error al obtener datos:', error);
+            throw error; 
         }
     };
     const crearUsuario = async (data) => {
@@ -48,26 +48,29 @@ const useUsersState = () => {
     };
     const darAltaUsuario = async (id) => {
         try {
-            await axios.put(`http://localhost:5000/api/users/enable/${id}`)
-                .then(response => {
-                }).then(()=>{
-                    obtenerUsuarios();
-                });
+
+            const response = await axios.put(`http://localhost:5000/api/users/enable/${id}`);
+            console.log(response);
+            setUsers([response.data.user]);
+            return response.data; 
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error al dar de alta usuario:', error);
+            throw error; 
         }
     };
+    
     const borrarUsuario = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/users/${id}`)
-                .then(response => {
-                }).then(()=>{
-                    obtenerUsuarios();
-                });
+            const response = await axios.delete(`http://localhost:5000/api/users/${id}`);
+            
+            setUsers([response.data.user]);
+            return response.data;
         } catch (error) {
-            console.error('Error al obtener datos:', error);
+            console.error('Error al borrar usuario:', error);
+            throw error; 
         }
     };
+    
     const filtrarUsuarios = async (status)=>{
         try {
             await axios.get(`http://localhost:5000/api/users/filter/:${status}`)
@@ -78,19 +81,31 @@ const useUsersState = () => {
             console.error('Error al obtener datos:', error);
         }
     }
-    const filtrarRolUsuarios = async (filter)=>{
-        console.log("llego aqui");
-
+    const filtrarRolUsuarios = async (filter) => {
         try {
-            await axios.get(`http://localhost:5000/api/users/role_filter/${filter}`)
-                .then(response => {
-                    setUsers(response.data.filteredUsers);   
-                    console.log(response);
-
-                });
+            const response = await axios.get(`http://localhost:5000/api/users/role_filter/${filter}`);
+            setUsers(response.data.filteredUsers);
+            return response.data.filteredUsers;
         } catch (error) {
             console.error('Error al obtener datos:', error);
-        }   
+            // Puedes lanzar el error nuevamente para que sea manejado en el contexto que llama a esta función
+            throw error;
+        }
+    }
+    const buscadorUsers = async (data) => {
+        try {
+            const {buscador}=data;
+            const response = await axios.get(`http://localhost:5000/api/users/search/${buscador}`);
+            console.log("realiz",response);
+            setUsers(response.data.users);
+            return response.data.users;
+        } catch (error) {
+            console.error('Error al obtener datos:', error);
+            setUsers([]);
+
+            // Puedes lanzar el error nuevamente para que sea manejado en el contexto que llama a esta función
+            throw error;
+        }
     }
 
     return {
@@ -102,7 +117,8 @@ const useUsersState = () => {
         darAltaUsuario,
         borrarUsuario,
         filtrarUsuarios,
-        filtrarRolUsuarios
+        filtrarRolUsuarios,
+        buscadorUsers
     }
 };
 export default useUsersState;

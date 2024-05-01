@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, memo } from 'react';
 
 import AdminMenuControls from "../components/AdminMenuControls";
 import AdminOrderControls from "../components/AdminOrderControls";
@@ -36,10 +36,14 @@ const ServiceAdminPage = () => {
         }
     }
     const cerrarSesion = ()=>{
+
+        sessionStorage.removeItem('loguedUser');
+        
         setTimeout(() => {
-            navigate("/bar-app/landing-page");
+            navigate("/service/login");
         }, 1000);
     }
+
     return (
         <>
             <section className="d-flex  contenedorPrincipal">
@@ -64,4 +68,4 @@ const ServiceAdminPage = () => {
         </>
     )
 };
-export default ServiceAdminPage;
+export default memo(ServiceAdminPage);

@@ -12,12 +12,12 @@ const LandingPage = () => {
     return (
         <>
             <header className='headerLanding '>
-                <h1 className=" m-0 ">BAR APP </h1>
-                <Link to={"auth"}><i class="bi bi-person-vcard-fill fs-3"></i><p>ACCESO</p></Link>
+                <h1 className=" m-0 ">Barapp </h1>
+                <Link to={"auth"}><i className="bi bi-person-vcard-fill fs-3"></i><p>ACCESO</p></Link>
             </header>
             <section id="contenedor-menu">
-                <a href="#contenedor-menu" id="abrir-menu"><i class="bi bi-list " ></i></a>
-                <a href="#"><i class="bi bi-x-circle" id="cerrar-menu"></i></a>
+                <a href="#contenedor-menu" id="abrir-menu"><i className="bi bi-list " ></i></a>
+                <a href="#"><i className="bi bi-x-circle" id="cerrar-menu"></i></a>
                 <nav id="home" className="navBarLanding">
                     <ul id="contenedor-enlaces">
                         <li><a href="#home">Home</a></li>
@@ -33,7 +33,7 @@ const LandingPage = () => {
                 <section >
                     <article id="home">
                         <figure className='contenedorImagen'>
-                            <figcaption >POTENCIA LA GESTION DE TU NEGOCIO</figcaption>
+                            <figcaption >POTENCIA LA GESTION DE TU EMPRESA GASTRONOMICA</figcaption>
                         </figure>
                     </article>
                     <section id="informacion" className='sectionSeparator'>
@@ -63,19 +63,19 @@ const LandingPage = () => {
                         <article >
                             <h3>STANDARD SERVICE</h3>
                             <ul>
-                                <li><p>Gestión de Personal</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Creación de Menús</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Administración de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Control de Stock</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Menú Virtual</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Configuración Visual de Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Búsqueda en Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Filtrar Menú</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Login para Clientes</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Pago en la Aplicación</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Seguimiento de Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Delivery de Pedidos</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
-                                <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Gestión de Personal</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Creación de Menús</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Administración de Pedidos</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Control de Stock</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Menú Virtual</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Configuración Visual de Menú</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Búsqueda en Menú</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Filtrar Menú</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Login para Clientes</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Pago en la Aplicación</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Seguimiento de Pedido</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Delivery de Pedidos</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
+                                <li><p>Retiro de un Pedido</p><i className="bi bi-x-circle text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
                                 <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 100 usd</button>
@@ -84,19 +84,19 @@ const LandingPage = () => {
                         <article className="articleSecondService">
                             <h3>SELF-MANAGEMENT TERMINAL</h3>
                             <ul>
-                                <li><p>Gestión de Personal</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Creación de Menús</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Administración de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Control de Stock</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Menú Virtual</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Configuración Visual de Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Búsqueda en Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Filtrar Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Pago en la Aplicación</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Login para Clientes</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
-                                <li><p>Seguimiento de Pedido</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
-                                <li><p>Delivery de Pedidos</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
-                                <li><p>Retiro de un Pedido</p><i class="bi bi-x-circle  text-danger fs-5"></i></li>
+                                <li><p>Gestión de Personal</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Creación de Menús</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Administración de Pedidos</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Control de Stock</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Menú Virtual</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Configuración Visual de Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Búsqueda en Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Filtrar Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Pago en la Aplicación</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Login para Clientes</p><i className="bi bi-x-circle  text-danger fs-5"></i></li>
+                                <li><p>Seguimiento de Pedido</p><i className="bi bi-x-circle  text-danger fs-5"></i></li>
+                                <li><p>Delivery de Pedidos</p><i className="bi bi-x-circle  text-danger fs-5"></i></li>
+                                <li><p>Retiro de un Pedido</p><i className="bi bi-x-circle  text-danger fs-5"></i></li>
                             </ul>
                             <section className='text-center'>
                                 <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 130 usd</button>
@@ -105,19 +105,19 @@ const LandingPage = () => {
                         <article className="articleThirdService">
                             <h3>MENU APP</h3>
                             <ul>
-                                <li><p>Gestión de Personal</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Creación de Menús</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Administración de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Control de Stock</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Menú Virtual</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Configuración Visual de Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Búsqueda en Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Filtrar Menú</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Pago en la Aplicación</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Login para Clientes</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Seguimiento de Pedido</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Delivery de Pedidos</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
-                                <li><p>Retiro de un Pedido</p><i class="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Gestión de Personal</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Creación de Menús</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Administración de Pedidos</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Control de Stock</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Menú Virtual</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Configuración Visual de Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Búsqueda en Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Filtrar Menú</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Pago en la Aplicación</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Login para Clientes</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Seguimiento de Pedido</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Delivery de Pedidos</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
+                                <li><p>Retiro de un Pedido</p><i className="bi bi-check2-circle text-success fs-4"></i></li>
                             </ul>
                             <section className='text-center'>
                                 <button className=' btnPrecioServicio' onClick={()=>{navegarAuth()}}> 150 usd</button>
@@ -158,7 +158,7 @@ const LandingPage = () => {
                     <figure className='contenedorImagenPrueba'>
                         <figcaption >COMUNICATE CON NOSOTROS PARA HACER UNA PRUEBA DE NUESTROS SERVICIOS</figcaption>
                         <form >
-                            <a className="text-decoration-none text-white   bg-dark rounded-2 px-2" href="mailto:bar_app@gmail.com.ar">Contactar por correo</a>
+                            <a className="text-decoration-none btn" href="mailto:bar_app@gmail.com.ar">Contactar por correo</a>
                         </form>
                     </figure>
                 </section>

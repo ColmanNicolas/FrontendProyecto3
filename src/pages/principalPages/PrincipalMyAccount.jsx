@@ -7,7 +7,7 @@ import FormPagoServicio from "../../components/FormPagoServicio";
 
 const PrincipalMyAccount = () => {
     const { id } = useParams();
-    const { handleSubmit, setValue, register, formState: { errors, isSubmitSuccessful }, watch, reset, control  ,  focus } = useForm();
+    const { handleSubmit, setValue, register, formState: { errors, isSubmitSuccessful }, watch, reset, control, focus } = useForm();
     const [pagado, setPagado] = useState(null);
     const [habilitado, setHabilitado] = useState(null);
     const navigate = useNavigate();
@@ -29,11 +29,12 @@ const PrincipalMyAccount = () => {
         }
     }
 
-    const enviarFormularioModificacion = (dataModificaction)=>{
-        console.log("llego aqui por 100",dataModificaction);
+    const enviarFormularioModificacion = (dataModificaction) => {
+        console.log("llego aqui por 100", dataModificaction);
 
     }
     const cerrarSesion = () => {
+        sessionStorage.removeItem('loguedUser');
         console.log("cierro Sesion usuario principal");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
@@ -59,64 +60,63 @@ const PrincipalMyAccount = () => {
                             <h3 className="tituloH3MiCuenta">Mi información </h3>
                             <section>
                                 <label htmlFor="name">Nombre</label>
-                                <input type="text" id="name" {...register("name", {
-                                    required: true,
-                                    minLength: 3,
-                                    maxLength: 35,
-                                    pattern: /^[a-zA-Z ]+$/
-                                })} />
+                                <input type="text" id="name"{...register("name", {
+                                    required: "Campo requerido",
+                                    minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                    maxLength: { value: 45, message: "Máximo 35 caracteres" },
+                                    pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
+                                })}
+                                />
                                 {errors.name && (
-                                    errors.name.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                                    <p className="ps-1 text-danger fs-semibold mb-0s">{errors.name.message}</p>
                                 )}
                             </section>
                             <section>
                                 <label htmlFor="businessName">Empresa</label>
-                                <input type="text" id="businessName" {...register("businessName", {
-                                    required: true,
-                                    minLength: 3,
-                                    maxLength: 35,
-                                    pattern: /^[a-zA-Z ]+$/
+                                <input type="text" id="businessName"  {...register("businessName", {
+                                    required: "Campo requerido",
+                                    minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                    maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                    pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                                 })} />
-                                {errors.businessName && (
-                                    errors.businessName.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
-                                )}
+                                {errors.businessName && (<p className="ps-1 text-danger fs-semibold mb-0s">{errors.businessName.message}</p>)}
                             </section>
                             <section>
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" {...register("principalEmail", {
-                                    required: true,
-                                    minLength: 3,
-                                    maxLength: 35,
+                                <input type="email" className="form-control" id="userEmail" name="email" {...register("principalEmail", {
+                                    required: "Campo requerido",
+                                    minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                    maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Solo se permiten letras y espacios" }
                                 })} />
-                                {errors.principalEmail && (
-                                    (errors.principalEmail.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>) ||
-                                    (errors.principalEmail.type === "minLength" && <p className="error-message bg-danger">email muy corto</p>) ||
-                                    (errors.principalEmail.type === "maxLength" && <p className="error-message bg-danger">email muy largo</p>) ||
-                                    (errors.principalEmail.type === "pattern" && <p className="error-message bg-danger">No cumple con la condicion para email</p>) 
+                                {errors.principalEmail && (<p className="ps-1 text-danger fs-semibold mb-0s">{errors.principalEmail.message}</p>
                                 )}
                             </section>
                             <section>
                                 <label htmlFor="country">Pais</label>
-                                <input type="text" id="country" {...register("country", {
+                                <input type="text" id="country"  {...register("country", {
                                     required: true,
                                     minLength: 3,
                                     maxLength: 35,
                                     pattern: /^[a-zA-Z ]+$/
                                 })} />
                                 {errors.country && (
-                                    errors.country.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                                    (errors.country.type === "required" && <p className="ps-1 text-danger fs-semibold mb-0">Campo Requerido</p>) ||
+                                    (errors.country.type === "minLength" && <p className="ps-1 text-danger fs-semibold mb-0">minimo de caracteres 3</p>) ||
+                                    (errors.country.type === "maxLength" && <p className="ps-1 text-danger fs-semibold mb-0">Se exedio el maximo de caractres. '35' </p>) ||
+                                    (errors.country.type === "pattern" && <p className="ps-1 text-danger fs-semibold mb-0">Campo Requerido</p>)
                                 )}
                             </section>
                             <section>
                                 <label htmlFor="city">Ciudad</label>
-                                <input type="text" id="city" {...register("city", {
-                                    required: true,
-                                    minLength: 3,
-                                    maxLength: 35,
-                                    pattern: /^[a-zA-Z ]+$/
+                                <input type="text" id="city"  {...register("city", {
+                                    required: "Campo requerido",
+                                    minLength: { value: 3, message: "Mínimo 3 caracteres" },
+                                    maxLength: { value: 35, message: "Máximo 35 caracteres" },
+                                    pattern: { value: /^[a-zA-Z ]+$/, message: "Solo se permiten letras y espacios" }
                                 })} />
                                 {errors.city && (
-                                    errors.city.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
+                                    <p className="ps-1 text-danger fs-semibold mb-0">{errors.city.message}</p>
                                 )}
                             </section>
                             {  /*  <section>
@@ -134,12 +134,12 @@ const PrincipalMyAccount = () => {
                         */}
                             <section id="botonesFormulario">
                                 <input type="submit" value={"Modificar Datos"} />
-                                <input type="button" value={"Cambiar Contraseña"} />
+                               {/* <input type="button" value={"Cambiar Contraseña"} >*/}
                             </section>
                         </form>
                     </section>
                     <section className="contenedorMiCuenta mb-5">
-                        {!pagado &&<FormPagoServicio/>}
+                        {!pagado && <FormPagoServicio />}
                     </section>
                     <section className="contenedorMiCuenta " id="contenedorEstadoServicio">
                         <h3 className="tituloH3MiCuenta ">Estado de mi Servicio</h3>

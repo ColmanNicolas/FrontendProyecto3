@@ -28,7 +28,7 @@ const LoginComp = () => {
                 toast.error(data.messageError, {
                     theme: 'dark'
                 });
-            } else if (!data.user.status) {         
+            } else if (!data.user.status) {
                 toast.error(data.msg, {
                     theme: 'dark'
                 });
@@ -38,22 +38,27 @@ const LoginComp = () => {
                 });
                 console.log("Token recibido:", data.token); 
                 sessionStorage.setItem('loguedUser', JSON.stringify({token: data.token, id: data.user.id}));
+                console.log("Token recibido:", data.token);
+                sessionStorage.setItem('loguedUser', JSON.stringify({ token: data.token, id: data.user.id, name: data.user.name }));
                 if (data.user.role === "ADMIN_ROLE") {
-                    navigateTo('/service/admin-controls');
+                    setTimeout(() => {
+                        navigateTo('/service/admin-controls');
+                        
+                    }, 2500);
                 } else {
-                    setTimeout(navigate, 2000);
+                    setTimeout(navigate, 2500);
                 }
             }
         } catch (error) {
             toast.error('Error al ingresar el usuario', {
                 theme: 'dark'
             });
-            console.error('Error durante la llamada a la API:', error); 
+            console.error('Error durante la llamada a la API:', error);
         }
     };
 
     const navigate = () => {
-        window.location.pathname = '/bar-app/home';
+        window.location.pathname = '/service/products-menu';
     };
 
     const enviarFormulario = body => {
@@ -63,9 +68,9 @@ const LoginComp = () => {
 
     return (
         <>
-            <div className='contenedorForm'>            
+            <div className='contenedorForm'>
                 <form onSubmit={handleSubmit(enviarFormulario)}>
-                <h3 className='text-center mb-4'>INICIO DE SESION</h3>
+                    <h3 className='text-center mb-4'>INICIO DE SESION</h3>
                     <div className='mb-3 input-container'>
                         <label htmlFor='correo' className='form-label'>
                             Correo Electrónico
@@ -113,7 +118,6 @@ const LoginComp = () => {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 25,
-                                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/
                                 })}
                             />
                             <FontAwesomeIcon
@@ -134,18 +138,18 @@ const LoginComp = () => {
                             Enviar
                         </button>
                     </div>
-                                
-            <div className="text-center mt-3">
-                <Link to="/404" className="text-decoration-none">
-                    ¿Olvidaste tu contraseña?
-                </Link>
-            </div>
-            <div className="text-center mt-2">
-                <Link to="/service/register" className="text-decoration-none">
-                    <FontAwesomeIcon icon={faUserPlus} className="me-2" />
-                    Registrarse
-                </Link>
-            </div>
+
+                    <div className="text-center mt-3">
+                        <Link to="/404" className="text-decoration-none">
+                            ¿Olvidaste tu contraseña?
+                        </Link>
+                    </div>
+                    <div className="text-center mt-2">
+                        <Link to="/service/register" className="text-decoration-none">
+                            <FontAwesomeIcon icon={faUserPlus} className="me-2" />
+                            Registrarse
+                        </Link>
+                    </div>
                 </form>
             </div>
 

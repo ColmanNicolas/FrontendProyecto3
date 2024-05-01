@@ -14,9 +14,7 @@ const AdminOrderControls = () => {
     const {
         pedidos,
         obtenerPedidos,
-        obtenerUnPedido,
-        crearPedido,
-        modificarPedido,
+        buscadorPedidos,
         filtrarPedidos,
     } = usePedidosState();
 
@@ -34,19 +32,45 @@ const AdminOrderControls = () => {
     };
 
     const handleModalStatus = (informacion) => {
-        const { id, orden, solicitante, status } = informacion;
+        const { id, orden, solicitante, status, paid } = informacion;
         console.log(informacion);
-        setModalInformacion({ id, orden, solicitante, status });
+        setModalInformacion({ id, orden, solicitante, status, paid });
     }
+
     const formularioCambiarEstado = async (data) => {
         try {
             await axios.put(`http://localhost:5000/api/order/${modalInformacion.id}`, data).then(response => {
-                console.log("llego aqui y respuesta"), response;
                 reset();
                 obtenerPedidos();
                 closeModal()
             })
 
+        } catch (error) {
+            console.log("exploto aqui", error);
+
+        }
+    }
+    const RealizarBusqueda= async ()=>{
+        try {
+            const query = document.getElementById('inputBuscador').value;
+            const data={
+                buscador:query,
+            }
+            const respuesta = await buscadorPedidos(data)
+            console.log("realice bien la busqeuda", respuesta);
+        } catch (error) {
+            
+        }
+    }
+    const cambiarrEstadoPaid = async (id,data) => {
+        const Object ={
+            paid: data
+        }
+        try {
+            await axios.put(`http://localhost:5000/api/order/${id}`, Object).then(response => {
+                console.log("llego aqui y respuesta de paid"), response;
+                obtenerPedidos();
+            })
         } catch (error) {
             console.log("exploto aqui", error);
 
@@ -60,17 +84,18 @@ const AdminOrderControls = () => {
             setIdBotonAbierto(null);
         }
     };
+
     function formatoFecha(fechaString) {
         const fecha = new Date(fechaString);
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         return fecha.toLocaleDateString('es-ES', options);
     }
-
     function formatoHora(fechaString) {
         const fecha = new Date(fechaString);
         const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
         return fecha.toLocaleTimeString('es-ES', options);
     }
+
     useEffect(() => {
         obtenerPedidos();
     }, []);
@@ -94,7 +119,7 @@ const AdminOrderControls = () => {
                             <a id="btnFiltrarUsers" className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-funnel"></i><span>Filtrar </span>
                             </a>
-                            <ul className="dropdown-menu">
+                            <ul className="dropdown-menu ">
                                 {filtrosPedidos.map((filtro, index) => (
                                     <li className="" key={index}>
                                         <a className="dropdown-item" onClick={() => filtrarPedidos(filtro)} href="#">
@@ -108,14 +133,14 @@ const AdminOrderControls = () => {
 
                         </section>
                     </section>
-                    <section className="col-12 col-md-7 d-flex justify-content-end">
-                        <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
-                        <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                    <section className="col-12 col-md-7 d-flex justify-content-end ">
+                        <input type="text" maxLength={30} id="inputBuscador" placeholder="Ingrese algo para buscar" required />
+                        <button onClick={()=>{RealizarBusqueda()}} type="button"><span>Buscar</span><i className="bi bi-search"></i></button>
                     </section>
                 </form>
                 <section className="containerDesplazable">
                     <ul className="tableTitles row " style={{ fontSize: "1.08rem" }} >
-                        <li className="col-1 ps-1">N°</li>
+                        <li className="col-1 ps-2">N°</li>
                         <li className="col-1">Productos</li>
                         <li className="col-3 ps-3">Solicitante</li>
                         <li className="col-2 ">Total</li>
@@ -128,10 +153,10 @@ const AdminOrderControls = () => {
                         {pedidos.map((pedido, index) => (
 
                             <section key={index} className="accordion-item containerRows">
-                                <ul className="accordion-header row py-1" >
-                                    <li className="col-1 ps-1">{pedidos.length - index}</li>
+                                <ul className="accordion-header row py-2" >
+                                    <li className="col-1 ps-1 fw-bold">{pedido.orderNumber}</li>
                                     <li className="col-1 ps-1">{pedido.items.length}</li>
-                                    <li className="col-3 ps-3">{pedido.userId}</li>
+                                    <li className="col-3 ps-3">{pedido.userId[0].name}</li>
                                     <li className="col-2 ">{`$ ${pedido.totalPrice}`}</li>
                                     <li className="col-1 li-centrado">
                                         <button
@@ -149,8 +174,8 @@ const AdminOrderControls = () => {
                                         </button>
                                     </li>
                                     <li className="col-1 li-centrado ">
-                                        {!pedido.paid && <button className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
-                                        {pedido.paid && <button className="checkButton rounded-5" title="No pagado " >Pagado</button>}
+                                        {!pedido.paid && <button onClick={() => { cambiarrEstadoPaid(pedido._id, pedido.paid) }} className="deleteButton rounded-5" title="No pagado " ><i className="bi bi-x-lg"></i></button>}
+                                        {pedido.paid && <button onClick={() => { cambiarrEstadoPaid(pedido._id, pedido.paid) }} className="checkButton rounded-5" title="No pagado " >SI</button>}
                                     </li>
 
                                     <li className="col-3 li-centrado">
@@ -158,8 +183,9 @@ const AdminOrderControls = () => {
                                         <button className="modificationButton" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Modificar " onClick={() => {
                                             handleModalStatus({
                                                 id: pedido._id,
-                                                orden: index + 1,
-                                                solicitante: pedido.userId,
+                                                orden: pedido.orderNumber,
+                                                solicitante: pedido.userId[0].name,
+                                                paid: pedido.paid,
                                                 status: pedido.status
                                             })
                                         }}>{<i className="bi bi-arrow-left-right"></i>}</button>
@@ -191,6 +217,7 @@ const AdminOrderControls = () => {
                                 </section>
                             </section>
                         ))}
+                         {pedidos.length === 0 && <p className="col-12  px-2 py-2 fs-5">{` Se encontraron 0 pedidos`}</p>}
                     </section>
                 </section>
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
