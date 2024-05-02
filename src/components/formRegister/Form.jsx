@@ -46,7 +46,7 @@ const Form = () => {
     const userPost = async (body) => {
         try {
             setIsLoading(true);
-            const response = await fetch('http://localhost:5000/api/users', {
+            const response = await fetch('https://backendproyecto3-1.onrender.com/api/users', {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: { 'Content-Type': 'application/json' }

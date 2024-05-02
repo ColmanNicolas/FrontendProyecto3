@@ -6,7 +6,7 @@ const useUsersState = () => {
 
     const obtenerUsuarios = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/users");
+            const response = await axios.get("https://backendproyecto3-1.onrender.com/api/users");
             console.log(response);
             setUsers(response.data.users);
             return response.data.users;
@@ -17,7 +17,7 @@ const useUsersState = () => {
     };
     const crearUsuario = async (data) => {
         try {
-            await axios.post("http://localhost:5000/api/users", data)
+            await axios.post("https://backendproyecto3-1.onrender.com/api/users", data)
                 .then(response => {
                     console.log(response);
                 });
@@ -27,7 +27,7 @@ const useUsersState = () => {
     };    
     const generarServiceAdmin = async (data) => {
         try {
-            await axios.post("http://localhost:5000/api/users/admin", data)
+            await axios.post("https://backendproyecto3-1.onrender.com/api/users/admin", data)
                 .then(response => {
                     console.log(response);
                 });
@@ -38,7 +38,7 @@ const useUsersState = () => {
     
     const modificarUsuario = async (id) => {
         try {
-            await axios.put(`http://localhost:5000/api/users/${id}`)
+            await axios.put(`https://backendproyecto3-1.onrender.com/api/users/${id}`)
                 .then(response => {
                     console.log(response);
                 });
@@ -49,7 +49,7 @@ const useUsersState = () => {
     const darAltaUsuario = async (id) => {
         try {
 
-            const response = await axios.put(`http://localhost:5000/api/users/enable/${id}`);
+            const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/users/enable/${id}`);
             console.log(response);
             setUsers([response.data.user]);
             return response.data; 
@@ -61,7 +61,7 @@ const useUsersState = () => {
     
     const borrarUsuario = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/users/${id}`);
+            const response = await axios.delete(`https://backendproyecto3-1.onrender.com/api/users/${id}`);
             
             setUsers([response.data.user]);
             return response.data;
@@ -73,7 +73,7 @@ const useUsersState = () => {
     
     const filtrarUsuarios = async (status)=>{
         try {
-            await axios.get(`http://localhost:5000/api/users/filter/:${status}`)
+            await axios.get(`https://backendproyecto3-1.onrender.com/api/users/filter/:${status}`)
                 .then(response => {
                     setUsers(response.data);
                 });
@@ -83,7 +83,7 @@ const useUsersState = () => {
     }
     const filtrarRolUsuarios = async (filter) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/users/role_filter/${filter}`);
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/users/role_filter/${filter}`);
             setUsers(response.data.filteredUsers);
             return response.data.filteredUsers;
         } catch (error) {
@@ -95,7 +95,7 @@ const useUsersState = () => {
     const buscadorUsers = async (data) => {
         try {
             const {buscador}=data;
-            const response = await axios.get(`http://localhost:5000/api/users/search/${buscador}`);
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/users/search/${buscador}`);
             console.log("realiz",response);
             setUsers(response.data.users);
             return response.data.users;

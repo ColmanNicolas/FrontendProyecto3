@@ -23,7 +23,7 @@ const ServiceMyAccount = () => {
             paid: data
         }
         try {
-            await axios.put(`http://localhost:5000/api/order/${id}`, Object).then(response => {
+            await axios.put(`https://backendproyecto3-1.onrender.com/api/order/${id}`, Object).then(response => {
                 obtenerInformacionUsuario();
             })
         } catch (error) {
@@ -36,10 +36,10 @@ const ServiceMyAccount = () => {
         const storedUser = sessionStorage.getItem('loguedUser');
         const parsedUser = JSON.parse(storedUser);
         try {
-            const responseUser = await axios.get(`http://localhost:5000/api/users/${parsedUser.id}`);
+            const responseUser = await axios.get(`https://backendproyecto3-1.onrender.com/api/users/${parsedUser.id}`);
             setUsuario(responseUser.data.user);
 
-            const responseOrders = await axios.get(`http://localhost:5000/api/order/userOrderFilter/${parsedUser.id}`);
+            const responseOrders = await axios.get(`https://backendproyecto3-1.onrender.com/api/order/userOrderFilter/${parsedUser.id}`);
             setPedidos(responseOrders.data.orders);
         } catch (error) {
             console.error('Error al obtener usuario o pedidos:', error);

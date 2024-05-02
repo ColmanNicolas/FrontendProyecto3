@@ -19,7 +19,7 @@ const PrincipalMyAccount = () => {
                 navigate('/bar-app/landing-page/auth');
             } else {
                 const { id } = JSON.parse(userLogued);
-                const response = await axios.get(`http://localhost:5000/api/principalUsers/${id}`);
+                const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/${id}`);
                 const userData = response.data.user;
                 setValue('name', userData.name);
                 setValue('businessName', userData.businessName);

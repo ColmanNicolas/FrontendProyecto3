@@ -10,7 +10,7 @@ const FormPagoServicio = () => {
 
     const enviarFormularioPago = async (dataPay) => {
         try {
-            await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`, dataPay)
+            await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/pay-done/${id}`, dataPay)
                 .then(response => {
                     window.location.reload();
                 })
