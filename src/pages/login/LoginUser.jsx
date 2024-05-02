@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginComp from '../../components/login/LoginComp';
 import Navbar from "../../components/navBar/Navbar";
+import Footer from '../../components/Footer';
 
 const LoginUser = () => {
     return (
@@ -11,10 +12,8 @@ const LoginUser = () => {
             <main className="container-fluid">
               <LoginComp />
             </main>
-    
-            {/* <footer className="mt-auto">
-              <h1>FOOTER INICIO DE SESION</h1>
-            </footer> */}
+            <Footer></Footer>
+            
          
         </>
     );

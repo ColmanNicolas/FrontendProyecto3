@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ModalEstructuraBase from '../components/ModalEstructuraBase';
 import useModal from '../hooks/useModal';
 import ContenedorCarritoCompras from '../components/serviceComponents/ContenedorCarritoCompras';
-
 import pizza from '../public/pizza-muzarella.jpg';
 import empanada from '../public/docena-empanadas.jpg';
 import sanguche from '../public/sandwich-de-milanesa.jpg';
-
 import "../pages/ServiceMenus.css"
 import axios from 'axios';
 import Navbar from "../components/navBar/Navbar"
@@ -25,80 +24,94 @@ const ServiceMenus = () => {
     const [productOrderList, setProductOrder] = useState([]);
     const [cantidadProducto, setCantidadProducto] = useState(null);
     const { isOpen, openModal, closeModal } = useModal(false);
+    const navigate = useNavigate();
 
     const handleProductSelect = (product) => {
         setSelectedProduct(product);
     };
+
     const agregarProductoCarrito = (product) => {
         setProductOrder([...productOrderList, product]);
     };
+
     const quitarProductoCarrito = (product) => {
-        console.log("recibo:", product);
         const index = productOrderList.findIndex(item => item.name === product);
-        console.log(index);
         if (index !== -1) {
-            console.log("entro a borrar");
             const nuevaListaProductos = [...productOrderList];
             nuevaListaProductos.splice(index, 1);
             setProductOrder(nuevaListaProductos);
         }
     };
+
     const cancelarPedido = () => {
         setProductOrder([]);
         closeModal();
-    }
+    };
+
     const generarPedido = async () => {
         try {
-
             const storedUser = sessionStorage.getItem('loguedUser');
             const parsedUser = JSON.parse(storedUser);
-            const {token, ...rest} = parsedUser;
 
+            if (!parsedUser) {
+                navigate('/service/login');
+                return;
+            }
+
+            const { token, ...rest } = parsedUser;
             const items = productOrderList;
             let totalPrice = 0;
-            items.map((producto) => {
-                totalPrice = totalPrice + producto.price;
-            })
 
-            console.log(rest, items, totalPrice);
-            await axios.post("http://localhost:5000/api/order", { rest, items, totalPrice })
-                .then(response => {
-                    cancelarPedido()
-                })
+            items.forEach((producto) => {
+                totalPrice += producto.price;
+            });
 
+            await axios.post("http://localhost:5000/api/order", { rest, items, totalPrice });
+            cancelarPedido();
         } catch (error) {
             console.log(error);
-
         }
-    }
+    };
 
     useEffect(() => {
-        setCantidadProducto(productOrderList.length)
-        console.log("stete categorias", productOrderList);
-    }, [productOrderList])
+        setCantidadProducto(productOrderList.length);
+    }, [productOrderList]);
+
+    useEffect(() => {
+        const userLogued = sessionStorage.getItem('loguedUser');
+        if (!userLogued) {
+            navigate('/service/login');
+        }
+    }, [navigate]);
 
     return (
-
         <>
+            <Navbar />
             <main id='fondoMenu'>
                 <section className='text-end p-3'>
-                    <button type="button" onClick={() => { openModal(true) }} className="btn btn-light">
+                    <button type="button" onClick={() => openModal(true)} className="btn btn-light">
                         CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
                     </button>
-
                 </section>
 
                 <ContenedorCarrouselProductos agregarProductoCarrito={agregarProductoCarrito} />
 
-                {isOpen && <ModalEstructuraBase closeModal={closeModal} >
-                    <h3>Carrito de compras</h3>
-                    <ContenedorCarritoCompras productOrderList={productOrderList} generarPedido={generarPedido} quitarProductoCarrito={quitarProductoCarrito} cancelarPedido={cancelarPedido} closeModal={closeModal} />
-                </ModalEstructuraBase>}
+                {isOpen && (
+                    <ModalEstructuraBase closeModal={closeModal}>
+                        <h3>Carrito de compras</h3>
+                        <ContenedorCarritoCompras
+                            productOrderList={productOrderList}
+                            generarPedido={generarPedido}
+                            quitarProductoCarrito={quitarProductoCarrito}
+                            cancelarPedido={cancelarPedido}
+                            closeModal={closeModal}
+                        />
+                    </ModalEstructuraBase>
+                )}
             </main>
             <Footer />
-
         </>
-    )
-}
+    );
+};
 
 export default ServiceMenus;

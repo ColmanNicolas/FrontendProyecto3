@@ -1,0 +1,9 @@
+.footer {
+    align-items: center;
+    background-color: #000 !important;
+    color: #fff;
+  }
+  
+  .footer a, .info-footer p, .footer div p {
+    color: #fff !important;
+  }
