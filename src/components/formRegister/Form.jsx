@@ -61,7 +61,6 @@ const Form = () => {
                     theme: 'dark'
                 });
                 setTimeout(() => {
-                    console.log("entro aqui", data.user.role);
                     navegadorPostRegister(data.user.role)
                 }, 4500);
             }
@@ -95,14 +94,12 @@ const Form = () => {
     const cargarServiciosSelect = async () => {
 
         const usuarios = await filtrarRolUsuarios("ADMIN_ROLE");
-        console.log("recibo usuariso nuevo", usuarios);
 
         if (!Array.isArray(usuarios)) {
             console.error('La función cargarServic iosSelect requiere una lista de usuarios como parámetro.');
             return;
         }
         const selectInfo = usuarios.map(user => ({ value: user.id, label: user.name }));
-        console.log("selected info ", selectInfo);
 
         setServiceOptions(selectInfo);
     }

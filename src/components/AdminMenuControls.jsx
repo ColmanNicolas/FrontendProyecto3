@@ -27,17 +27,15 @@ const AdminMenuControls = () => {
     const setearDataMenus = async () => {
         try {
             const response = await obtenerMenus();
-            console.log("recibo menu", response);
             setMenus(response.data);
         } catch (error) {
-            console.error('Error al obtener menusen setear:', error);
+            console.error('Error al obtener menu en setear:', error);
             setMenus([]);
 
         }
     };
     const filtrar = async(menu)=>{
         const response = await filtrarMenus(menu);
-        console.log("recibo lista filtrada",response);
         setMenus(response)
 
     }

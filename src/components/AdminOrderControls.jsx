@@ -22,10 +22,8 @@ const AdminOrderControls = () => {
 
     const closeModal = () => {
         const modal = document.getElementById('staticBackdrop');
-        console.log("recupero el modal", modal);
         if (modal) {
             const bootstrapModal = new bootstrap.Modal(modal);
-            console.log("lo trato de destruiur", bootstrapModal);
             bootstrapModal.hide(); // Oculta el modal
             bootstrapModal.dispose(); // Destruye el modal
         }
@@ -33,7 +31,6 @@ const AdminOrderControls = () => {
 
     const handleModalStatus = (informacion) => {
         const { id, orden, solicitante, status, paid } = informacion;
-        console.log(informacion);
         setModalInformacion({ id, orden, solicitante, status, paid });
     }
 
@@ -46,7 +43,7 @@ const AdminOrderControls = () => {
             })
 
         } catch (error) {
-            console.log("exploto aqui", error);
+            console.error("exploto aqui", error);
 
         }
     }
@@ -57,7 +54,6 @@ const AdminOrderControls = () => {
                 buscador:query,
             }
             const respuesta = await buscadorPedidos(data)
-            console.log("realice bien la busqeuda", respuesta);
         } catch (error) {
             
         }
@@ -68,11 +64,10 @@ const AdminOrderControls = () => {
         }
         try {
             await axios.put(`http://localhost:5000/api/order/${id}`, Object).then(response => {
-                console.log("llego aqui y respuesta de paid"), response;
                 obtenerPedidos();
             })
         } catch (error) {
-            console.log("exploto aqui", error);
+            console.error("exploto aqui", error);
 
         }
     }

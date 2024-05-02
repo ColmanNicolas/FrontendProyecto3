@@ -36,7 +36,6 @@ const LoginComp = () => {
                 toast.success(`Iniciaste sesión exitosamente como ${data.user.email} `, {
                     theme: 'dark'
                 });
-                console.log("Token recibido:", data.token); 
                 sessionStorage.setItem('loguedUser', JSON.stringify({ token: data.token, id: data.user.id, name: data.user.name }));
                                
                 if (data.user.role === "ADMIN_ROLE") {

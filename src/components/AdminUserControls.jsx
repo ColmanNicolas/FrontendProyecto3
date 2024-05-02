@@ -15,7 +15,6 @@ const AdminUserControls = ({ userList }) => {
     const [usuarios, setUsuarios] = useState([]);
 
     const enviarBusqueda = async (data) => {
-        console.log("llego aqui");
         const response = await buscadorUsers(data);
         setUsuarios(response)
     }
@@ -23,7 +22,6 @@ const AdminUserControls = ({ userList }) => {
     const setearDataUsuarios = async () => {
         try {
             const response = await obtenerUsuarios();
-            console.log("recibo usaurios", response);
             setUsuarios(response);
         } catch (error) {
             console.error('Error al obtener usuarios:', error);

@@ -10,19 +10,16 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
     const { menus, obtenerMenus, crearMenu, modificarMenu, obtenerUnMenu, borrarMenu } = useMenuState();
 
     const enviarFormulario = async (data) => {
-        console.log("envio form", data);
         try {
             switch (accionarModal.accion) {
                 case "NUEVO":
                     await crearMenu(data);
                     break;
                 case "MODIFICAR":
-                    console.log("modifico menu");
 
                     await modificarMenu(accionarModal.id, data);
                     break;
                 default:
-                    console.log("no hago nada");
                     break;
             }
             reset();
@@ -42,7 +39,6 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
     const setearInformacionMenu = async () => {
         try {
             await axios.get(`http://localhost:5000/api/menu/${accionarModal.id}`).then((response) => {
-                console.log("recibo response", response);
                 setValue('category', response.data.category);
                 setValue('name', response.data.name);
                 setValue('price', response.data.price);

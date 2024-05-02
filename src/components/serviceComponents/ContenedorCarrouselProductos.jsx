@@ -32,12 +32,10 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
     }, []);
 
     const handleProductSelect = (product) => {
-        console.log("muestro productSelected", product);
         setSelectedProduct(product);
     };
 
     const handleCategorySelect = (category) => {
-        console.log("muestro categorySelected", category);
         setSelectedCategory(category);
     };
 

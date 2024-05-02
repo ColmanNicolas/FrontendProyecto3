@@ -9,13 +9,11 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
     const enviarFormulario = async (dataLogin) => {
         try {
             const response = await axios.post("http://localhost:5000/api/principal-auth/login", dataLogin);
-            console.log("me llega esta response", response);
             const { data } = response;
             if (data.messageError) {
                 toast.error(data.messageError, { theme: 'dark' });
             } else {
                 toast.success(`Iniciaste sesión exitosamente como ${data.user.principalEmail} `, { theme: 'dark' });
-                console.log("Token recibido:", data.token);
                 sessionStorage.setItem('loguedUser', JSON.stringify({ token: data.token, id: data.user.id, name: data.user.name }));
 
                 if (data.user.role === "SERVICE_USER_ROLE") {

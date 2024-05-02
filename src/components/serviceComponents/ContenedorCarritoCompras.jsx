@@ -16,7 +16,6 @@ const ContenedorCarritoCompras = ({ generarPedido, quitarProductoCarrito, closeM
         generarPedido();
     }
     useEffect(() => {
-        console.log("recibo prodcutos,", productOrderList);
     }, [])
     return (
         <article id='contenedor-articulo-carrito'>

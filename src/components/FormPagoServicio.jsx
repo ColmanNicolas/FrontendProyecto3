@@ -9,11 +9,9 @@ const FormPagoServicio = () => {
     const { id } = useParams();
 
     const enviarFormularioPago = async (dataPay) => {
-        console.log("llego aqui", dataPay);
         try {
             await axios.put(`http://localhost:5000/api/principalUsers/pay-done/${id}`, dataPay)
                 .then(response => {
-                    console.log("pago realizado", response);
                     window.location.reload();
                 })
 
