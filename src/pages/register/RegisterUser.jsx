@@ -2,6 +2,7 @@ import React from 'react'
 import '../register/RegisterUser.css'
 import Form from '../../components/formRegister/Form'
 import Navbar from "../../components/navBar/Navbar";
+import Footer from '../../components/Footer';
 
 
 
@@ -21,9 +22,9 @@ const RegisterUser = () => {
           </div>
         </main>
 
-        {/* <footer className="bg-danger mt-auto">
-          <h1>FOOTER REGISTRO</h1>
-        </footer> */}
+        <Footer></Footer>
+
+        
 
         
 

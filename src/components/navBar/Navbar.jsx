@@ -1,25 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // Cambia el icono según tu preferencia
+import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 
 const Navbar = () => {
-  const [user, setUser] = useState('');
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [user, setUser] = useState(null);
   const navigateTo = useNavigate();
-  const userJSON = sessionStorage.getItem('loguedUser');
-  const mUser = JSON.parse(userJSON);
 
   useEffect(() => {
+    const userJSON = sessionStorage.getItem('loguedUser');
+    const mUser = JSON.parse(userJSON);
     setUser(mUser);
-  }, [isButtonVisible]);
+    console.log("Usuario logueado:", mUser); // Añadido para depuración
+  }, []);
 
   const handleClick = () => {
     sessionStorage.clear();
-    setIsButtonVisible(false);
+    setUser(null);
     navigateTo('/');
-    window.location.reload();
   };
 
   const navbarCollapse = useRef();
@@ -62,7 +61,7 @@ const Navbar = () => {
           >
             <ul className="navbar-nav ms-auto px-4">
               {
-                (!user?.user?.name) && isButtonVisible &&
+                (!user?.name) &&
                 <>
                   <li className="nav-item text-white">
                     <Link to="/service/login" className="nav-link text-white">
@@ -76,38 +75,40 @@ const Navbar = () => {
                   </li>
                 </>
               }
-              { (user?.user?.isAdmin) &&
+              { (user?.role === "ADMIN_ROLE") &&
                 <div className='d-flex '>
                   <Link className='text-decoration-none text-white admin' to='admin'>Administración</Link>
                 </div>
               }
               {
-                (user?.user?.name) && isButtonVisible &&
-                <div className=' d-flex me-2 '>
+                (user?.name) &&
+                <div className=' d-flex me-2 mt-3 '>
                   <li className=''>
-                    <p className='text-white d-none d-md-block mx-3' >{`Bienvenido/a  ${user?.user?.name}`}</p>
+                    <p className='text-white d-none d-md-block mx-3' >{`Bienvenido/a  ${user?.name}`}</p>
                   </li>
-                  <li
-                    onClick={handleClick}
-                    className='main-button text-white nav-close mt-2 mt-md-0  '
-                    >Cerrar sesion
+                  <li className="nav-item">
+                    <Link to='/bar-app/mi-cuenta/:id' className="nav-link text-white">
+                      Mi cuenta
+                    </Link>
                   </li>
-                </div>
-              }
-              {
-                (user?.user?.name) && isButtonVisible &&
-                <>
                   <li className="nav-item">
                     <Link to="/service/products-menu" className="nav-link text-white">
                       Menú
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-white">
-                      <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
-                    </Link>
+                </div>
+              }
+              {
+                (user?.name) &&
+                <div className='mt-3'>                 
+                  <li
+                    onClick={handleClick}
+                    className='main-button text-white nav-close mt-2 mt-md-0'
+                    >Cerrar sesion
                   </li>
-                </>
+                
+
+                </div>
               }
             </ul>
           </div>

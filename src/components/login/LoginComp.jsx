@@ -37,9 +37,8 @@ const LoginComp = () => {
                     theme: 'dark'
                 });
                 console.log("Token recibido:", data.token); 
-                sessionStorage.setItem('loguedUser', JSON.stringify({token: data.token, id: data.user.id}));
-                console.log("Token recibido:", data.token);
                 sessionStorage.setItem('loguedUser', JSON.stringify({ token: data.token, id: data.user.id, name: data.user.name }));
+                               
                 if (data.user.role === "ADMIN_ROLE") {
                     setTimeout(() => {
                         navigateTo('/service/admin-controls');
@@ -160,4 +159,3 @@ const LoginComp = () => {
 };
 
 export default LoginComp;
-

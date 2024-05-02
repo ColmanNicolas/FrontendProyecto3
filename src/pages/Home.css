@@ -1,32 +1,85 @@
-#main-home{
-    color: white;
+:root {
+    --primary-color: #e53935; 
+    --secondary-color: #424242; 
+    --text-color: #333; 
+    --background-color: #f5f5f5; 
+  }
+  
+  #main-home {
+    color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--background-color);
+    margin-bottom: -16rem; 
+  }
+
+  .welcome-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #fff; 
+  }
+  
+  .welcome-heading {
+    font-size: 3rem;
+    color: var(--primary-color);
+  }
+  
+  .welcome-description {
+    font-size: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .services-section {
+    display: flex;
     justify-content: center;
     align-items: center;
-}
-#main-home section{
-    background-color: rgb(197, 32, 32);
-    
-}
-#main-home section article{
-    background-color: black;
-    padding: 1rem;
-    margin: 4rem;
-    display: flex;
-    flex-direction: column;
-}
-#main-home a{
-    color: rgb(0, 128, 233);
-    text-decoration: none;
+    gap: 2rem;
+  }
+  
+  .service {
+    background-color: #fff; 
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service p {
+    color: var(--text-color);
     font-size: 1.2rem;
-}
-#main-home a:hover,#main-home a:focus{
-    color: rgb(172, 193, 252);
+  }
+  
+  .service-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .service-button:hover,
+  .service-button:focus {
+    background-color: #c62828;
+  }
 
-}
-h2{
-    color: black;
-    font-size: 4rem;
-}
