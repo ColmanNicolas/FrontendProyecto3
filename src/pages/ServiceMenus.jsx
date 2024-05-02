@@ -66,7 +66,7 @@ const ServiceMenus = () => {
                 totalPrice += producto.price;
             });
 
-            await axios.post("http://localhost:5000/api/order", { rest, items, totalPrice });
+            await axios.post("https://backendproyecto3-1.onrender.com/api/order", { rest, items, totalPrice });
             cancelarPedido();
         } catch (error) {
             console.log(error);

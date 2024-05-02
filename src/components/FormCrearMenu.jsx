@@ -38,7 +38,7 @@ const FormCrearMenu = ({ closeModal, accionarModal }) => {
     };
     const setearInformacionMenu = async () => {
         try {
-            await axios.get(`http://localhost:5000/api/menu/${accionarModal.id}`).then((response) => {
+            await axios.get(`https://backendproyecto3-1.onrender.com/api/menu/${accionarModal.id}`).then((response) => {
                 setValue('category', response.data.category);
                 setValue('name', response.data.name);
                 setValue('price', response.data.price);

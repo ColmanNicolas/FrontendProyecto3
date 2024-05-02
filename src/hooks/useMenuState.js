@@ -25,7 +25,7 @@ const useMenuState = () => {
 
     const obtenerMenus = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/menu");
+            const response = await axios.get("https://backendproyecto3-1.onrender.com/api/menu");
             setMenus(response.data);
             console.log("muestro response", response);
             setCategotriasMenu(categories);
@@ -38,7 +38,7 @@ const useMenuState = () => {
     };
     const obtenerUnMenu = async (id) => {
         try {
-            await axios.get(`http://localhost:5000/api/menu/${id}`).then((response) => {
+            await axios.get(`https://backendproyecto3-1.onrender.com/api/menu/${id}`).then((response) => {
                 return response;
             })
         } catch (error) {
@@ -47,7 +47,7 @@ const useMenuState = () => {
     }
     const filtrarMenus = async (filtro) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/menu/filter/${filtro}`);
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/menu/filter/${filtro}`);
             setMenus(response.data.menu);
             return response.data.menu;
         } catch (error) {
@@ -57,7 +57,7 @@ const useMenuState = () => {
     };
     const crearMenu = async (menuData) => {
         try {
-            await axios.post("http://localhost:5000/api/menu", menuData).then(response => {
+            await axios.post("https://backendproyecto3-1.onrender.com/api/menu", menuData).then(response => {
                 console.log(response);
             })
         } catch (error) {
@@ -67,7 +67,7 @@ const useMenuState = () => {
     const modificarMenu = async (menuId, menuData) => {
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/menu/${menuId}`, menuData);
+            const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/menu/${menuId}`, menuData);
             console.log("actualizco menu",response);
         } catch (error) {
             console.error('Error al modificar menú:', error);
@@ -75,7 +75,7 @@ const useMenuState = () => {
     }
     const borrarMenu = async (menuId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/menu/${menuId}`);
+            const response = await axios.delete(`https://backendproyecto3-1.onrender.com/api/menu/${menuId}`);
         } catch (error) {
             console.error('Error al borrar menú:', error);
         }
@@ -84,7 +84,7 @@ const useMenuState = () => {
     const buscadorMenus = async (data) => {
         try {
             const {buscador}=data;
-            const response = await axios.get(`http://localhost:5000/api/menu/search/${buscador}`);
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/menu/search/${buscador}`);
             console.log("realiz",response);
             setMenus(response);
             return response;

@@ -12,7 +12,7 @@ const PrincipalAdminPage = () => {
 
     const obtenerPrincipalUsers = async () => {
         try {
-            await axios.get("http://localhost:5000/api/principalUsers")
+            await axios.get("https://backendproyecto3-1.onrender.com/api/principalUsers")
                 .then(response => {
                     setUsuarios(response.data);
                 });
@@ -22,7 +22,7 @@ const PrincipalAdminPage = () => {
     };
     const filtrarPrincipalesStatus = async (status) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/principalUsers/status/${status}`)
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/status/${status}`)
             setUsuarios(response.data.filteredUsers);
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -31,7 +31,7 @@ const PrincipalAdminPage = () => {
     
     const filtrarPrincipalesPaid = async (paid) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/principalUsers/paid/${paid}`);
+            const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/paid/${paid}`);
             setUsuarios(response.data.filteredUsers);
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -42,13 +42,13 @@ const PrincipalAdminPage = () => {
         try {
             switch (accion) {
                 case "HABILITAR":
-                    await axios.get(`http://localhost:5000/api/principalUsers/${id}`)
+                    await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/${id}`)
                         .then(async (response) => {
                             const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
                             rest.role = "ADMIN_ROLE";
                             rest.name = businessName;
                             await generarServiceAdmin(rest);
-                            await axios.put(`http://localhost:5000/api/principalUsers/enable/${id}`)
+                            await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/enable/${id}`)
                                 .then(async () => {
                                     await obtenerPrincipalUsers();
                                 })
@@ -56,11 +56,11 @@ const PrincipalAdminPage = () => {
                     break;
 
                 case "DESHABILITAR":
-                    await axios.get(`http://localhost:5000/api/principalUsers/${id}`)
+                    await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/${id}`)
                         .then(async (response) => {
                             const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
                             await generarServiceAdmin(rest);
-                            await axios.put(`http://localhost:5000/api/principalUsers/disable/${id}`)
+                            await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/disable/${id}`)
                                 .then(async () => {
                                     await obtenerPrincipalUsers();
                                 })

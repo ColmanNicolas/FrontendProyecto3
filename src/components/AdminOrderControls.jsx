@@ -36,7 +36,7 @@ const AdminOrderControls = () => {
 
     const formularioCambiarEstado = async (data) => {
         try {
-            await axios.put(`http://localhost:5000/api/order/${modalInformacion.id}`, data).then(response => {
+            await axios.put(`https://backendproyecto3-1.onrender.com/api/order/${modalInformacion.id}`, data).then(response => {
                 reset();
                 obtenerPedidos();
                 closeModal()
@@ -63,7 +63,7 @@ const AdminOrderControls = () => {
             paid: data
         }
         try {
-            await axios.put(`http://localhost:5000/api/order/${id}`, Object).then(response => {
+            await axios.put(`https://backendproyecto3-1.onrender.com/api/order/${id}`, Object).then(response => {
                 obtenerPedidos();
             })
         } catch (error) {
