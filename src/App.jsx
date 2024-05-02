@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
+import ServiceMyAccount from './pages/ServiceMyAccount'
 import PrincipalAuth from '../src/pages/principalPages/PrincipalAuth'
 import LandingPage from './pages/principalPages/LandingPage'
 import PrincipalMyAccount from './pages/principalPages/PrincipalMyAccount'
@@ -12,6 +13,8 @@ import RegisterUser from './pages/register/RegisterUser'
 import Login from './pages/login/LoginUser'
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import ServiceMenuList from './pages/ServiceMenuList'
+
+
 
 
 function App() {
@@ -31,7 +34,7 @@ function App() {
           <Route path='/service/login' element={<Login/>} />
           <Route path='/service/products-menu' element={<ServiceMenus/>} />
           <Route path='/service/menu-list' element={<ServiceMenuList/>} />
-          <Route />
+          <Route path='/service/mi-cuenta' element={<ServiceMyAccount/>} />
         </Routes>
       </BrowserRouter>
     </>
