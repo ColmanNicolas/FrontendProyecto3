@@ -1,0 +1,407 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.headerAdminPrincipal {
+    width: 100%;
+    height: 10vh;
+    background-color: #c41e1e;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+}
+.contenedorPrincipal{
+    background-color: #f08e8e49;
+    position: relative;
+    flex-direction: column;
+}
+#contenedor-navButton-cerrarSesion{
+    width: 100%;
+    margin-top: 10vh;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: end;
+    padding-inline: 1rem;
+}
+#contenedor-navButton-cerrarSesion button{
+
+}
+.navbarServiceAdmin {
+    margin-top: 10vh;
+    height: 90vh;
+    padding-block: 0.3em;
+    padding-inline: 0.3em;
+    background-color: rgb(31, 30, 30);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    position: fixed;
+
+}
+.navbarTitleButton {
+    margin-block: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbarTitleButton h2{
+    margin-block: 0;
+    font-size: 1.5rem  !important;
+    margin-right: 2rem;
+}
+.navbarTitleButton button{  
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    background-color: #1cad0f00;
+
+}
+.navbarTitleButton button i{  
+    color: rgb(0, 0, 0);
+    font-size: 3rem ;
+    padding-inline: 0.4rem;
+}
+
+.navbarServiceAdmin h2 {
+    color: aliceblue;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-left: 0.4em;
+    padding-block: 0.5em;
+}
+
+.navbarServiceAdmin ul {
+    width: 100%;
+    padding-top: 0.7em;
+    padding-inline: 0.3em;
+}
+
+.navbarServiceAdmin ul li {
+    width: 100%;
+    margin-block: 0.3em;
+    list-style: none;
+}
+
+.navbarServiceAdmin ul li button {
+    display: block;
+    color: rgb(255, 255, 255);
+    background-color: #00000000;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-inline: 0.2em;
+
+}
+
+.navbarServiceAdmin ul :hover {
+    background-color: brown;
+    padding-inline: 0.3em;
+    list-style: none;
+}
+.navbarSecondary{
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 6.1rem;
+    margin-left: 0.5rem;
+    position: fixed;
+}
+.navbarSecondary button{
+    
+    border: 1px solid rgba(214, 0, 0, 0.733);
+    border-radius: 0.5rem;
+    padding-block: 1.5rem !important;
+    background-color: #000000ce;
+    z-index: 999;
+}
+.navbarSecondary button i{
+    color: rgb(255, 255, 255);
+
+    font-size: 2.5rem;
+}
+
+.containerUserBox {
+    color: white;
+    position: absolute;
+    bottom: 2%;
+    width: 95%;
+
+
+}
+
+.containerUserBox section:nth-child(2) {
+    gap: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lineaDivisora {
+    border: 1px solid rgba(255, 255, 255, 0.507);
+}
+/*CONTENIDO PRINCIPAL*/
+.mainServiceAdmin {
+    width: 100%;
+    min-height: 90vh;
+    padding: 1rem;
+}
+
+.sectionButtonNew {
+    background-color: rgb(253, 253, 253);
+    padding-top: 0.7rem;
+    padding-bottom: 1rem;
+    padding-inline: 1rem;
+}
+.sectionButtonNew h2{
+    font-weight: 650;
+    border-bottom: 1px solid #c41e1e98;
+    padding-block: 0.5rem;
+}
+.sectionButtonNew button{
+    background-color: rgba(255, 255, 255, 0) ;
+    border: 1px solid rgba(255, 0, 0, 0.514);
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.233);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.35);
+    border-radius: 0.5rem;
+    height: 6rem;
+    margin-top: 1.5rem;
+    padding-left: 0.6rem;
+    display: flex;
+    align-items: center;
+
+}
+.sectionButtonNew button i{
+    display: flex;
+    align-items: center;
+    font-size: 3.5rem;
+}
+.sectionButtonNew button span{
+    padding-inline: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+@media(max-width:800px){
+.sectionButtonNew button{
+    height: 5rem;
+}
+    .sectionButtonNew button i{
+        display: flex;
+        align-items: center;
+        font-size: 3rem;
+    }
+    .sectionButtonNew button span{
+        padding-inline: 1rem;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+}
+
+.containerDesplazable{
+    background-color: aliceblue;
+    padding-inline: 0px;
+    overflow-x: auto;
+}
+
+.sectionTablesFilters {
+    background-color: aliceblue;
+    margin-top: 2rem;
+    padding-inline: 1rem;
+}
+
+
+.sectionTablesFilters form {
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    padding-inline: 0.3rem;
+    margin-inline: 0.4rem;
+}
+
+.sectionTablesFilters form section button {
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.233);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-block: 1.2rem;
+    padding-inline: 1rem;
+}
+.sectionTablesFilters form section #btnFiltrarUsers {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    border-radius: 0.4rem;
+    padding-block: 0.45rem;
+    padding-inline: 1rem;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.233);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.35);
+}
+.sectionTablesFilters form section li a {
+    color: black;
+    font-weight: 500;
+}
+
+.buttonReload {
+    margin-inline: 1rem;
+}
+.sectionTablesFilters form section {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.sectionTablesFilters form section input {
+    background-color: #00000000;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.562);
+    width: 30rem;
+    margin-right: 1rem;
+    padding-inline: 1rem;
+}
+
+.sectionTablesFilters form section input:focus {
+    outline: none;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.664);
+
+}
+
+.sectionTablesFilters form section button {
+    display: flex;
+    flex-direction: row;
+}
+
+.sectionTablesFilters form button span {
+    margin-inline: 0.5rem;
+}
+@media (max-width:768px) {
+    .sectionTablesFilters form  {
+        height: 8rem;
+        position: relative;
+    }
+    .sectionTablesFilters form section:nth-child(1) {
+        position: absolute;
+        bottom: 10%;
+    }
+    .sectionTablesFilters form section:nth-child(2) {
+        position: absolute;
+        top: 15%;
+        right: 1%;
+    }
+.sectionTablesFilters form section input {
+    width: 100%;
+}
+
+}
+
+
+.tableTitles {
+    color: antiquewhite;
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #ce1616e8;
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+    padding-block: 0.4rem;
+    min-width: 950px;
+
+}
+
+.tableTitles li {
+    padding-inline: 0;
+}
+.containerRows  {
+    min-width: 950px;
+
+}
+.containerRows ul {
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+    padding-left: 0.5rem;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.containerRows ul li {
+    padding-inline: 0;
+}
+
+
+.containerRows ul li button {
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    background-color: none;
+    padding-inline: 0.7rem;
+    margin-inline: 0.7rem;
+    padding-block: 0;
+    margin-block: 0;
+}
+
+.infoButton {
+    color: #cf7704;
+    outline: 2px solid #d6b213de;
+    ;
+}
+
+.modificationButton {
+    color: #1e3cc4;
+    outline: 2px solid #1e3cc49a;
+    ;
+}
+
+.deleteButton {
+    color: #c41e1e;
+    outline: 2px solid rgba(255, 0, 0, 0.486);
+}
+
+.checkButton {
+    color: #1cad0f;
+    outline: 2px solid #13ca22a2;
+    ;
+}
+.containerRows article {
+    padding: 0;
+    border-top: 2px solid rgba(255, 0, 0, 0.493);
+    border-bottom: 2px solid rgba(255, 0, 0, 0.493);
+
+}
+.containerRows article ul{
+    padding-inline: 0.5rem;
+    flex-direction: column;
+    align-items: start;
+}
+.containerRows article ul li{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.containerRows li{
+    display:flex;
+    align-items: center;
+    height: 2rem ;
+}
+.containerRows .li-centrado{
+    justify-content: center !important;
+
+}
+
+.containerRows article ul li span:nth-child(1){
+    display: block;
+    width: 35rem;
+}

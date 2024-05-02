@@ -1,0 +1,128 @@
+#principal-controls-admin {
+    margin: 1%;
+    padding-bottom: 1em;
+    overflow-x: auto;
+
+}
+
+#principal-controls-admin h2 {
+    border-block: 1px solid black;
+    padding-block: 0.3em;
+}
+
+#principal-controls-admin table {
+    min-width: 1000px;
+}
+#H4PrincipalAdmin {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.322);
+
+}
+
+/* css section buscar y filtrar*/
+
+#principal-controls-admin form {
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    padding-inline: 0.3rem;
+    margin-inline: 0.4rem;
+}
+
+#principal-controls-admin form section button {
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.233);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-block: 1.2rem;
+    padding-inline: 1rem;
+}
+
+#principal-controls-admin form section #btnFiltrarUsers,.botonCerrarSesion {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    border-radius: 0.4rem;
+    padding-block: 0.45rem;
+    padding-inline: 1rem;
+    box-shadow: 0px 1px 8px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.233);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.35);
+}
+
+#principal-controls-admin form section li a {
+    color: black;
+    font-weight: 500;
+}
+
+.buttonReload {
+    margin-inline: 1rem;
+}
+
+#principal-controls-admin form section {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#principal-controls-admin form section input {
+    background-color: #00000000;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.562);
+    width: 30rem;
+    margin-right: 1rem;
+    padding-inline: 1rem;
+}
+
+#principal-controls-admin form section input:focus {
+    outline: none;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.664);
+
+}
+
+#principal-controls-admin form section button {
+    display: flex;
+    flex-direction: row;
+}
+
+#principal-controls-admin form button span {
+    margin-inline: 0.5rem;
+}
+
+@media (max-width:768px) {
+    #principal-controls-admin form {
+        height: 8rem;
+        position: relative;
+    }
+
+    #principal-controls-admin form section:nth-child(1) {
+        position: absolute;
+        bottom: 10%;
+    }
+
+    #principal-controls-admin form section:nth-child(2) {
+        position: absolute;
+        top: 15%;
+        right: 1%;
+        width: 100%;
+    }
+
+    #principal-controls-admin form section input {
+        width: 100%;
+    }
+}
+
+/* asdasda*/
+
+#seccion-principal-admin-table th {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+

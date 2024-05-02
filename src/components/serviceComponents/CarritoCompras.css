@@ -1,0 +1,25 @@
+#contenedor-articulo-carrito{
+    display: flex;
+    flex-direction: column;
+}
+.contenedor-detalle-producto{
+    outline: 1px solid rgba(0, 0, 0, 0.562);
+    padding-inline: 1%;
+}
+.contenedor-detalle-producto section{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contenedor-detalle-producto p{
+    padding: 0;
+    margin: 0;
+}
+.contenedor-botones-carrito{
+    margin-block: 1rem;
+    display: flex;
+    justify-content: end;
+    row-gap: 1rem;
+    column-gap: 1.5rem;
+}

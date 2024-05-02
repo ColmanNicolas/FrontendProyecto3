@@ -1,0 +1,94 @@
+*{
+    padding: 0 ;
+    margin: 0 ;
+}
+.overlay{
+    background-color: rgba(0, 0, 0, 0.685);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100vh;
+    z-index: 500;
+}
+.modalContainer{
+    color: black;
+    background-color: aliceblue;
+    border-radius: 0.25rem;
+    max-width: 50rem;
+    width: 95%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+@media(max-width:750px){
+    .modalContainer{width: 100%; }
+    .modalBody .menu h3{
+        font-size: 1.2rem;
+       }
+}
+.modalHeader{
+    color: aliceblue;
+    background-color:#b91313;
+    border-radius: 0.25rem 0.25rem 0  0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+    padding-left: 0.5rem;
+}
+.modalHeader button{
+    color: aliceblue;
+    font-weight: bold;
+    background-color: rgba(0, 0, 128, 0);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.modalBody .menu {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.modalBody form {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1rem;
+}
+.modalBody form section{
+    margin-block: 0.2rem;
+}
+
+
+.modalBody form section label{
+    font-weight: 600;
+}
+
+.modalBody form section input,textarea,select{
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgba(0, 0, 0, 0.486) !important;
+    border-radius: 0.4rem;
+    padding-inline: 0.3rem;
+    width: 100%;
+}
+.modalBtnContainer{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.modalBtnContainer button{
+    font-weight: 600;
+    border: 1px solid rgba(255, 0, 0, 0.582);
+    border-radius: 0.4rem;
+    padding-inline: 0.4rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+.modalBtnContainer button:hover{
+    font-weight: 700;
+    background-color: #ec31316e;
+}
