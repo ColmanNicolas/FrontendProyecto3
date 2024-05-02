@@ -11,7 +11,7 @@ function Footer() {
                 <div className="col-12 col-md-4 mb-md-0">
                     <div className="d-flex justify-content-center">
                     <FontAwesomeIcon icon={faWineBottle} className="me-2 faWineBottle" />
-                    </div>
+      
                     <p className="h1 text-dark text-center mb-0">Tu Bar</p>
                     <p className="text-dark text-center mb-0">Tecnologia Gastronomica</p>
                     <p className="text-dark text-center mb-0">Sólo lo encontrás aquí</p>
