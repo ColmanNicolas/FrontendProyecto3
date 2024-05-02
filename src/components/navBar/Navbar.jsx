@@ -87,7 +87,7 @@ const Navbar = () => {
                     <p className='text-white d-none d-md-block mx-3' >{`Bienvenido/a  ${user?.name}`}</p>
                   </li>
                   <li className="nav-item">
-                    <Link to='/bar-app/mi-cuenta/:id' className="nav-link text-white">
+                    <Link to='/service/mi-cuenta' className="nav-link text-white">
                       Mi cuenta
                     </Link>
                   </li>

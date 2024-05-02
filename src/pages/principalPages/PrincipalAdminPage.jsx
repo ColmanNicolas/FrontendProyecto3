@@ -39,7 +39,6 @@ const PrincipalAdminPage = () => {
     };
     
     const cambiarEstado = async (id, accion) => {
-        console.log(id, accion);
         try {
             switch (accion) {
                 case "HABILITAR":
@@ -75,8 +74,6 @@ const PrincipalAdminPage = () => {
         }
     };
     const cerrarSesion = () => {
-        sessionStorage.removeItem('loguedUser');
-        console.log("cierro Sesion admin");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
         }, 1000);
@@ -117,7 +114,7 @@ const PrincipalAdminPage = () => {
                         </section>
                         <section id="container-buscador" className="d-flex justify-content-end">
                             <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
-                            <button type="submit"><span>Buscar</span><i className="bi bi-search"></i></button>
+                            <button type="submit" disabled><span>Buscar</span><i className="bi bi-search"></i></button>
                         </section>
                     </form>
                     <section id="seccion-principal-admin-table">

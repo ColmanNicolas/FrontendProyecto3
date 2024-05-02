@@ -20,7 +20,7 @@ const LandingPage = () => {
                 <a href="#"><i className="bi bi-x-circle" id="cerrar-menu"></i></a>
                 <nav id="home" className="navBarLanding">
                     <ul id="contenedor-enlaces">
-                        <li><a href="#home">Home</a></li>
+                        <li><Link to={"/bar-app/home"}>Home</Link></li>
                         <li><a href="#informacion">Información</a></li>
                         <li><a href="#precios">Precios</a></li>
                         <li><a href="#footerLanding">Contacto</a></li>

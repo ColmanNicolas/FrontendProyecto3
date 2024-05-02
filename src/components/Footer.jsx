@@ -1,13 +1,16 @@
 import React from 'react';
 import './footer.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 function Footer() {
     return (
-        <footer>
-            <div className="container-fluid row footer">
+        <footer className='w-100'>
+            <div className="container-fluid row footer w-100 pe-0 ms-1">
                 <div className="col-12 col-md-4 mb-md-0">
                     <div className="d-flex justify-content-center">
-                        <img className="w-25" src="" alt="Logo" />
+                    <FontAwesomeIcon icon={faWineBottle} className="me-2 faWineBottle" />
                     </div>
                     <p className="h1 text-dark text-center mb-0">Tu Bar</p>
                     <p className="text-dark text-center mb-0">Tecnologia Gastronomica</p>
