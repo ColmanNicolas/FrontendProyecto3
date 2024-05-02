@@ -14,16 +14,21 @@ const PrincipalMyAccount = () => {
 
     const setearInformacion = async () => {
         try {
-            await axios.get(`http://localhost:5000/api/principalUsers/${id}`)
-                .then(response => {
-                    setValue('name', response.data.user.name);
-                    setValue('businessName', response.data.user.businessName);
-                    setValue('principalEmail', response.data.user.principalEmail);
-                    setValue('country', response.data.user.country);
-                    setValue('city', response.data.user.city);
-                    setPagado(response.data.user.paid);
-                    setHabilitado(response.data.user.status);
-                })
+            const userLogued = sessionStorage.getItem('loguedUser');
+            if (!userLogued) {
+                navigate('/bar-app/landing-page/auth');
+            } else {
+                const { id } = JSON.parse(userLogued);
+                const response = await axios.get(`http://localhost:5000/api/principalUsers/${id}`);
+                const userData = response.data.user;
+                setValue('name', userData.name);
+                setValue('businessName', userData.businessName);
+                setValue('principalEmail', userData.principalEmail);
+                setValue('country', userData.country);
+                setValue('city', userData.city);
+                setPagado(userData.paid);
+                setHabilitado(userData.status);
+            }
         } catch (error) {
             console.error('Error al completar campos:', error);
         }
