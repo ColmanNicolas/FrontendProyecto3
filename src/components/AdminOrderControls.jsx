@@ -100,6 +100,15 @@ const AdminOrderControls = () => {
         obtenerPedidos();
     }, []);
 
+    useEffect(() => {
+        const loguedUser = JSON.parse(sessionStorage.getItem('loguedUser'));
+        if (!loguedUser) {
+            navigate("/bar-app/landing-page/auth"); 
+        } else {
+            obtenerPedidos();
+        }
+    }, []); 
+
     return (
 
         <>

@@ -6,9 +6,6 @@ function Footer() {
         <footer>
             <div className="container-fluid row footer">
                 <div className="col-12 col-md-4 mb-md-0">
-                    <div className="d-flex justify-content-center">
-                        <img className="w-25" src="" alt="Logo" />
-                    </div>
                     <p className="h1 text-dark text-center mb-0">Tu Bar</p>
                     <p className="text-dark text-center mb-0">Tecnologia Gastronomica</p>
                     <p className="text-dark text-center mb-0">Sólo lo encontrás aquí</p>
