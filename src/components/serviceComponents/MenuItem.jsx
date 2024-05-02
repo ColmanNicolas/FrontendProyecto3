@@ -3,7 +3,6 @@ import './Menu.css';
 
 function MenuItem({ comida, detalle, precio, quitarProductoCarrito }) {
   useEffect(()=>{
-    console.log(detalle);
   },[])
   return (
     <main className="menu-item">

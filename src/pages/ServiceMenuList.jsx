@@ -10,7 +10,6 @@ const ServiceMenuList =()=>{
     const {menus, categoriasMenu, obtenerMenus, filtrarMenus}=useMenuState();
     useEffect(()=>{
         obtenerMenus();
-        console.log("obtengo menus",menus);
     },[])
     return(
         <>

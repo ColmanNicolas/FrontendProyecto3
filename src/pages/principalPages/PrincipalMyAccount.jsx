@@ -35,12 +35,10 @@ const PrincipalMyAccount = () => {
     }
 
     const enviarFormularioModificacion = (dataModificaction) => {
-        console.log("llego aqui por 100", dataModificaction);
 
     }
     const cerrarSesion = () => {
         sessionStorage.removeItem('loguedUser');
-        console.log("cierro Sesion usuario principal");
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
         }, 1000);

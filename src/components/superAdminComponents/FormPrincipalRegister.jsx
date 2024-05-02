@@ -9,7 +9,6 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
         try {
             axios.post("http://localhost:5000/api/principal-auth/register", dataRegister)
                 .then(response => {
-                    console.log(response);
                     reset();
                     cambiarComponente("LOGIN");
                 })
