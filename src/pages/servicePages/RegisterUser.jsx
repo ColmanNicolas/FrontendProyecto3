@@ -1,8 +1,8 @@
 import React from 'react'
 import '../servicePages/RegisterUser.css'
-import Form from '../../components/formRegister/Form'
-import Navbar from "../../components/navBar/Navbar";
-import Footer from '../../components/Footer';
+import Form from '../../components/servicePageComponents/formRegister/Form'
+import Navbar from "../../components//servicePageComponents/navBar/Navbar";
+import Footer from '../../components/servicePageComponents/Footer';
 
 
 

@@ -1,4 +1,4 @@
-import useNavbarAdmin from "../hooks/useNavbarAdmin";
+import useNavbarAdmin from "../../../hooks/useNavbarAdmin";
 
 const NavbarAdmin = ({ devolverTabla }) => {
     const { isOpen, setNavbarState, changeNavbarState } = useNavbarAdmin();

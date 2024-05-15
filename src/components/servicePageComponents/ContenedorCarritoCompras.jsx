@@ -1,5 +1,4 @@
-import axios from 'axios';
-import '../serviceComponents/CarritoCompras.css'
+import '../servicePageComponents/CarritoCompras.css'
 import MenuItem from './MenuItem';
 import './Menu.css';
 import { useEffect } from 'react';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import usePedidosState from "../hooks/usePedidosState";
+import usePedidosState from "../../../hooks/usePedidosState";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import React, { useRef } from 'react';

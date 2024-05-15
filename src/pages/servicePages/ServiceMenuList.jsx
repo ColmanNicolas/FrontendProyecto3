@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useMenuState from "../../hooks/useMenuState";
-import MenuItem from "../../components/serviceComponents/MenuItem";
+import MenuItem from "../../components/servicePageComponents/MenuItem";
 
 
 const ServiceMenuList =()=>{

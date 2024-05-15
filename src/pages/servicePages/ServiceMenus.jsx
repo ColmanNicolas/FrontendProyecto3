@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ModalEstructuraBase from '../../components/ModalEstructuraBase';
+import axios from 'axios';
+
 import useModal from '../../hooks/useModal';
-import ContenedorCarritoCompras from '../../components/serviceComponents/ContenedorCarritoCompras';
 import pizza from '../../assets/pizza-muzarella.jpg';
 import empanada from '../../assets/docena-empanadas.jpg';
 import sanguche from '../../assets/sandwich-de-milanesa.jpg';
-import axios from 'axios';
-import Navbar from "../../components/navBar/Navbar"
-import ContenedorCarrouselProductos from '../../components/serviceComponents/ContenedorCarrouselProductos';
-import Footer from '../../components/Footer';
+import Footer from '../../components/servicePageComponents/Footer';
+import ModalEstructuraBase from '../../components/ModalEstructuraBase';
+import Navbar from "../../components/servicePageComponents/navBar/Navbar";
+import ContenedorCarritoCompras from '../../components/servicePageComponents/ContenedorCarritoCompras';
+import ContenedorCarrouselProductos from '../../components/servicePageComponents/ContenedorCarrouselProductos';
 
 import "../servicePages/ServiceMenus.css"
 
-const products = [
-    { name: 'Pizza muzzarella', price: 10, detail: 'salsa de tomate, muzzarella, aceitunas verdes.', image: pizza },
-    { name: 'Sandwich de milanesa especial', price: 8, detail: 'mila de carne/pollo, aderezos a eleccion, tomate y lechuga, jamon/queso.', image: empanada },
-    { name: 'Empanadas', price: 5, detail: 'empanadas de carne/pollo/jamon y queso.', image: sanguche }
-];
 
 const ServiceMenus = () => {
-    const [selectedProduct, setSelectedProduct] = useState(null);
     const [productOrderList, setProductOrder] = useState([]);
     const [cantidadProducto, setCantidadProducto] = useState(null);
     const { isOpen, openModal, closeModal } = useModal(false);
     const navigate = useNavigate();
-
-    const handleProductSelect = (product) => {
-        setSelectedProduct(product);
-    };
 
     const agregarProductoCarrito = (product) => {
         setProductOrder([...productOrderList, product]);

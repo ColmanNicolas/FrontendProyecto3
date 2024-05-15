@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ServiceMyAccount.css";
-import Navbar from "../../components/navBar/Navbar";
-import Footer from "../../components/Footer";
+import Navbar from "../../components/servicePageComponents/navBar/Navbar";
+import Footer from "../../components/servicePageComponents/Footer";
 
 const ServiceMyAccount = () => {
     const [usuario, setUsuario] = useState(null);

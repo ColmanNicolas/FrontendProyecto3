@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import '../serviceComponents/ContenedorCarrouselProductos.css';
+import '../servicePageComponents/ContenedorCarrouselProductos.css';
 import useMenuState from '../../hooks/useMenuState';
 
 import superimagen from "../../assets/sandwich-de-milanesa.jpg";
@@ -95,7 +95,7 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                 />
             </div>
             <div className="mt-4">
-            <h2 className="title">{selectedCategory}</h2>
+            <h2 className="title text-white">{selectedCategory}</h2>
 
             <AliceCarousel
                 mouseTracking
@@ -106,8 +106,8 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                         {product.image && <img src={product.image} alt={product.name} className="product-image" />}
                         {!product.image && <img src={superimagen} alt={product.name} className="product-image" />}
                         <div className="product-info">
-                            <h3 className="product-name">{product.name}</h3>
-                            <p className="product-price">${product.price}</p>
+                            <h3 className="product-name text-center">{product.name}</h3>
+                            <p className="product-price text-center">${product.price}</p>
                         </div>
                     </div>
                 ))}

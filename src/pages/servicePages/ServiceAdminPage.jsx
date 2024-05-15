@@ -1,14 +1,13 @@
 import React, { useState, useEffect, memo } from 'react';
-import AdminMenuControls from "../../components/AdminMenuControls";
-import AdminOrderControls from "../../components/AdminOrderControls";
-import AdminUserControls from "../../components/AdminUserControls";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import NavbarAdmin from "../../components/NavbarAdmin";
+import { useNavigate } from "react-router-dom";
+import AdminMenuControls from "../../components/servicePageComponents/tableControllers/AdminMenuControls";
+import AdminOrderControls from "../../components/servicePageComponents/tableControllers/AdminOrderControls";
+import AdminUserControls from "../../components/servicePageComponents/tableControllers/AdminUserControls";
+import Header from "../../components/principalPageComponentes/Header";
+import NavbarAdmin from "../../components/servicePageComponents/navBar/NavbarAdmin";
+
 import './ServiceAdminPage.css';
 import '../../components/ModalEstructura.css';
-import { useNavigate } from "react-router-dom";
-import useNavbarAdmin from "../../hooks/useNavbarAdmin";
 
 const ServiceAdminPage = () => {
 
@@ -17,7 +16,6 @@ const ServiceAdminPage = () => {
     const mostrarTablasAdmin = (opcion) => {
         setOpcionSeleccionada(opcion);
     };
-    const { isOpen, setNavbarState, changeNavbarState } = useNavbarAdmin();
 
     useEffect(() => {
         const userLogued = sessionStorage.getItem('loguedUser');

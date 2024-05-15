@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import useModal from "../hooks/useModal";
-import FormCrearMenu from "./FormCrearMenu";
-import ModalEstructuraBase from "./ModalEstructuraBase";
-import useMenuState from "../hooks/useMenuState";
+import useModal from "../../../hooks/useModal";
+import FormCrearMenu from "../FormCrearMenu";
+import ModalEstructuraBase from "../../ModalEstructuraBase";
+import useMenuState from "../../../hooks/useMenuState";
 import { useForm } from "react-hook-form";
 
 const AdminMenuControls = () => {

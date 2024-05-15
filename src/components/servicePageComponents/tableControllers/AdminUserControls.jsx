@@ -1,10 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import ModalEstructuraBase from "./ModalEstructuraBase";
-import useModal from '../hooks/useModal';
-import FormCrearUsuario from "./FormCrearUsuario";
-import useUsersState from "../hooks/useUsersState";
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import ModalEstructuraBase from "../../ModalEstructuraBase";
+import useModal from '../../../hooks/useModal';
+import FormCrearUsuario from "../formRegister/FormCrearUsuario";
+import useUsersState from "../../../hooks/useUsersState";
 
 
 const AdminUserControls = ({ userList }) => {

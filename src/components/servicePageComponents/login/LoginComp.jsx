@@ -138,7 +138,7 @@ const LoginComp = () => {
                     </div>
 
                     <div className="text-center mt-3">
-                        <Link to="/404" className="text-decoration-none">
+                        <Link aria-disabled className="text-decoration-none">
                             ¿Olvidaste tu contraseña?
                         </Link>
                     </div>

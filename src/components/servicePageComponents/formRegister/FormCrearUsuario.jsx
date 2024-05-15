@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import useUsersState from "../hooks/useUsersState";
+import useUsersState from "../../../hooks/useUsersState";
 
 const FormCrearUsuario = ({ closeModal, form, setearDataUsuarios }) => {
     const { crearUsuario, obtenerUsuarios } = useUsersState();
