@@ -6,8 +6,8 @@ import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 function Footer() {
     return (
-        <footer className='w-100'>
-            <div className="container-fluid row footer w-100 pe-0 ms-1">
+        <footer className=''>
+            <div className=" row footer pe-0 ">
                 <div className="col-12 col-md-4 mb-md-0">
                     <div className="d-flex justify-content-center">
                         <FontAwesomeIcon icon={faWineBottle} className="me-2 faWineBottle" />

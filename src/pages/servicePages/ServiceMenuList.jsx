@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import NavbarAdmin from "../components/NavbarAdmin";
-import Navbar from "../components/navBar/Navbar"
-import useMenuState from "../hooks/useMenuState";
-import MenuItem from "../components/serviceComponents/MenuItem";
-import '../components/serviceComponents/Menu.css';
+import useMenuState from "../../hooks/useMenuState";
+import MenuItem from "../../components/serviceComponents/MenuItem";
 
 
 const ServiceMenuList =()=>{

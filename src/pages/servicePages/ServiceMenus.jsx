@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ModalEstructuraBase from '../components/ModalEstructuraBase';
-import useModal from '../hooks/useModal';
-import ContenedorCarritoCompras from '../components/serviceComponents/ContenedorCarritoCompras';
-import pizza from '../assets/pizza-muzarella.jpg';
-import empanada from '../assets/docena-empanadas.jpg';
-import sanguche from '../assets/sandwich-de-milanesa.jpg';
-import "../pages/ServiceMenus.css"
+import ModalEstructuraBase from '../../components/ModalEstructuraBase';
+import useModal from '../../hooks/useModal';
+import ContenedorCarritoCompras from '../../components/serviceComponents/ContenedorCarritoCompras';
+import pizza from '../../assets/pizza-muzarella.jpg';
+import empanada from '../../assets/docena-empanadas.jpg';
+import sanguche from '../../assets/sandwich-de-milanesa.jpg';
 import axios from 'axios';
-import Navbar from "../components/navBar/Navbar"
-import ContenedorCarrouselProductos from '../components/serviceComponents/ContenedorCarrouselProductos';
-import Footer from '../components/Footer';
-import useMenuState from '../hooks/useMenuState';
+import Navbar from "../../components/navBar/Navbar"
+import ContenedorCarrouselProductos from '../../components/serviceComponents/ContenedorCarrouselProductos';
+import Footer from '../../components/Footer';
+
+import "../servicePages/ServiceMenus.css"
 
 const products = [
     { name: 'Pizza muzzarella', price: 10, detail: 'salsa de tomate, muzzarella, aceitunas verdes.', image: pizza },

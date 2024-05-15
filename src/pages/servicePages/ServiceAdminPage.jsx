@@ -1,14 +1,14 @@
 import React, { useState, useEffect, memo } from 'react';
-import AdminMenuControls from "../components/AdminMenuControls";
-import AdminOrderControls from "../components/AdminOrderControls";
-import AdminUserControls from "../components/AdminUserControls";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import NavbarAdmin from "../components/NavbarAdmin";
-import '../pages/ServiceAdminPage.css';
-import '../components/ModalEstructura.css';
+import AdminMenuControls from "../../components/AdminMenuControls";
+import AdminOrderControls from "../../components/AdminOrderControls";
+import AdminUserControls from "../../components/AdminUserControls";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import NavbarAdmin from "../../components/NavbarAdmin";
+import './ServiceAdminPage.css';
+import '../../components/ModalEstructura.css';
 import { useNavigate } from "react-router-dom";
-import useNavbarAdmin from "../hooks/useNavbarAdmin";
+import useNavbarAdmin from "../../hooks/useNavbarAdmin";
 
 const ServiceAdminPage = () => {
 

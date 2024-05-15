@@ -9,7 +9,7 @@ const LoginUser = () => {
           <Navbar />
           
              
-            <main className="container-fluid">
+            <main className="container-fluid p-0">
               <LoginComp />
             </main>
             <Footer></Footer>
