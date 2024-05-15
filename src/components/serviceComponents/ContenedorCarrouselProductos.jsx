@@ -4,7 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import '../serviceComponents/ContenedorCarrouselProductos.css';
 import useMenuState from '../../hooks/useMenuState';
 
-import superimagen from "../../public/sandwich-de-milanesa.jpg";
+import superimagen from "../../assets/sandwich-de-milanesa.jpg";
 
 const categories = [
     "Promociones",

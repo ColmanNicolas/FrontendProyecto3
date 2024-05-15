@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import ModalEstructuraBase from '../components/ModalEstructuraBase';
 import useModal from '../hooks/useModal';
 import ContenedorCarritoCompras from '../components/serviceComponents/ContenedorCarritoCompras';
-import pizza from '../public/pizza-muzarella.jpg';
-import empanada from '../public/docena-empanadas.jpg';
-import sanguche from '../public/sandwich-de-milanesa.jpg';
+import pizza from '../assets/pizza-muzarella.jpg';
+import empanada from '../assets/docena-empanadas.jpg';
+import sanguche from '../assets/sandwich-de-milanesa.jpg';
 import "../pages/ServiceMenus.css"
 import axios from 'axios';
 import Navbar from "../components/navBar/Navbar"

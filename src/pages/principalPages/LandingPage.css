@@ -439,19 +439,19 @@ margin-inline: 1rem;
 
 
     .contenedorServicios article:nth-child(1)::before {
-        background-image: url("../../public/istockphoto-490884810-612x612.jpg");
+        background-image: url("../../assets/istockphoto-490884810-612x612.jpg");
         opacity: 0.25;
         background-color: black;
     }
 
     .contenedorServicios article:nth-child(2)::before {
-        background-image: url('../../public/masha-kotliarenko-7qDBoSUBfvI-unsplash.jpg');
+        background-image: url('../../assets/masha-kotliarenko-7qDBoSUBfvI-unsplash.jpg');
         opacity: 0.8;
         background-color: black;
     }
 
     .contenedorServicios article:nth-child(3)::before {
-        background-image: url("../../public/papers.co-bd60-night-cafe-bar-dark-city-art-illustration-red-36-3840x2400-4k-wallpaper.jpg");
+        background-image: url("../../assets/papers.co-bd60-night-cafe-bar-dark-city-art-illustration-red-36-3840x2400-4k-wallpaper.jpg");
         opacity: 0.6;
         background-color: black;
     }

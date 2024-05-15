@@ -1,5 +1,5 @@
 #fondoMenu {
-    background-image: url(../public/fondo-menu.jpeg); /* Reemplaza 'bar_background.jpg' con la ruta de tu imagen de fondo */
+    background-image: url(../assets/fondo-menu.jpeg); /* Reemplaza 'bar_background.jpg' con la ruta de tu imagen de fondo */
     background-size: cover ;
     background-position: center ;
     background-repeat: no-repeat ;
