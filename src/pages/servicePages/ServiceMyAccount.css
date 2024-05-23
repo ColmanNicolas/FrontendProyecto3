@@ -1,0 +1,86 @@
+body {
+    background-image: url('/src/assets/bari.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+
+.my-account-container {
+  min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .account-info-container,
+.orders-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.95); /* Cambia el valor de opacidad */
+    padding: 20px;
+    border-radius: 10px;
+}
+@media all and (min-width:600px){
+  .account-info-container,
+.orders-container {
+    width: 80%;
+  }
+}
+  
+  
+  .my-account-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-info {
+    text-align: center;
+  }
+  
+  .my-orders-container {
+    text-align: center;
+  }
+
+  .profile-picture img {
+    border-radius: 50%;
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: 100px; /* Ajusta el tamaño según sea necesario */
+    object-fit: cover;
+    padding: 10px;
+}
+
+/* Agrega estos estilos en tu archivo ServiceMyAccount.css */
+.profile-picture button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #5f2f2f; /* Color de texto blanco */
+    padding: 8px 16px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-top: 4px; /* Margen superior */
+    cursor: pointer; /* Cursor al pasar */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+
+.user-info button:hover {
+    background-color: #151618; /* Cambio de color al pasar */
+}
+
+  /* Agrega estos estilos en tu archivo ServiceMyAccount.css */
+
+.userbutton button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Margen superior */
+    cursor: pointer; /* Cursor al pasar */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.userbutton button:hover {
+    background-color: #0056b3; /* Cambio de color de fondo al pasar */
+}

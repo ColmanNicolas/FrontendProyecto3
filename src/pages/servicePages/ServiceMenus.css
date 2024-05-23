@@ -1,0 +1,117 @@
+#fondoMenu {
+    background-image: url(../assets/fondo-menu.jpeg); /* Reemplaza 'bar_background.jpg' con la ruta de tu imagen de fondo */
+    background-size: cover ;
+    background-position: center ;
+    background-repeat: no-repeat ;
+    min-height: 100vh;
+  }
+
+  
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+  
+  .card {
+    padding: 2em;
+  }
+  
+  .read-the-docs {
+    color: #888;
+  }
+  
+  .container {
+    font-family: 'Roboto', sans-serif;;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    color: rgb(237, 237, 237)
+    
+  }
+  
+  /* Resto de los estilos ... */
+  
+  
+  .title {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-info {
+    padding: 10px;
+  }
+  
+  .product-name {
+    margin: 0;
+    font-size: 1.32em;
+    color: rgb(237, 237, 237)
+  }
+  .product-description {
+    margin: 5px 0;
+    font-size: 30px; 
+  }
+  .product-price {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  
+  .selected-product {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .selected-product-image {
+      max-width: 50%;
+      height: auto;
+      margin-bottom: 10px;
+  }
+  .tamano-modal{
+    width: 100% !important;
+    height: 24rem;
+  }

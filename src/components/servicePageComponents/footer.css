@@ -1,0 +1,10 @@
+.footer {
+    align-items: center;
+    background-color: #000 !important;
+    color: #fff;
+    padding-bottom: 5px;
+  }
+  
+  .footer a, .info-footer p, .footer div p {
+    color: #fff !important;
+  }
