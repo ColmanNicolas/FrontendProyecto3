@@ -12,7 +12,7 @@ const LandingPage = () => {
     return (
         <>
             <header className='headerLanding '>
-                <h1 className=" m-0 ">Barapp </h1>
+                <h1 className=" m-0 ">BAR APP </h1>
                 <Link to={"auth"}><i className="bi bi-person-vcard-fill fs-3"></i><p>ACCESO</p></Link>
             </header>
             <section id="contenedor-menu">

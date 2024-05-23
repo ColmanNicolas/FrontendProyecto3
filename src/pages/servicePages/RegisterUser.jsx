@@ -11,10 +11,6 @@ const RegisterUser = () => {
     <>  
       <Navbar />
       <section className="d-flex  flex-column">
-        {/* <header className="bg-danger d-flex justify-content-between align-items-center">
-          <h1>Pagina de Registro</h1>              
-        </header> */}
-
         <main className="container-fluid p-0">
           < Form />
           <div className="container-fluid w-100 ">
