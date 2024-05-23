@@ -27,7 +27,6 @@ const useMenuState = () => {
         try {
             const response = await axios.get("https://backendproyecto3-1.onrender.com/api/menu");
             setMenus(response.data);
-            console.log("muestro response", response);
             setCategotriasMenu(categories);
             return response;
 
@@ -58,7 +57,6 @@ const useMenuState = () => {
     const crearMenu = async (menuData) => {
         try {
             await axios.post("https://backendproyecto3-1.onrender.com/api/menu", menuData).then(response => {
-                console.log(response);
             })
         } catch (error) {
             console.error('Error al crear menú:', error);
@@ -68,7 +66,6 @@ const useMenuState = () => {
 
         try {
             const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/menu/${menuId}`, menuData);
-            console.log("actualizco menu",response);
         } catch (error) {
             console.error('Error al modificar menú:', error);
         }
@@ -85,7 +82,6 @@ const useMenuState = () => {
         try {
             const {buscador}=data;
             const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/menu/search/${buscador}`);
-            console.log("realiz",response);
             setMenus(response);
             return response;
         } catch (error) {
@@ -96,7 +92,6 @@ const useMenuState = () => {
     //  ESTA FUNCION HAYQ EU PONERLA EN OTRO ARCHIVO
 
     const asignarImgPredeterminada = ({ category }) => {
-        console.log("LLEGA AQUI CATEGORY",category);
         const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
 
         switch (capitalizedCategory) {

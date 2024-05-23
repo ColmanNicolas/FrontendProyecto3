@@ -26,7 +26,7 @@ const ServiceMyAccount = () => {
                 obtenerInformacionUsuario();
             })
         } catch (error) {
-            console.log("exploto aqui", error);
+            console.log("Error inesperado: ", error);
 
         }
     }
