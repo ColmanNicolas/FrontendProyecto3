@@ -7,7 +7,6 @@ const usePedidosState = () => {
     const obtenerPedidos = async () => {
         try {
             await axios.get("https://backendproyecto3-1.onrender.com/api/order").then((response) => {
-                console.log(response.data);
                 setPedidos(response.data);
             })
         } catch (error) {
@@ -17,7 +16,6 @@ const usePedidosState = () => {
     const obtenerUnPedido = async (id) => {
         try {
             await axios.get(`https://backendproyecto3-1.onrender.com/api/order/${id}`).then((response) => {
-                console.log(response.data);
                 setPedidos(response.data);
             })
         } catch (error) {
@@ -27,7 +25,6 @@ const usePedidosState = () => {
     const crearPedido = async (pedidoData) => {
         try {
             const response = await axios.post("https://backendproyecto3-1.onrender.com/api/order", pedidoData);
-            console.log(response.data);
         } catch (error) {
             console.error('Error al crear pedido:', error);
         }
@@ -35,7 +32,6 @@ const usePedidosState = () => {
     const modificarPedido= async (pedidoId, pedidoData) => {
         try {
             const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/order/${pedidoId}`, pedidoData);
-            console.log(response.data);
             obtenerPedidos();
         } catch (error) {
             console.error('Error al modificar pedido:', error);
@@ -44,7 +40,6 @@ const usePedidosState = () => {
     const filtrarPedidos = async (filtro) => {
         try {
             await axios.get(`https://backendproyecto3-1.onrender.com/api/order/filter/${filtro}`).then((response) => {
-                console.log(response.data.order);
                 setPedidos(response.data.order);
             })
         } catch (error) {
@@ -55,7 +50,6 @@ const usePedidosState = () => {
         try {
             const {buscador}=data;
             const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/orders/search/${buscador}`);
-            console.log("realiz",response);
             setPedidos(response.data.orders);
             return response.data.orders;
         } catch (error) {
