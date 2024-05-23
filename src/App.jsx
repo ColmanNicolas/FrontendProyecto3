@@ -23,7 +23,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/bar-app/home" />} />
+          <Route path='/' element={<Navigate to="/bar-app/home" />} />
           <Route path='/bar-app/home' element={<Home />} />
           <Route path='/bar-app/landing-page' element={<LandingPage />} />
           <Route path='/bar-app/landing-page/auth' element={<PrincipalAuth />} />
@@ -41,4 +41,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
