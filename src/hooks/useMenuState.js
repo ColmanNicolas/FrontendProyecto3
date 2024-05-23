@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
-import imgEmpanadas from "../public/docena-empanadas.jpg"
-import imgPizzas from "../public/pizza-muzarella.jpg"
-import imgSanguches from "../public/sandwich-de-milanesa.jpg"
+import imgEmpanadas from "../assets/docena-empanadas.jpg"
+import imgPizzas from "../assets/pizza-muzarella.jpg"
+import imgSanguches from "../assets/sandwich-de-milanesa.jpg"
 
 const useMenuState = () => {
     const [menus, setMenus] = useState([])

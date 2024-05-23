@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import "../principalPages/PrincipalAuth.css"
-import FormPrincipalLogin from "../../components/superAdminComponents/FormPrincipalLogin";
-import FormPrincipalRegister from "../../components/superAdminComponents/FormPrincipalRegister";
-import { ToastContainer, toast } from 'react-toastify';
+import FormPrincipalLogin from "../../components/principalPageComponentes/formularios/FormPrincipalLogin";
+import FormPrincipalRegister from "../../components/principalPageComponentes/formularios/FormPrincipalRegister";
 import 'react-toastify/dist/ReactToastify.css';
+import "../principalPages/PrincipalAuth.css"
 
 const PrincipalAuth = () => {
 

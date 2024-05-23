@@ -1,0 +1,301 @@
+
+#contenedor-principal-menu{
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+  
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+  
+  
+  .card {
+    padding: 2em;
+  }
+  
+  .read-the-docs {
+    color: #888;
+  }
+  
+  .container {
+    font-family: 'Roboto', sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    color: rgb(223, 216, 216);
+  }
+  
+  .title {
+    color: white;
+    text-align: center;
+    font-size: 1.8em;
+    
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    grid-gap: 10px; 
+  }
+  
+
+
+
+
+/*  --------------IMAGEN TARJETA CHICA  */
+
+
+
+  .product-card {
+    height: 250px; /* Reducir la altura de la tarjeta */
+    width: 150px; /* Reducir el ancho de la tarjeta */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.808);
+    margin-right: 10px; /* Espacio entre las tarjetas */
+    padding: 7px;
+  }
+  
+  .product-image {
+    height: 120px !important; /* Reducir la altura de la imagen */
+    width: 100%;
+    pointer-events: none;
+    object-fit: fill !important;
+
+
+  }
+  .no-click {
+    pointer-events: none;
+}
+
+  .alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  display: none;
+}
+
+.alice-carousel__dots {
+  display: none;
+}
+
+
+  .product-info {
+
+    color: white;
+    padding: 5px;
+  }
+  
+  .product-name {
+    margin: 0;
+    font-size: 1em; /* Reducir el tamaño de la fuente del nombre */
+  }
+  
+  .product-price {
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 0.8em; /* Reducir el tamaño de la fuente del precio */
+  }
+  
+  
+  .selected-product {
+    color: white;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.925);
+    position: relative;
+  
+  }
+  @media(min-width:800px){
+  .selected-product {
+    flex-direction: row;
+  }
+  .articulo-product-info, 
+    .articulo-con-imagen{
+    width: 50% !important;
+  }
+  .articulo-product-info section button{  
+    margin-top: 2.5rem ;
+  }
+  #contenedor-boton-cerrar button{
+    display: flex !important; 
+  }
+  #contenedor-boton-cerrar-responsive button{
+    display: none !important;
+  }
+  .contenedor-precio-agregar{
+    padding-block: 0.5rem;
+  }
+  .contenedor-precio-agregar h3{ 
+    margin-bottom: 8rem !important;
+  }
+  }
+  .articulo-con-imagen {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .articulo-con-imagen h2{
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+
+
+/*  --------------IMAGEN CONTENEDOR GRANDE ------------ */
+
+
+
+  .articulo-con-imagen figure {
+    background: #000;
+    max-width: 20rem;
+    height: 20rem;
+    width: 100%;
+    margin: 0;
+    margin-block: 1rem;
+    overflow: hidden;
+  }
+  
+  .articulo-con-imagen img {
+    width: 20rem !important; /* Ancho al 100% */
+    height: 20rem !important;
+    object-fit: cover;
+  }
+
+
+
+
+  /*  ---------------------------------------------------  */
+
+
+
+  .articulo-con-imagen  figcaption{
+    text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  }
+  
+  /*articulo boton X , precio y boton */
+  #contenedor-boton-cerrar-responsive{
+    display: flex;
+    justify-content: end;
+  
+  }
+  #contenedor-boton-cerrar-responsive button{
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(255, 0, 0, 0.589);
+    padding-block: 0.5em;
+    padding-inline: 0.8rem;
+    background-color: #000000;
+  }
+  
+  #contenedor-boton-cerrar button{
+    display: none; 
+  }
+  #contenedor-boton-cerrar button{
+    color: white;
+    position: absolute;
+    padding-inline: 0.7rem;
+    right: 2vh;
+    top: -3vh;
+  background-color: #dddddd00;
+  }
+  .articulo-product-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .articulo-product-info h3{
+    font-size: 2rem;
+   text-align: center;
+  }
+  
+  /*estilo solo al segundo section de la etiqueta article(precio y boton)*/
+  .articulo-product-info section:nth-child(2) {  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .articulo-product-info section button{  
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 0, 0, 0.466);
+    border-radius: 0.3em;
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+    transition: outline 0.5s ease;
+  }
+  .articulo-product-info section button:hover{
+    cursor: pointer;  
+    outline: 2px solid rgba(255, 0, 0, 0.829);
+  }
+  .contenedor-precio-agregar{
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenedor-precio-agregar h3{
+    margin-top: 0.4em; 
+    margin-bottom: 1rem ;
+  }
+  .contenedor-precio-agregar button{
+  width: 12rem;
+  }
+  .category-button{
+    color: rgb(27, 26, 26);
+    font-weight: bold;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: rgb(255, 255, 255);
+    padding-inline: 1rem;
+    border-radius: 0.3em;
+    transition: background-color 0.5s ease-out;
+  }
+  .category-button:hover, .category-button:focus{
+    color: rgb(255, 255, 255);
+      background-color: black;
+    transition: background-color 0.5s ease-out;
+
+  }

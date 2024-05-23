@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ContainerNewQR from "../../components/superAdminComponents/ContainerNewQR";
-import useUsersState from "../../hooks/useUsersState";
-import "../principalPages/PrincipalAdminControls.css"
 import { useNavigate } from "react-router-dom";
+import useUsersState from "../../hooks/useUsersState";
+
+import "../principalPages/PrincipalAdminControls.css"
 
 const PrincipalAdminPage = () => {
     const [usuarios, setUsuarios] = useState([]);
@@ -88,15 +88,15 @@ const PrincipalAdminPage = () => {
                 <h1>Administrador</h1>
             </header>
             <h4 id="H4PrincipalAdmin" className="text-end">
-                <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
+                <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion bg-light fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
             </h4>
             <main>
                 <article id="principal-controls-admin">
-                    <form className="d-flex">
+                    <form className="d-flex ">
 
                         <section className="">
                             <section id="container-filtros" class="dropdown">
-                                <a id="btnFiltrarUsers" class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a id="btnFiltrarUsers" class="dropdown-toggle bg-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="bi bi-funnel"></i><span>Filtrar </span>
                                 </a>
 
@@ -109,12 +109,12 @@ const PrincipalAdminPage = () => {
                                     <hr className="m-0" />
                                     <li><a class="dropdown-item" onClick={() => filtrarPrincipalesPaid(false)} href="#">Pago Pendiente</a></li>
                                 </ul>
-                                <button type="button" className="buttonReload" onClick={() => obtenerPrincipalUsers()}><i className="bi bi-arrow-repeat fs-4"></i></button>
+                                <button type="button" className="buttonReload bg-light" onClick={() => obtenerPrincipalUsers()}><i className="bi bi-arrow-repeat fs-4"></i></button>
                             </section>
                         </section>
-                        <section id="container-buscador" className="d-flex justify-content-end">
+                        <section id="container-buscador" className="d-flex justify-content-end bg-light rounded-1">
                             <input type="text" name="" id="" placeholder="Ingrese algo para buscar" />
-                            <button type="submit" disabled><span>Buscar</span><i className="bi bi-search"></i></button>
+                            <button type="submit" disabled><span className="text-black">Buscar</span><i className="bi bi-search"></i></button>
                         </section>
                     </form>
                     <section id="seccion-principal-admin-table">

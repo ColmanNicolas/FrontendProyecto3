@@ -1,9 +1,10 @@
-import { Controller, useForm } from "react-hook-form";
-import "../principalPages/PrincipalMyAccount.css"
+import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import FormPagoServicio from "../../components/FormPagoServicio";
+
+import FormPagoServicio from "../../components/principalPageComponentes/formularios/FormPagoServicio";
+import "../principalPages/PrincipalMyAccount.css"
 
 const PrincipalMyAccount = () => {
     const { id } = useParams();
@@ -54,10 +55,10 @@ const PrincipalMyAccount = () => {
                 <h1>MI CUENTA</h1>
             </header>
             <main className="principalMainMyAccount">
+                <article id="articuloMiCuenta">
                 <h4 id="H4PrincipalAdmin" className="text-end">
                     <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
                 </h4>
-                <article id="articuloMiCuenta">
                     <section className="contenedorMiCuenta mb-5">
                         <form id="miCuentaForm" onSubmit={handleSubmit(enviarFormularioModificacion)}>
                             <h3 className="tituloH3MiCuenta">Mi información </h3>
