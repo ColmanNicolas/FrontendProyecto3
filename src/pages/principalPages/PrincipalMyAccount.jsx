@@ -52,7 +52,7 @@ const PrincipalMyAccount = () => {
     return (
         <>
             <header className='headerLanding '>
-                <h1>MI CUENTA</h1>
+                <h1>BAR APP</h1>
             </header>
             <main className="principalMainMyAccount">
                 <article id="articuloMiCuenta">

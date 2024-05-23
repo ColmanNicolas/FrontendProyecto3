@@ -32,7 +32,7 @@ const PrincipalAuth = () => {
     return (
         <>
             <header className='headerLanding '>
-                <h1>PAGINA AUTH</h1>
+                <h1>BAR APP</h1>
             </header>
             <main className="mainPrincipalAuth">
                 {opcionSeleccionada && (

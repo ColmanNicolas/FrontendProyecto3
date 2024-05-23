@@ -85,7 +85,7 @@ const PrincipalAdminPage = () => {
     return (
         <>
             <header className='headerLanding'>
-                <h1>Administrador</h1>
+                <h1>BAR APP</h1>
             </header>
             <h4 id="H4PrincipalAdmin" className="text-end">
                 <button onClick={() => { cerrarSesion() }} className=" botonCerrarSesion bg-light fs-6 mx-2 my-2 px-2">Cerrar Sesion</button>
