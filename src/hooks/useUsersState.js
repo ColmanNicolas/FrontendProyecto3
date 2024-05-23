@@ -7,7 +7,6 @@ const useUsersState = () => {
     const obtenerUsuarios = async () => {
         try {
             const response = await axios.get("https://backendproyecto3-1.onrender.com/api/users");
-            console.log(response);
             setUsers(response.data.users);
             return response.data.users;
         } catch (error) {
@@ -19,7 +18,6 @@ const useUsersState = () => {
         try {
             await axios.post("https://backendproyecto3-1.onrender.com/api/users", data)
                 .then(response => {
-                    console.log(response);
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -29,7 +27,6 @@ const useUsersState = () => {
         try {
             await axios.post("https://backendproyecto3-1.onrender.com/api/users/admin", data)
                 .then(response => {
-                    console.log(response);
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -40,7 +37,7 @@ const useUsersState = () => {
         try {
             await axios.put(`https://backendproyecto3-1.onrender.com/api/users/${id}`)
                 .then(response => {
-                    console.log(response);
+                   // console.log(response);
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -50,7 +47,6 @@ const useUsersState = () => {
         try {
 
             const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/users/enable/${id}`);
-            console.log(response);
             setUsers([response.data.user]);
             return response.data; 
         } catch (error) {
