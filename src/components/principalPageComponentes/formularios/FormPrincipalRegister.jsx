@@ -9,9 +9,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
 
     const enviarFormulario = async (dataRegister) => {
         try {
-            console.log("toy aquiii");
             const response = await axios.post("https://backendproyecto3-1.onrender.com/api/principal-auth/register", dataRegister);
-            console.log(response);
             
             if (response.status === 201) {
                 toast.success(response.data.msg, { theme: 'dark' });
@@ -21,7 +19,6 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                 }, 3500);
             } else {
                 toast.error(response.data.msg, { theme: 'dark' });
-                console.log("entro al error");
             }
         } catch (error) {
             if (error.response) {
