@@ -37,7 +37,6 @@ const useUsersState = () => {
         try {
             await axios.put(`https://backendproyecto3-1.onrender.com/api/users/${id}`)
                 .then(response => {
-                   // console.log(response);
                 });
         } catch (error) {
             console.error('Error al obtener datos:', error);
@@ -92,7 +91,6 @@ const useUsersState = () => {
         try {
             const {buscador}=data;
             const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/users/search/${buscador}`);
-            console.log("realiz",response);
             setUsers(response.data.users);
             return response.data.users;
         } catch (error) {

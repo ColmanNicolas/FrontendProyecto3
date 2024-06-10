@@ -64,7 +64,6 @@ const PrincipalAdminPage = () => {
                             await generarServiceAdmin(rest);
                             await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/disable/${id}`)
                                 .then(async (response) => {
-                                    console.log(response);
                                     await obtenerPrincipalUsers();
                                     toast.success(`Usuario ${response.data.user.principalEmail} deshabilitado`, { theme: 'dark' });
                                 })

@@ -30,7 +30,6 @@ const Navbar = () => {
     const userJSON = sessionStorage.getItem('loguedUser');
     const mUser = JSON.parse(userJSON);
     setUser(mUser);
-    console.log(mUser);
     botonAdmin(mUser);
   }, []);
 
