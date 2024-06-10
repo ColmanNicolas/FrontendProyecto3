@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useUsersState from "../../hooks/useUsersState";
+import { ToastContainer, toast } from 'react-toastify';
 
 import "../principalPages/PrincipalAdminControls.css"
 
@@ -28,7 +29,7 @@ const PrincipalAdminPage = () => {
             console.error('Error al obtener datos:', error);
         }
     };
-    
+
     const filtrarPrincipalesPaid = async (paid) => {
         try {
             const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/principalUsers/paid/${paid}`);
@@ -37,7 +38,7 @@ const PrincipalAdminPage = () => {
             console.error('Error al obtener datos:', error);
         }
     };
-    
+
     const cambiarEstado = async (id, accion) => {
         try {
             switch (accion) {
@@ -49,8 +50,9 @@ const PrincipalAdminPage = () => {
                             rest.name = businessName;
                             await generarServiceAdmin(rest);
                             await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/enable/${id}`)
-                                .then(async () => {
+                                .then(async (response) => {
                                     await obtenerPrincipalUsers();
+                                    toast.success(`Usuario ${response.data.user.principalEmail} dado de alta`, { theme: 'dark' });
                                 })
                         });
                     break;
@@ -61,8 +63,10 @@ const PrincipalAdminPage = () => {
                             const { city, country, id, name, paid, businessName, ...rest } = response.data.user;
                             await generarServiceAdmin(rest);
                             await axios.put(`https://backendproyecto3-1.onrender.com/api/principalUsers/disable/${id}`)
-                                .then(async () => {
+                                .then(async (response) => {
+                                    console.log(response);
                                     await obtenerPrincipalUsers();
+                                    toast.success(`Usuario ${response.data.user.principalEmail} deshabilitado`, { theme: 'dark' });
                                 })
                         });
                     break;
@@ -70,13 +74,16 @@ const PrincipalAdminPage = () => {
                     console.error('Acción no válida:', accion);
             }
         } catch (error) {
+            toast.error("Error al realizar la operación", { theme: 'dark' });
             console.error('Error al realizar la operación:', error);
         }
     };
     const cerrarSesion = () => {
+        toast.success("Cerrando sesión... no recargue la pagina", { theme: 'dark' });
+
         setTimeout(() => {
             navigate("/bar-app/landing-page/auth")
-        }, 1000);
+        }, 3500);
     }
 
     useEffect(() => {
@@ -138,27 +145,34 @@ const PrincipalAdminPage = () => {
                                         <td className="text-center">{(usuario.paid && "SI") || (!usuario.paid && "NO")}</td>
                                         <td className="text-center">
                                             {usuario.role !== "ADMIN_ROLE" && (
-                                                <>
-                                                    {(usuario.status && (
-                                                        <>
-                                                            <span>SI</span>
-                                                            <button className="checkButton px-2 rounded-2 ms-3" title="DesHabilitar" onClick={() => { cambiarEstado(usuario.id, "DESHABILITAR") }}>
-                                                                <i className="bi bi-gear"></i>
-                                                            </button>
-                                                        </>
-                                                    )) || (
-                                                            <>
-                                                                <span>NO</span>
-                                                                <button className="deleteButton px-2 rounded-2 ms-3" title="Habilitar" onClick={() => { cambiarEstado(usuario.id, "HABILITAR") }}>
-                                                                    <i className="bi bi-gear"></i>
-                                                                </button>
-                                                            </>
-                                                        )}
-                                                </>
+                                                <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name={`btnradio-${usuario.id}`}
+                                                        id={`baja-${usuario.id}`}
+                                                        autoComplete="off"
+                                                        title="DesHabilitar"
+                                                        defaultChecked={!usuario.status}
+                                                        onClick={() => { cambiarEstado(usuario.id, "DESHABILITAR") }}
+                                                    />
+                                                    <label className="btn btn-outline-danger" htmlFor={`baja-${usuario.id}`}>Baja</label>
+                                                    <input
+                                                        type="radio"
+                                                        className="btn-check"
+                                                        name={`btnradio-${usuario.id}`}
+                                                        id={`alta-${usuario.id}`}
+                                                        autoComplete="off"
+                                                        title="Habilitar"
+                                                        defaultChecked={usuario.status}
+                                                        onClick={() => { cambiarEstado(usuario.id, "HABILITAR") }}
+                                                    />
+                                                    <label className="btn btn-outline-primary" htmlFor={`alta-${usuario.id}`}>Alta</label>
+                                                </div>
                                             )}
                                         </td>
                                         <td className="text-center">
-                                            <button className="infoButton px-2 rounded-2 ms-3" title="Mas Información" onClick={() => { "masInfo" }}>
+                                            <button className="infoButton px-2 rounded-2 ms-3" disabled title="Mas Información" onClick={() => { "masInfo" }}>
                                                 <i className="bi bi-info-lg"></i>
                                             </button>
                                         </td>
@@ -169,6 +183,7 @@ const PrincipalAdminPage = () => {
                         </table>
                     </section>
                 </article>
+                <ToastContainer />
             </main>
         </>
     )

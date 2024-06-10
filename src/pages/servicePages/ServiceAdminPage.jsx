@@ -62,7 +62,7 @@ const ServiceAdminPage = () => {
                 <NavbarAdmin devolverTabla={mostrarTablasAdmin} />
                 <main className="mainServiceAdmin ">
                     <article >
-                        {!opcionSeleccionada && <h3 className="text-center">ADMINISTRADOR</h3>}
+                        {!opcionSeleccionada && <h3 className="text-center fw-bold fs-1 text-black">ADMINISTRADOR</h3>}
                         {opcionSeleccionada && (
                             <SwitchComponenteAdmin opcion={opcionSeleccionada} />
                         )}

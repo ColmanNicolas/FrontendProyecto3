@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 import useModal from '../../hooks/useModal';
 import pizza from '../../assets/pizza-muzarella.jpg';
@@ -22,7 +24,9 @@ const ServiceMenus = () => {
     const navigate = useNavigate();
 
     const agregarProductoCarrito = (product) => {
+        toast.success(`${product.name} agregado al carrito`, { theme: 'dark' });
         setProductOrder([...productOrderList, product]);
+        
     };
 
     const quitarProductoCarrito = (product) => {
@@ -57,8 +61,13 @@ const ServiceMenus = () => {
                 totalPrice += producto.price;
             });
 
-            await axios.post("https://backendproyecto3-1.onrender.com/api/order", { rest, items, totalPrice });
+            const response = await axios.post("https://backendproyecto3-1.onrender.com/api/order", { rest, items, totalPrice });
+            console.log(response);
+            toast.success(`Pedido realizado correctamente, N° orden: ${response.data.newOrder.orderNumber} `, { theme: 'dark' });
             cancelarPedido();
+            setTimeout(() => {
+                navigate(`/service/mi-cuenta`);
+            }, 4000);
         } catch (error) {
             console.log(error);
         }
@@ -79,9 +88,9 @@ const ServiceMenus = () => {
         <>
             <Navbar />
             <main id='fondoMenu'>
-                <section className='text-end p-3'>
-                    <button type="button" onClick={() => openModal(true)} className="btn btn-light">
-                        CARRITO DE COMPRAS <span className="badge text-bg-secondary">{cantidadProducto}</span>
+                <section id='botonCarritoCompra' className='text-end p-3'>
+                    <button type="button" onClick={() => openModal(true)} className="btn btn-light fs-5 ">
+                    <i className="bi bi-cart "></i> <span className="badge bg-primary text-white fw-bold fs-6">{cantidadProducto}</span>
                     </button>
                 </section>
 
@@ -100,6 +109,8 @@ const ServiceMenus = () => {
                     </ModalEstructuraBase>
                 )}
             </main>
+            <ToastContainer />
+            <section style={{height:"7vh"}}></section>
             <Footer />
         </>
     );

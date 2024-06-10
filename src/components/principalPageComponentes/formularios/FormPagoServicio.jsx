@@ -21,12 +21,6 @@ const FormPagoServicio = () => {
         }
     }
 
-    const validarFecha = (fecha) => {
-        const [dia, mes] = fecha.split('/').map(Number);
-        return dia <= 31 && mes <= 12;
-    };
-
-
     return (
         <form id="pagoForm" onSubmit={handleSubmit(enviarFormularioPago)}>
             <h3 className="tituloH3MiCuenta">Sección de Pago</h3>
@@ -77,16 +71,16 @@ const FormPagoServicio = () => {
                 <input
                     type="text"
                     id="fechaVencimientoTarjeta"
-                    placeholder="00/00"
+                    placeholder="mm/dd"
                     {...register("fechaVencimientoTarjeta", {
                         required: "Este campo es requerido",
                         pattern: {
                             value: /^\d{2}\/\d{2}$/,
-                            message: "No se ingresó una fecha válida (dd/mm)"
+                            message: "No se ingresó una fecha válida (mm/dd)"
                         },
                         validate: {
                             fechaValida: value => {
-                                const [dia, mes] = value.split('/').map(Number);
+                                const [mes, dia] = value.split('/').map(Number);
                                 return dia <= 31 && mes <= 12;
                             }
                         }
