@@ -55,7 +55,7 @@ const ServiceMyAccount = () => {
                         {usuario && (
                             <div className="profile-picture">
                                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Perfil" />
-                                <button>Elegir foto de perfil</button>
+                                <button disabled>Elegir foto de perfil</button>
                             </div>
                         )}
                         {usuario && (
@@ -64,8 +64,8 @@ const ServiceMyAccount = () => {
                                 <p><strong>Email:</strong> {usuario.email}</p>
                             </div>
                         )}
-                        <div className="userbutton">
-                            <button>Cambiar contraseña</button>
+                        <div className="">
+                            <button disabled>Cambiar contraseña</button>
                         </div>
                     </div>
                 </div>

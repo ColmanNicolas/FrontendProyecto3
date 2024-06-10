@@ -5,7 +5,11 @@
     background-repeat: no-repeat ;
     min-height: 100vh;
   }
-
+#botonCarritoCompra{
+  position: fixed;
+  right: 0vh;
+  z-index: 99;
+}
   
   .logo {
     height: 6em;

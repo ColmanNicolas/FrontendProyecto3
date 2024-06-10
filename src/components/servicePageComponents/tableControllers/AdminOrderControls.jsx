@@ -109,7 +109,7 @@ const AdminOrderControls = () => {
         <>
             <section className="sectionButtonNew">
                 <h2>GESTION DE PEDIDOS</h2>
-                <Link className="text-decoration-none" to="/service/products-menu" target="_blank">
+                <Link className="text-decoration-none" to="/service/products-menu" >
                     <button>
                         <i className="bi bi-list-check"></i>
                         <span>Realizar un Pedido</span>

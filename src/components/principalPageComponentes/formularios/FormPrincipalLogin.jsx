@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const FormPrincipalLogin = ({ cambiarComponente }) => {
     const { handleSubmit, register, formState: { errors }, reset, } = useForm();
     const navigate = useNavigate();
+
     const enviarFormulario = async (dataLogin) => {
         try {
             const response = await axios.post("https://backendproyecto3-1.onrender.com/api/principal-auth/login", dataLogin);
@@ -50,7 +51,7 @@ const FormPrincipalLogin = ({ cambiarComponente }) => {
             <article>
                 <h2>LOGIN</h2>
                 <button className="buttonAslAnchor" type="button" onClick={() => cambiarComponente("REGISTER")}><i className="bi bi-arrow-up-left-circle"></i><span>Registrarme</span> </button>
-                <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>
+                <Link to={"/bar-app/landing-page"}><i className="bi bi-house"></i><span>Volver atrás</span> </Link>
             </article>
             <article className="w-100">
                 <section className="">
