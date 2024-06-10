@@ -62,7 +62,6 @@ const ServiceMenus = () => {
             });
 
             const response = await axios.post("https://backendproyecto3-1.onrender.com/api/order", { rest, items, totalPrice });
-            console.log(response);
             toast.success(`Pedido realizado correctamente, N° orden: ${response.data.newOrder.orderNumber} `, { theme: 'dark' });
             cancelarPedido();
             setTimeout(() => {

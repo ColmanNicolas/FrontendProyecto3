@@ -32,9 +32,11 @@ const ServiceAdminPage = () => {
 
     const cerrarSesion = () => {
         sessionStorage.removeItem('loguedUser');
+        toast.success("Cerrando sesión... no recargue la pagina", { theme: 'dark' });
+
         setTimeout(() => {
             navigate("/service/login");
-        }, 1000);
+        }, 3000);
     }
 
     function SwitchComponenteAdmin({ opcion }) {
