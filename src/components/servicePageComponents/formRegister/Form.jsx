@@ -57,7 +57,7 @@ const Form = () => {
                     theme: 'dark'
                 });
             } else {
-                toast.success(`El usuario ${data.user.name} se está procesando. La aprobación será enviada a ${data.user.email}`, {
+                toast.success(`El usuario ${data.user.name} se está procesando y deberá ser aprobada por un administrador`, {
                     theme: 'dark'
                 });
                 setTimeout(() => {
@@ -114,9 +114,12 @@ const Form = () => {
 
     return (
         <>
-            <div className='contenedorForm'>
-                <form onSubmit={handleSubmit(enviarFormulario)}>
-                    <h3 className='text-center mb-4'>REGISTRATE</h3>
+            <div className='contenedorForm '>
+                <form onSubmit={handleSubmit(enviarFormulario)} className='my-5'>
+                    <h3 className='text-center mb-2'>REGISTRATE</h3>
+                    <p className='my-3 p-2 bg-primary rounded-1 bg-opacity-25 text-black'>
+                        Este formulario de registro es solamente para clientes, si quiere registrarse como dueño y contratar un servicio haga <Link to={"/bar-app/landing-page/auth"}>click aqui</Link>
+                    </p>
                     <div className="mb-3 input-container">
                         <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
                         <div className="name-input">

@@ -1,30 +1,45 @@
 import axios from "axios";
 import { Controller, useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 const FormPrincipalRegister = ({ cambiarComponente }) => {
 
-    const { handleSubmit, register, formState: { errors }, watch, reset,control } = useForm();
-    const enviarFormulario = (dataRegister) => {
+    const { handleSubmit, register, formState: { errors }, watch, reset, control } = useForm();
+
+    const enviarFormulario = async (dataRegister) => {
         try {
-            axios.post("https://backendproyecto3-1.onrender.com/api/principal-auth/register", dataRegister)
-                .then(response => {
-                    reset();
+            console.log("toy aquiii");
+            const response = await axios.post("https://backendproyecto3-1.onrender.com/api/principal-auth/register", dataRegister);
+            console.log(response);
+            
+            if (response.status === 201) {
+                toast.success(response.data.msg, { theme: 'dark' });
+                reset();
+                setTimeout(() => {
                     cambiarComponente("LOGIN");
-                })
-                .catch(error => {
-                    console.error('Error al enviar formulario:', error);
-                });
+                }, 3500);
+            } else {
+                toast.error(response.data.msg, { theme: 'dark' });
+                console.log("entro al error");
+            }
         } catch (error) {
+            if (error.response) {
+                toast.error(error.response.data.msg, { theme: 'dark' });
+            } else {
+                toast.error('Error al enviar formulario. Por favor intente de nuevo.', { theme: 'dark' });
+            }
             console.error('Error al enviar formulario:', error);
         }
     };
+
+
     return (
         <form onSubmit={handleSubmit(enviarFormulario)} >
             <article>
                 <h2>REGISTRO</h2>
                 <button className="buttonAslAnchor" type="button" onClick={() => cambiarComponente("LOGIN")}><i className="bi bi-arrow-up-left-circle"></i><span>Tengo Cuenta</span> </button>
-                <Link to={"/bar-app/landing-page"}><span>Volver a Home</span><i className="bi bi-house"></i> </Link>
+                <Link to={"/bar-app/landing-page"}><i className="bi bi-house"></i> <span>Volver atrás</span></Link>
             </article>
             <article>
                 <section className="rowInputsForm">
@@ -59,21 +74,8 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                         {errors.businessName && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.businessName.message}</p>)
                         }
                     </section>
-
-                    {   /*                 <section >
-                        <label htmlFor="" className="form-label">CUIT</label>
-                        <input type="number" className="form-control" id="" {...register("cuit", {
-                            required: true,
-                            min:1,
-                            minLength: 3,
-                            maxLength: 13,
-                            pattern: /^[0-9]+$/
-                        })} />
-                        {errors.cuit && (
-                            errors.cuit.type === "required" && <p className="error-message bg-danger">Campo Requerido</p>
-                        )}
-                    </section>*/}
                 </section>
+
                 <section className="rowInputsForm ">
                     <section >
                         <label htmlFor="country" className="form-label">PAIS</label>
@@ -136,7 +138,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                             maxLength: { value: 35, message: "Máximo 35 caracteres" },
                             pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£€*?&]{6,25}$/, message: "Debe empezar con mayuscula y contener minimo un numero" }
                         })} />
-                        {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p> )}
+                        {errors.password && (<p className="ps-1 text-danger fs-semibold mb-2">{errors.password.message}</p>)}
                     </section>
                     <section >
                         <label htmlFor="userPassRepeat" className="form-label">REPETIR CONTRASEÑA</label>
@@ -150,7 +152,7 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                         )}
                     </section>
                 </section>
-                <section className="rowInputsForm d-flex align-items-center flex-row bg-dark p-2 rounded-2 mb-3">
+                <section className="rowInputsForm d-flex align-items-center flex-row bg-dark bg-opacity-75 p-2 rounded-2 mb-3">
                     <p className="mb-0"> Al enviar este formulario, aceptas nuestros términos y condiciones. Gracias por registrarte en nuestro servicio.</p>
                     <Controller
                         name="terminosYCondiciones"
@@ -164,12 +166,13 @@ const FormPrincipalRegister = ({ cambiarComponente }) => {
                     />
                 </section>
                 <section className="rowInputsForm">
-                        {errors.terminosYCondiciones && (<p className="ps-1 text-danger fs-semibold mb-2">Falta aceptar terminos y condiciones</p> )}
+                    {errors.terminosYCondiciones && (<p className="ps-1 text-danger fs-semibold mb-2">Falta aceptar terminos y condiciones</p>)}
                 </section>
                 <section className="formButtonSection">
                     <button className="">Registrarme</button>
                 </section>
             </article>
+            <ToastContainer />
         </form>
     )
 };

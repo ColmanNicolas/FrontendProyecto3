@@ -3,21 +3,41 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWineBottle, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
+import axios from 'axios';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const [admin, isAdmin] = useState(false);
+
   const navigateTo = useNavigate();
+
+  const botonAdmin = async (data) =>{
+    if(data != null){
+      try {
+        const {id} = data;
+        const response = await axios.get(`https://backendproyecto3-1.onrender.com/api/users/${id}`);
+          if (response.data.user.role == "ADMIN_ROLE") {
+            isAdmin(true);
+          }
+      } catch (error) {
+        
+      }
+    }
+
+  }
 
   useEffect(() => {
     const userJSON = sessionStorage.getItem('loguedUser');
     const mUser = JSON.parse(userJSON);
     setUser(mUser);
+    console.log(mUser);
+    botonAdmin(mUser);
   }, []);
 
   const handleClick = () => {
     sessionStorage.clear();
     setUser(null);
-    navigateTo('/');
+    navigateTo("/service/login");
   };
 
   const navbarCollapse = useRef();
@@ -32,6 +52,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener('click', handleCollapse);
     };
+
   }, []);
 
   return (
@@ -58,7 +79,7 @@ const Navbar = () => {
             className="collapse navbar-collapse"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav ms-auto px-4">
+            <ul className="navbar-nav ms-auto px-4 ">
               {
                 (!user?.name) &&
                 <>
@@ -74,13 +95,14 @@ const Navbar = () => {
                   </li>
                 </>
               }
-              { (user?.role === "ADMIN_ROLE") &&
-                <div className='d-flex '>
-                  <Link className='text-decoration-none text-white admin' to='admin'>Administración</Link>
+              {(admin) &&
+                <div className='d-flex align-items-center'>
+                  <Link className='text-decoration-none text-white fw-bold' to='/service/admin-controls'>Administración</Link>
                 </div>
               }
               {
-                (user?.name) &&
+                (user?.name) && 
+                
                 <div className=' d-flex me-2 mt-3 '>
                   <li className=''>
                     <p className='text-white d-none d-md-block mx-3' >{`Bienvenido/a  ${user?.name}`}</p>
@@ -99,13 +121,13 @@ const Navbar = () => {
               }
               {
                 (user?.name) &&
-                <div className='mt-3'>                 
+                <div className='mt-3'>
                   <li
                     onClick={handleClick}
                     className='main-button text-white nav-close mt-2 mt-md-0'
-                    >Cerrar sesion
+                  >Cerrar sesion
                   </li>
-                
+
 
                 </div>
               }

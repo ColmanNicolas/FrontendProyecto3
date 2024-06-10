@@ -102,7 +102,9 @@
 }
 
 .alice-carousel__dots {
-  display: none;
+  display: block;
+  margin-top:1rem ;
+  background-color: rgba(0, 0, 0, 0.541);
 }
 
 

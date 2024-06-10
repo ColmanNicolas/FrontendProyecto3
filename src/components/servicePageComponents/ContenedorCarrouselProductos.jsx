@@ -76,10 +76,12 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
 
     return (
         <div id='contenedor-principal-menu'>
-            <h1 className="title fs-2 ">Selección de Menú</h1>
+            <h1 className="title fs-2 pt-4">Selección de Menú</h1>
             <div className="categories-carousel mt-4">
                 <AliceCarousel
                     mouseTracking
+                    autoPlay={true}
+                    autoPlayInterval={3000}
                     items={categories.map(category => (
                         <button
                             key={category}
@@ -94,11 +96,12 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                     infinite={true}
                 />
             </div>
-            <div className="mt-4">
+            <div className="mt-3">
             <h2 className="title text-white">{selectedCategory}</h2>
 
             <AliceCarousel
                 mouseTracking
+                keyboardNavigation={true}
                 items={filteredProducts.map((product, index) => (
                     <div key={index} className="product-card" onClick={() => handleProductSelect(product)}>
 
@@ -113,6 +116,7 @@ function ContenedorCarrouselProductos({ agregarProductoCarrito }) {
                 ))}
                 responsive={responsiveTarjetas}
                 buttonsDisabled={false}
+
                 infinite={true}
                 stagePadding={{ paddingRight: 100, paddingLeft: 100 }}
                 renderDotsNavigation={renderCustomDots} // Utiliza la función para renderizar los puntos de navegación personalizados
