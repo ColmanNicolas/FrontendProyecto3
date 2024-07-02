@@ -150,8 +150,6 @@ const LoginComp = () => {
                     </div>
                 </form>
             </div>
-
-
             <ToastContainer />
         </>
     );
