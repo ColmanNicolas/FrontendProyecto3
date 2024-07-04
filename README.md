@@ -91,7 +91,7 @@ Contarán con beneficios como pagar su pedido desde la app, programar un pedido,
 
 Además incluye toda la gestión de funciones administrativas de creación de un menú, manejo de estados de un pedido, control de inventario y control de personal.
 
-![Descripción de los servicios](images/tu-imagen.jpg)
+![Descripción de los servicios](public/detalles.png)
 
 ## Planes y Precios
 
