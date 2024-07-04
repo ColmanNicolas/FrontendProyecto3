@@ -5,6 +5,8 @@ import AdminOrderControls from "../../components/servicePageComponents/tableCont
 import AdminUserControls from "../../components/servicePageComponents/tableControllers/AdminUserControls";
 import Header from "../../components/principalPageComponentes/Header";
 import NavbarAdmin from "../../components/servicePageComponents/navBar/NavbarAdmin";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './ServiceAdminPage.css';
 import '../../components/ModalEstructura.css';
@@ -71,6 +73,8 @@ const ServiceAdminPage = () => {
                     </article>
                 </main>
             </section>
+            <ToastContainer />
+
         </>
     )
 };
