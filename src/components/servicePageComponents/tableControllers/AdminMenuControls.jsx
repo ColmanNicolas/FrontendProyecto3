@@ -4,6 +4,8 @@ import FormCrearMenu from "../FormCrearMenu";
 import ModalEstructuraBase from "../../ModalEstructuraBase";
 import useMenuState from "../../../hooks/useMenuState";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminMenuControls = () => {
     const {categoriasMenu, obtenerMenus, modificarMenu, borrarMenu, filtrarMenus,buscadorMenus } = useMenuState();
@@ -11,6 +13,7 @@ const AdminMenuControls = () => {
     const { isOpen, openModal, closeModal } = useModal();
     const [accionarModal, setAccionarModal] = useState([]);
     const [menus, setMenus] = useState([]);
+    const [modificacion,setModificacion] = useState(false);
 
     const enviarBusqueda = async (data) => {
 
@@ -42,14 +45,18 @@ const AdminMenuControls = () => {
     useEffect(() => {
         setearDataMenus();
     }, []);
-    
-    //recargo lista al finalizar operacion en el modal
-    /* 
+
     useEffect(() => {
-        obtenerMenus();
-    }, [isOpen]);
-    */
-    
+        if(modificacion){
+            toast.success(`Plato modificado: ${menus[0].name} `, {
+                theme: 'dark'
+            });
+            setTimeout(() => {
+                setModificacion(false);
+            }, 4000);
+        }
+    }, [modificacion]);
+
     return (
         <>
             <section className="sectionButtonNew">
@@ -118,9 +125,11 @@ const AdminMenuControls = () => {
             {isOpen &&
                 <ModalEstructuraBase closeModal={closeModal} >
                     <h3>{accionarModal.accion === "NUEVO" ? "Nuevo Menu" : "Modificar Menu"}</h3>
-                    <FormCrearMenu closeModal={closeModal} accionarModal={accionarModal} />
+                    <FormCrearMenu closeModal={closeModal} accionarModal={accionarModal} setMenus={setMenus} modificarMenu={modificarMenu} setModificacion={setModificacion}/>
                 </ModalEstructuraBase>
             }
+            <ToastContainer />
+
         </>
     )
 };
