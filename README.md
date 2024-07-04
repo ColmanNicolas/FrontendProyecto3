@@ -108,20 +108,18 @@ Información sobre los diferentes planes de suscripción y sus precios.
 
 Información sobre cómo obtener soporte técnico o ayuda.
 
-- Visita nuestro [Centro de Ayuda](https://tu-sitio-web.com/ayuda).
-- Envíanos un correo a soporte@tu-sitio-web.com.
-- Llámanos al +123 456 789.
+- Envíanos un correo a bar_app@gmail.com.ar.
+- Llámanos al +3819999999.
 
 ## Términos y Condiciones
 
 Enlace a los términos y condiciones del servicio.
 
-Puedes leer nuestros [Términos y Condiciones](https://tu-sitio-web.com/terminos).
+Puedes leer nuestros [Términos y Condiciones](--------).
 
 ## Contacto
 
 Información de contacto para preguntas o sugerencias.
 
-- **Nombre**: Tu Nombre
-- **Correo**: tuemail@example.com
-- **LinkedIn**: [Tu Perfil de LinkedIn](https://linkedin.com/in/tu_perfil)
+- **Nombre**: Colman Mario Nicolas
+- **Correo**: nicolascolman2058@gmail.com
