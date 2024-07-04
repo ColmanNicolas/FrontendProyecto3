@@ -6,10 +6,10 @@ Nuestra solución web está diseñada para la administración eficiente de estab
 
 ## Tabla de Contenidos
 
-1. [Registro Dueños(administrador)](#registroDueño)
-3. [Uso Dueños](#usoDueño)
-2. [Registro Clientes](#registroCliente)
-4. [Uso Cliente](#usoCliente) 
+1. [Registro Dueños(administrador)](#registro-dueño(administrador))
+3. [Uso Dueños](#uso-dueño)
+2. [Registro Clientes](#registro-cliente)
+4. [Uso Cliente](#uso-cliente) 
 5. [Características](#características)
 6. [Planes y Precios](#planes-y-precios)
 7. [Soporte](#soporte)
