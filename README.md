@@ -6,7 +6,7 @@ Nuestra solución web está diseñada para la administración eficiente de estab
 
 ## Tabla de Contenidos
 
-1. [Registro Dueños(administrador)](#registro-dueño(administrador))
+1. [Registro Dueños(administrador)](#registro-dueño)
 3. [Uso Dueños](#uso-dueño)
 2. [Registro Clientes](#registro-cliente)
 4. [Uso Cliente](#uso-cliente) 
@@ -16,7 +16,7 @@ Nuestra solución web está diseñada para la administración eficiente de estab
 8. [Términos y Condiciones](#términos-y-condiciones)
 9. [Contacto](#contacto)
 
-## Registro Dueño(administrador)
+## Registro Dueño
 
 Instrucciones sobre cómo registrarse para solicitar una cuenta de adminitrador.
 
