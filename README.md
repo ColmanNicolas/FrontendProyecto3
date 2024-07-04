@@ -15,6 +15,7 @@ Nuestra solución web está diseñada para la administración eficiente de estab
 7. [Soporte](#soporte)
 8. [Términos y Condiciones](#términos-y-condiciones)
 9. [Contacto](#contacto)
+10. [Colaboradores](#colaboradores)
 
 ## Registro Dueño
 
@@ -120,6 +121,11 @@ Puedes leer nuestros [Términos y Condiciones](--------).
 ## Contacto
 
 Información de contacto para preguntas o sugerencias.
-
-- **Nombre**: Colman Mario Nicolas
 - **Correo**: nicolascolman2058@gmail.com
+
+## Colaboradores
+- **`Colman, Mario Nicolas`**
+- **`Saleh, Diego`**
+- **`Cinello Paez, Gastón`**
+- **`Osores, Leonardo`**
+
