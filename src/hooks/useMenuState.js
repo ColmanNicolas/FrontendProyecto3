@@ -66,6 +66,7 @@ const useMenuState = () => {
 
         try {
             const response = await axios.put(`https://backendproyecto3-1.onrender.com/api/menu/${menuId}`, menuData);
+            return response;
         } catch (error) {
             console.error('Error al modificar menú:', error);
         }
