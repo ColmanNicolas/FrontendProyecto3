@@ -67,8 +67,10 @@ Lista de las principales características y funcionalidades del servicio web.
     - Control de inventario y suministros.
     - Análisis de ventas y reportes financieros.
 
-### Recomendación para Contratar un Servicio
+![Descripción de los servicios](public/detalles.png)
 
+
+### Recomendación para Contratar un Servicio
 
 
 #### Standard Service
@@ -91,17 +93,16 @@ Contarán con beneficios como pagar su pedido desde la app, programar un pedido,
 
 Además incluye toda la gestión de funciones administrativas de creación de un menú, manejo de estados de un pedido, control de inventario y control de personal.
 
-![Descripción de los servicios](public/detalles.png)
 
 ## Planes y Precios
 
 Información sobre los diferentes planes de suscripción y sus precios.
 
-| Plan          | Descripción                          | Precio Mensual |
-|---------------|--------------------------------------|----------------|
-| Básico        | Funcionalidades básicas              | $10            |
-| Premium       | Funcionalidades avanzadas            | $30            |
-| Empresarial   | Funcionalidades completas y soporte  | $50            |
+| Plan                      | Descripción                                      | Precio         |
+|---------------------------|--------------------------------------------------|----------------|
+| Standard Service          | Funcionalidades básicas                          | 100 usd        |
+| Self-Managemente App      | Funcionalidades para terminales de autogestion   | 130 usd        |
+| Menu App                  | Funcionalidades completas y soporte              | 150 usd        |
 
 ## Soporte
 
