@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 
-const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu,setModificacion }) => {
+const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu, setModificacion, setEliminacion,setearDataMenus  }) => {
 
     const { handleSubmit, setValue, register, formState: { errors, isSubmitSuccessful }, watch, reset, control, focus } = useForm();
 
@@ -15,9 +15,9 @@ const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu,setM
             switch (accionarModal.accion) {
                 case "NUEVO":
                     await crearMenu(data);
+                    setearDataMenus();
                     break;
                 case "MODIFICAR":
-
                     const response = await modificarMenu(accionarModal.id, data);
                     console.log(response.data.menu);
                     setMenus([response.data.menu]);
@@ -36,6 +36,7 @@ const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu,setM
 
     const handleBorrar = async () => {
         await borrarMenu(accionarModal.id);
+        setEliminacion(true);
         closeModal();
     };
     const handleClose = () => {
