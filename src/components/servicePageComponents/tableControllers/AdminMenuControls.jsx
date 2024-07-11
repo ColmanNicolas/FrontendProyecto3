@@ -14,6 +14,7 @@ const AdminMenuControls = () => {
     const [accionarModal, setAccionarModal] = useState([]);
     const [menus, setMenus] = useState([]);
     const [modificacion,setModificacion] = useState(false);
+    const [eliminacion,setEliminacion] = useState(false);
 
     const enviarBusqueda = async (data) => {
 
@@ -56,6 +57,18 @@ const AdminMenuControls = () => {
             }, 4000);
         }
     }, [modificacion]);
+
+    useEffect(() => {
+        if(eliminacion){
+            toast.success(`Plato eliminado`, {
+                theme: 'dark'
+            });
+            setearDataMenus();
+            setTimeout(() => {
+                setEliminacion(false);
+            }, 4000);
+        }
+    }, [eliminacion]);
 
     return (
         <>
@@ -125,7 +138,7 @@ const AdminMenuControls = () => {
             {isOpen &&
                 <ModalEstructuraBase closeModal={closeModal} >
                     <h3>{accionarModal.accion === "NUEVO" ? "Nuevo Menu" : "Modificar Menu"}</h3>
-                    <FormCrearMenu closeModal={closeModal} accionarModal={accionarModal} setMenus={setMenus} modificarMenu={modificarMenu} setModificacion={setModificacion}/>
+                    <FormCrearMenu closeModal={closeModal} accionarModal={accionarModal} setMenus={setMenus} modificarMenu={modificarMenu} setModificacion={setModificacion} setEliminacion={setEliminacion} setearDataMenus={setearDataMenus}/>
                 </ModalEstructuraBase>
             }
             <ToastContainer />
