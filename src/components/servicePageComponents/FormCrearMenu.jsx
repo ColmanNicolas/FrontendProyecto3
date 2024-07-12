@@ -61,6 +61,7 @@ const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu, set
             setearInformacionMenu();
         }
     }, [])
+
     const categories = [
         "Promociones",
         "Entradas",
@@ -185,7 +186,7 @@ const FormCrearMenu = ({ closeModal, accionarModal, setMenus, modificarMenu, set
                 </section>
                 <section className="modalBtnContainer">
                     <button onClick={handleClose}>Cancelar</button>
-                    {accionarModal.accion == "MODIFICAR" && <button onClick={handleBorrar}>Borrar</button>}
+                    {accionarModal.accion == "MODIFICAR" && <button type="button" onClick={handleBorrar}>Borrar</button>}
                     <button onClick={handleSubmit}>Confirmar</button>
                 </section>
             </form>
